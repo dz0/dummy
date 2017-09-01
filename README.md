@@ -1,4 +1,1 @@
-dummy
-=====
-try
-try 2
+/tmp
