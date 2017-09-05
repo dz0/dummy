@@ -2,7 +2,48 @@ import sys
 # import traceback
 import inspect
 import linecache
-       
+import py
+
+### GLOBALS
+stack_defs_original_indents = []
+stack_output_indents = []
+last_indent = 0
+
+
+depth = 0
+MAX_DEPTH = 30
+
+visited_lines = [] # not to visit the same again.. ID by filnename + lineno
+visited_calls = [] # not to visit the same again.. ID by filnename + lineno
+from collections import defaultdict, OrderedDict
+call_map = defaultdict(list) # lineID: [funcID1, funcID2..]
+traced_values = OrderedDict()
+
+start_frame = None    
+
+### end GLOBALS
+
+def fileID(frame):
+    co = frame.f_code
+    filename = co.co_filename    
+    return filename
+    
+def moduleID(frame):  # more readable than fileID
+    module = inspect.getmodule( frame.f_code )
+    module = module and module.__name__ 
+    return module
+    
+def lineID(frame):
+    lineno = frame.f_lineno
+    return (moduleID(frame), lineno)
+    # return (fileID(frame), lineno)
+    
+def funcID(frame):
+    qualname = get_qualname(frame)
+    module = moduleID(frame)
+    return (module, qualname)
+    # return (frame.f_code.co_filename , qualname)
+    
 def getline(filename, lineno):
 
     return linecache.getline(filename, lineno )  # it kind of ignores file errors
@@ -35,15 +76,7 @@ def format_inspect_stack(stack, start_frame, end_frame):
     return ''.join( calls )
 
 
-stack_defs_original_indents = []
-stack_output_indents = []
-last_indent = 0
 
-visited_lines = [] # not to visit the same again.. ID by filnename + lineno
-visited_calls = [] # not to visit the same again.. ID by filnename + lineno
-
-    
-start_frame = None    
     
 def ajust_indent( line ):
     orig_indent = len(line) - len(line.lstrip())
@@ -61,17 +94,41 @@ def apply_indent( line ):
     output_indent = stack_output_indents[-1] if stack_output_indents else 0
     return output_indent * ' '   + line
 
+pySource_cache = {}
+def get_file_pySource(path):
+    # could cash
+    if not path in pySource_cache:
+        with open(path) as f:
+            pySource_cache[path] = py.code.Source( f.read() )
+    return pySource_cache[path]
+
+    
 def log_line(frame, extra=""):
     lineno = frame.f_lineno
     co = frame.f_code
     filename = co.co_filename    
     id = (filename, lineno)
     if id not in visited_lines:
-        line =  ajust_indent( getline(filename, lineno ))
+        line =  ajust_indent( getline(filename,lineno ) )
         global last_indent
-        last_indent = len(line) - len(line.lstrip())
-        # if not stack_output_indents:
-            # stack_output_indents.append( last_indent )
+        
+        def get_current_statement_indent(line):
+            return len(line) - len(line.lstrip())
+            
+            
+        def get_first_statement_lineno(filename, lineno):
+            s = get_file_pySource( filename )
+            # print("DBG src", s)
+            if s:
+                # print("DBG pySrc line", s.getstatement( lineno ) )  # could do auto dedent...
+                statement_start = s.getstatementrange( lineno-1 )[0]  
+                return statement_start+1
+                
+        if lineno == get_first_statement_lineno(filename, lineno):
+            # TODO if the call happens not at the end of statement -- use last line indent instead.., 
+            last_indent = get_current_statement_indent(line)
+            
+
         line = line.rstrip('\n') +extra
         print( line )
     visited_lines.append( id )
@@ -87,8 +144,38 @@ def get_func_header(frame):
         header = None
     return header
 
+
+def get_qualname(frame):
+    
+    # https://stackoverflow.com/a/2544639/4217317
+    def get_class_name(f):
+        try:
+            return f.f_locals['self'].__class__.__name__
+        except KeyError:
+            return None
+    classname = get_class_name( frame )
+    
+    if classname:
+        return classname+'.'+frame.f_code.co_name
+    else:
+        return frame.f_code.co_name
+    """    
+    try:
+        obj = frame.f_locals['self']
+        func_obj = getattr(obj, frame.f_code.co_name)
+        return func_obj.__qualname__
+    except (KeyError, AttributeError):
+        return None
+        
+    # func_obj = frame.f_globals.get(frame.f_code.co_name)
+    # qualname = func_obj and func_obj.__qualname__   or ""
+    """        
+
+
 def trace_calls(frame, event, arg):
     global start_frame
+    global last_indent
+
 
     co = frame.f_code
     func_name = co.co_name
@@ -108,7 +195,7 @@ def trace_calls(frame, event, arg):
         # return
 
     if event == 'line':
-        log_line( frame) #, extra=f"  # line: {frame.f_lineno}, {frame.f_locals}   #module {module}" )
+        log_line( frame )#, extra=f"  # line: {frame.f_lineno}, {frame.f_locals}   #module {module}" )
         
         return trace_calls #FIXME
         """
@@ -135,82 +222,112 @@ def trace_calls(frame, event, arg):
     # if True:
         
         #skip if already visited
-        if (filename, lineno) in visited_calls:  
+        if lineID(frame) in visited_calls:  # TODO: allow duplicate visits -- as it may mean different lines inside call
             # if event == 'call':
                 # print( apply_indent( last_indent*' ' + '#@skip_inline (already visited)') )
             return trace_calls    
             
-        visited_calls.append( (filename, lineno)  )
-        
-
-        if event == 'return':
-            # print (apply_indent( '#@inline_end'))
-            print (apply_indent( '#@inline_end return: %s => %s' % (func_name, repr(arg)[:20] )))
+        else:
+            visited_calls.append( lineID(frame)  )
             
-            # if stack_defs_original_indents: stack_defs_original_indents.pop()
-            stack_defs_original_indents.pop()
-            # if stack_output_indents: stack_output_indents.pop()
-            stack_output_indents.pop()
-           
+            call_map[ funcID(frame)].append(  lineID(frame)  )
+        
+        global depth
         
         if event == 'call':
             # print("DBG call", filename, lineno)
 
-            header = get_func_header( frame ) 
-            if header is None:
-                print("DBG no function header", filename, lineno)
-                return trace_calls
+            depth += 1
+            # if depth < MAX_DEPTH:
+                # depth += 1
             # else:
-                # print("DBG HEADER", header)
+                # return  trace_calls # don't go inside..
                 
-            stack_output_indents.append( last_indent ) 
-            orig_indent = len(header) - len(header.lstrip() )
-            # print("Header orig_indent", header, orig_indent)
-            header = apply_indent( header.lstrip() ) # should go here:  after  orig_indent and  before append            
-            print( apply_indent( "#@inline:" ))
-            print( header )
-            stack_defs_original_indents.append( orig_indent ) 
-            # print("DBG: stack_defs_original_indents", stack_defs_original_indents)  
-            # print("DBG: stack_output_indents", stack_output_indents)   
-           
-            
-            caller = frame.f_back
-            if caller is None:
-                return 
 
-            caller_line_no = caller.f_lineno
-            caller_filename = caller.f_code.co_filename
-            
-            #line = linecache.getline(caller_filename, caller_line_no-1 )
-            #if '_assert_has_no_duplicate_rows' in  line:
-            #        print ("!!! CALL", line)
-            
-                # print(header)
-                    
-            if func_name == 'get_dataframes':
-                start_frame = caller
-                                
-                            
+            if depth < MAX_DEPTH:
+                
+                header = get_func_header( frame ) 
+                if header is None:
+                    print("DBG no function header", filename, lineno)
+                    return trace_calls
+                # else:
+                    # print("DBG HEADER", header)
+
+                qualname = get_qualname(frame)
+                stack_output_indents.append( last_indent )  
+                # print("DBG last_indent", last_indent, stack_output_indents)
+                orig_indent = len(header) - len(header.lstrip() )
+                # print("Header orig_indent", header, orig_indent)
+                header = apply_indent( header.lstrip() ) # should go here:  after  orig_indent and  before append            
+                print( apply_indent( f"#@inline {depth}: {module}. {qualname} " ))
+                print( header )
+                stack_defs_original_indents.append( orig_indent ) 
+
+               
+                
+                caller = frame.f_back
+                if caller is None:
+                    return 
+                else:
+                    caller_lineno = caller.f_lineno
+                    caller_filename = caller.f_code.co_filename
+                    # print( apply_indent( f"#@caller {caller_lineno} @{caller_filename} " ))
+
+                    if func_name == 'get_dataframes': # TODO -- make option..
+                        start_frame = caller
             return trace_calls
+            
+        if event == 'return':
+            if depth < MAX_DEPTH:
+                # print (apply_indent( '#@inline_end'))
+                def head( val, cnt=30 ):
+                    val = str(val)
+                    if len(val) > cnt:
+                        val = val[:cnt]+"..."
+                    return val
+                    
+                
+                retval = arg
+                print (apply_indent( '#@return: %s => %s' % (func_name, head(retval) )))
+                
+                # if stack_defs_original_indents: stack_defs_original_indents.pop()
+                stack_defs_original_indents.pop()
+                # if stack_output_indents: stack_output_indents.pop()
+                last_indent = stack_output_indents.pop()
+                
+                # last_indent = stack_output_indents[-1]
+                
+            depth -= 1
+                             
+        
 
 
 if True:
-   def A(): 
+   def A(*args, **kwargs): 
         a = 5
-        print("A")
-        return a*C()
+        print(
+          "A"
+          )
+        c = C()
+        return a
     
 if True:
       def B(): 
-         print("start B")
-         x = 42  
-         A()
-         c = C()
-         print("end B")
+                 print("start B")
+                 x = 42  
+                 u = (A(
+                   x=C() ,
+                   y=3,
+                    z=2
+                      
+                 )
+                 )
+                
+                 print("end B")
 
 def C():
-    print("C")
-    return 2
+         print("C")
+         return 2
 
 
 if __name__=="__main__":
@@ -226,15 +343,22 @@ if __name__=="__main__":
     sys.stdout = io.StringIO()
     sys.settrace(trace_calls)
     
-    # B()
-    
+    try:
+        print()
+        B()
+        test_mytracer.test()
+        
+        # sys.settrace(None)
 
-    test_mytracer.test()
 
-    sys.settrace(None)
-    
-    output = sys.stdout.getvalue()
-    sys.stdout = stdout
-    with open('out_inlined.py', 'w') as f:
-        f.write( output )
+        
+    finally:
+        
+        sys.settrace(None)
+        
+        output = sys.stdout.getvalue()
+        sys.stdout = stdout
+        with open('out_inlined.py', 'w') as f:
+            f.write( output )
+            # print( output )
         
