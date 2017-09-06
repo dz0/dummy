@@ -8,7 +8,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-var call_map = {{call_map}};
+// var call_map = {{call_map}};
 // var visited_lines = {{visited_lines}};
 </script>
 
@@ -48,7 +48,7 @@ function inject_toggler( line_id, call_id ){
 inject_toggler("__main__:332", "__main__:A"); // TEST
 
 function bind_toggler_to_inlined(call_id){
-    $toggler = $("#toggler_"+call_id)  .on("click",
+    $toggler = $("#toggler_"+call_id) .off("click") .on("click",
         function(){
         // get corresponding closest container?
         var $target = $(this).siblings("#inlined_"+call_id).first();
@@ -95,8 +95,10 @@ function show_inlined(call_id){
 
 <span class="line calee" id="lineID_mymodule_123">boo boo 
 <span class="toggler" id="toggler_X">*</span> 
+<span class="toggler" id="toggler_____main__-Z">*</span>
 <span class="toggler" id="toggler_Y">*</span> 
 
+<span class="inlined" id="inlined_____main__-Z"></span>
 <span class="inlined" id="inlined_X"></span>
 <span class="inlined" id="inlined_Y">.Y.</span>
 </span>
@@ -110,6 +112,7 @@ function show_inlined(call_id){
 
 
 <pre id="code_X">asdf</pre>
+<pre id="code_____main__-Z">code_____main__-Z</pre>
 
 </div>
 

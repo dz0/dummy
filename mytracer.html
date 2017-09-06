@@ -8,15 +8,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-var call_map = {
-    "__main__:359": [
-        "__main__:B"
+// var call_map = {
+    "__main__-363": [
+        "__main__-B"
     ],
-    "__main__:330": [
-        "__main__:C"
+    "__main__-334": [
+        "__main__-C"
     ],
-    "__main__:332": [
-        "__main__:A"
+    "__main__-336": [
+        "__main__-A"
     ]
 };
 // var visited_lines = {{visited_lines}};
@@ -55,8 +55,10 @@ function inject_toggler( line_id, call_id ){
     
 }
 
+inject_toggler("__main__:332", "__main__:A"); // TEST
+
 function bind_toggler_to_inlined(call_id){
-    $toggler = $("#toggler_"+call_id)  .on("click",
+    $toggler = $("#toggler_"+call_id) .off("click") .on("click",
         function(){
         // get corresponding closest container?
         var $target = $(this).siblings("#inlined_"+call_id).first();
@@ -94,7 +96,7 @@ function show_inlined(call_id){
 <h2>Trace:</h2>
 <div id="trace">
 
-['__main__:327', '__main__:328', '__main__:329', '__main__:330', '__main__:340', '__main__:341', '__main__:331', '__main__:332', '__main__:314', '__main__:315', '__main__:316', '__main__:318', '__main__:321', '__main__:322', '__main__:340', '__main__:341', '__main__:323', '__main__:337']
+['__main__-331', '__main__-332', '__main__-333', '__main__-334', '__main__-344', '__main__-345', '__main__-335', '__main__-336', '__main__-318', '__main__-319', '__main__-320', '__main__-322', '__main__-325', '__main__-326', '__main__-344', '__main__-345', '__main__-327', '__main__-341']
 
 <pre>
 
@@ -103,8 +105,10 @@ function show_inlined(call_id){
 
 <span class="line calee" id="lineID_mymodule_123">boo boo 
 <span class="toggler" id="toggler_X">*</span> 
+<span class="toggler" id="toggler_____main__-Z">*</span>
 <span class="toggler" id="toggler_Y">*</span> 
 
+<span class="inlined" id="inlined_____main__-Z"></span>
 <span class="inlined" id="inlined_X"></span>
 <span class="inlined" id="inlined_Y">.Y.</span>
 </span>
@@ -115,54 +119,85 @@ function show_inlined(call_id){
     <h2>Codes</h2>
 <div id="codes">
 
-<h4>__main__:B</h4>
-<pre id='code___main__:B' class='code'>
-<div id='__main__:326' class='line '>      def B(): 
-</div><div id='__main__:327' class='line visited'>                 print("start B")
-</div><div id='__main__:328' class='line visited'>                 x = 42  
-</div><div id='__main__:329' class='line visited'>                 u = (A(
-</div><div id='__main__:330' class='line visited'>                   x=C() ,
-</div><div id='__main__:331' class='line visited'>                   y=3,
-</div><div id='__main__:332' class='line visited'>                    z=2
-</div><div id='__main__:333' class='line '>                      
-</div><div id='__main__:334' class='line '>                 )
-</div><div id='__main__:335' class='line '>                 )
-</div><div id='__main__:336' class='line '>                
-</div><div id='__main__:337' class='line visited'>                 print("end B")
+<h4>__main__-B</h4>
+<div id='code___main__-B' class='code'>
+<div id='__main__-330' class='line '><pre>      def B(): 
+</pre>   
+</div><div id='__main__-331' class='line visited'><pre>                 print("start B")
+</pre>   
+</div><div id='__main__-332' class='line visited'><pre>                 x = 42  
+</pre>   
+</div><div id='__main__-333' class='line visited'><pre>                 u = (A(
+</pre>   
+</div><div id='__main__-334' class='line visited'><pre>                   x=C() ,
+</pre>   
+<span class='toggler' id='toggler___main__-C'>*</span>
+<br/>
+<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-335' class='line visited'><pre>                   y=3,
+</pre>   
+</div><div id='__main__-336' class='line visited'><pre>                    z=2
+</pre>   
+<span class='toggler' id='toggler___main__-A'>*</span>
+<br/>
+<span class='inlined' id='inlined___main__-A'> </span></div><div id='__main__-337' class='line '><pre>                      
+</pre>   
+</div><div id='__main__-338' class='line '><pre>                 )
+</pre>   
+</div><div id='__main__-339' class='line '><pre>                 )
+</pre>   
+</div><div id='__main__-340' class='line '><pre>                
+</pre>   
+</div><div id='__main__-341' class='line visited'><pre>                 print("end B")
+</pre>   
 </div>
-</pre>
+</div>
             
 
 
-<h4>__main__:C</h4>
-<pre id='code___main__:C' class='code'>
-<div id='__main__:339' class='line '>def C():
-</div><div id='__main__:340' class='line visited'>         print("C")
-</div><div id='__main__:341' class='line visited'>         return 2
+<h4>__main__-C</h4>
+<div id='code___main__-C' class='code'>
+<div id='__main__-343' class='line '><pre>def C():
+</pre>   
+</div><div id='__main__-344' class='line visited'><pre>         print("C")
+</pre>   
+</div><div id='__main__-345' class='line visited'><pre>         return 2
+</pre>   
 </div>
-</pre>
+</div>
             
 
 
-<h4>__main__:A</h4>
-<pre id='code___main__:A' class='code'>
-<div id='__main__:313' class='line '>   def A(*args, **kwargs): 
-</div><div id='__main__:314' class='line visited'>        a = 5
-</div><div id='__main__:315' class='line visited'>        print(
-</div><div id='__main__:316' class='line visited'>          "A"
-</div><div id='__main__:317' class='line '>          )
-</div><div id='__main__:318' class='line visited'>        if a > 10:
-</div><div id='__main__:319' class='line '>            print("a > 10")
-</div><div id='__main__:320' class='line '>        else:
-</div><div id='__main__:321' class='line visited'>            print("a <= 10")
-</div><div id='__main__:322' class='line visited'>        c = C()
-</div><div id='__main__:323' class='line visited'>        return a
+<h4>__main__-A</h4>
+<div id='code___main__-A' class='code'>
+<div id='__main__-317' class='line '><pre>   def A(*args, **kwargs): 
+</pre>   
+</div><div id='__main__-318' class='line visited'><pre>        a = 5
+</pre>   
+</div><div id='__main__-319' class='line visited'><pre>        print(
+</pre>   
+</div><div id='__main__-320' class='line visited'><pre>          "A"
+</pre>   
+</div><div id='__main__-321' class='line '><pre>          )
+</pre>   
+</div><div id='__main__-322' class='line visited'><pre>        if a > 10:
+</pre>   
+</div><div id='__main__-323' class='line '><pre>            print("a > 10")
+</pre>   
+</div><div id='__main__-324' class='line '><pre>        else:
+</pre>   
+</div><div id='__main__-325' class='line visited'><pre>            print("a <= 10")
+</pre>   
+</div><div id='__main__-326' class='line visited'><pre>        c = C()
+</pre>   
+</div><div id='__main__-327' class='line visited'><pre>        return a
+</pre>   
 </div>
-</pre>
+</div>
             
 
 
 <pre id="code_X">asdf</pre>
+<pre id="code_____main__-Z">code_____main__-Z</pre>
 
 </div>
 
