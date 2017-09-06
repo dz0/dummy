@@ -1,0 +1,170 @@
+<head>
+
+<style>
+.toggler {cursor: hand}
+.line.visited {background: yellow}
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+var call_map = {
+    "__main__:359": [
+        "__main__:B"
+    ],
+    "__main__:330": [
+        "__main__:C"
+    ],
+    "__main__:332": [
+        "__main__:A"
+    ]
+};
+// var visited_lines = {{visited_lines}};
+</script>
+
+
+<script>
+$(document).ready(function(){
+
+    
+   // jQuery methods go here...
+   $(".inlined").hide();
+   
+   $first_code =  $("#codes .code").first();
+    
+   $("#trace").prepend( $first_code.prop('outerHTML')    );
+   
+   $(".line.visited").each(
+        function(){  
+            this.title = this.id;
+    });
+   
+   $(".toggler").each( function(){ 
+    
+     var id = this.id;
+     call_id = id.substr(  "toggler_".length );
+     bind_toggler_to_inlined( call_id );
+    });
+
+
+});
+
+// should apply it iterating over call_map
+function inject_toggler( line_id, call_id ){
+   
+    
+}
+
+function bind_toggler_to_inlined(call_id){
+    $toggler = $("#toggler_"+call_id)  .on("click",
+        function(){
+        // get corresponding closest container?
+        var $target = $(this).siblings("#inlined_"+call_id).first();
+        if ($target.is(":visible")) $target.hide();
+        else show_inlined(call_id);
+        
+    } );
+
+    // target = toggler.siblings("#inlined_"+call_id).first();
+
+}
+
+// function show_inlined(callee_line_id, call_id){
+    // $line = $("#lineID_"+callee_line_id).first();
+    // $line.children(...)
+function show_inlined(call_id){
+    $toggler = $("#toggler_"+call_id).first();
+    $inlined = $("#inlined_"+call_id).first();
+    $code = $("#code_"+call_id).first();
+    
+    if($inlined.text().trim()=="") // if empty
+    {
+        $inlined.append(  $code.html() );
+    }
+    
+    $inlined.show();
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h2>Trace:</h2>
+<div id="trace">
+
+['__main__:327', '__main__:328', '__main__:329', '__main__:330', '__main__:340', '__main__:341', '__main__:331', '__main__:332', '__main__:314', '__main__:315', '__main__:316', '__main__:318', '__main__:321', '__main__:322', '__main__:340', '__main__:341', '__main__:323', '__main__:337']
+
+<pre>
+
+<span class="line">bla bla
+</span>
+
+<span class="line calee" id="lineID_mymodule_123">boo boo 
+<span class="toggler" id="toggler_X">*</span> 
+<span class="toggler" id="toggler_Y">*</span> 
+
+<span class="inlined" id="inlined_X"></span>
+<span class="inlined" id="inlined_Y">.Y.</span>
+</span>
+
+</div>
+
+
+    <h2>Codes</h2>
+<div id="codes">
+
+<h4>__main__:B</h4>
+<pre id='code___main__:B' class='code'>
+<div id='__main__:326' class='line '>      def B(): 
+</div><div id='__main__:327' class='line visited'>                 print("start B")
+</div><div id='__main__:328' class='line visited'>                 x = 42  
+</div><div id='__main__:329' class='line visited'>                 u = (A(
+</div><div id='__main__:330' class='line visited'>                   x=C() ,
+</div><div id='__main__:331' class='line visited'>                   y=3,
+</div><div id='__main__:332' class='line visited'>                    z=2
+</div><div id='__main__:333' class='line '>                      
+</div><div id='__main__:334' class='line '>                 )
+</div><div id='__main__:335' class='line '>                 )
+</div><div id='__main__:336' class='line '>                
+</div><div id='__main__:337' class='line visited'>                 print("end B")
+</div>
+</pre>
+            
+
+
+<h4>__main__:C</h4>
+<pre id='code___main__:C' class='code'>
+<div id='__main__:339' class='line '>def C():
+</div><div id='__main__:340' class='line visited'>         print("C")
+</div><div id='__main__:341' class='line visited'>         return 2
+</div>
+</pre>
+            
+
+
+<h4>__main__:A</h4>
+<pre id='code___main__:A' class='code'>
+<div id='__main__:313' class='line '>   def A(*args, **kwargs): 
+</div><div id='__main__:314' class='line visited'>        a = 5
+</div><div id='__main__:315' class='line visited'>        print(
+</div><div id='__main__:316' class='line visited'>          "A"
+</div><div id='__main__:317' class='line '>          )
+</div><div id='__main__:318' class='line visited'>        if a > 10:
+</div><div id='__main__:319' class='line '>            print("a > 10")
+</div><div id='__main__:320' class='line '>        else:
+</div><div id='__main__:321' class='line visited'>            print("a <= 10")
+</div><div id='__main__:322' class='line visited'>        c = C()
+</div><div id='__main__:323' class='line visited'>        return a
+</div>
+</pre>
+            
+
+
+<pre id="code_X">asdf</pre>
+
+</div>
+
+
+</body>

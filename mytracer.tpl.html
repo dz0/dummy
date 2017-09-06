@@ -1,20 +1,58 @@
 <head>
+
+<style>
+.toggler {cursor: hand}
+.line.visited {background: yellow}
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+var call_map = {{call_map}};
+// var visited_lines = {{visited_lines}};
+</script>
+
 
 <script>
 $(document).ready(function(){
 
+    
    // jQuery methods go here...
+   $(".inlined").hide();
+   
+   $first_code =  $("#codes .code").first();
+    
+   $("#trace").prepend( $first_code.prop('outerHTML')    );
+   
+   $(".line.visited").each(
+        function(){  
+            this.title = this.id;
+    });
+   
+   $(".toggler").each( function(){ 
+    
+     var id = this.id;
+     call_id = id.substr(  "toggler_".length );
+     bind_toggler_to_inlined( call_id );
+    });
+
 
 });
 
+// should apply it iterating over call_map
+function inject_toggler( line_id, call_id ){
+   
+    
+}
+
+inject_toggler("__main__:332", "__main__:A"); // TEST
+
 function bind_toggler_to_inlined(call_id){
-    toggler = $("#toggler_"+call_id)
-    .on("click",
+    $toggler = $("#toggler_"+call_id)  .on("click",
         function(){
         // get corresponding closest container?
-        var target = $(this).siblings("#inlined_"+call_id).first();
-        if (target.is(":visible")) target.hide();
+        var $target = $(this).siblings("#inlined_"+call_id).first();
+        if ($target.is(":visible")) $target.hide();
         else show_inlined(call_id);
         
     } );
@@ -24,39 +62,56 @@ function bind_toggler_to_inlined(call_id){
 }
 
 // function show_inlined(callee_line_id, call_id){
-    // line = $("#lineID_"+callee_line_id).first();
-    // line.children(...)
+    // $line = $("#lineID_"+callee_line_id).first();
+    // $line.children(...)
 function show_inlined(call_id){
-    toggler = $("#toggler_"+call_id).first();
-    inlined = $("#inlined_"+call_id).first();
-    code = $("#code_"+call_id).first();
+    $toggler = $("#toggler_"+call_id).first();
+    $inlined = $("#inlined_"+call_id).first();
+    $code = $("#code_"+call_id).first();
     
-    if(inlined.children().length == 0) // if empty
+    if($inlined.text().trim()=="") // if empty
     {
-        inlined.append(  code.html() );
+        $inlined.append(  $code.html() );
     }
     
-    inlined.show();
+    $inlined.show();
 }
 
 </script>
+
 </head>
 
 <body>
 
-<pre id="trace">
-    
+<h2>Trace:</h2>
+<div id="trace">
+
+{{trace}}
+
+<pre>
+
 <span class="line">bla bla
 </span>
 
-<span class="line calee" id="lineID_mymodule_123">boo boo
+<span class="line calee" id="lineID_mymodule_123">boo boo 
 <span class="toggler" id="toggler_X">*</span> 
 <span class="toggler" id="toggler_Y">*</span> 
 
-<span class="inlined" id="inlined_X">.X.</span>
+<span class="inlined" id="inlined_X"></span>
 <span class="inlined" id="inlined_Y">.Y.</span>
 </span>
 
-</pre>
+</div>
+
+
+    <h2>Codes</h2>
+<div id="codes">
+{{codes}}
+
+
+<pre id="code_X">asdf</pre>
+
+</div>
+
 
 </body>
