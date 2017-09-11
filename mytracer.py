@@ -16,8 +16,9 @@ MAX_DEPTH = 30
 visited_lines = [] # not to visit the same again.. ID by filnename + lineno
 visited_calls = [] # not to visit the same again.. ID by filnename + lineno
 from collections import defaultdict, OrderedDict
-call_map = defaultdict(list) # lineID: [funcID1, funcID2..]
+call_map = defaultdict(list) # caller_lineID: [funcID1, funcID2..]
 traced_values = OrderedDict()
+codes = {}  # codes of functions
 
 start_frame = None    
 
@@ -33,15 +34,21 @@ def moduleID(frame):  # more readable than fileID
     module = module and module.__name__ 
     return module
     
+SEP_4ID = "-"  # separator (or joiner) for ID (module to function or so)
+def join_ids( *args ):
+    return SEP_4ID.join( map(str, args))
+    
 def lineID(frame):
     lineno = frame.f_lineno
-    return (moduleID(frame), lineno)
+    return join_ids(moduleID(frame), lineno)  # to be suitable for HTML DOM ID
+    # return (moduleID(frame), lineno)
     # return (fileID(frame), lineno)
     
 def funcID(frame):
     qualname = get_qualname(frame)
     module = moduleID(frame)
-    return (module, qualname)
+    return join_ids(module, qualname) #  to be suitable for HTML DOM ID
+    # return (module, qualname)
     # return (frame.f_code.co_filename , qualname)
     
 def getline(filename, lineno):
@@ -107,7 +114,7 @@ def log_line(frame, extra=""):
     lineno = frame.f_lineno
     co = frame.f_code
     filename = co.co_filename    
-    id = (filename, lineno)
+    id = lineID(frame)
     if id not in visited_lines:
         line =  ajust_indent( getline(filename,lineno ) )
         global last_indent
@@ -131,7 +138,8 @@ def log_line(frame, extra=""):
 
         line = line.rstrip('\n') +extra
         print( line )
-    visited_lines.append( id )
+        
+    visited_lines.append( id ) # TODO: maybe log only once? or make ordered dict?
 
     
 def get_func_header(frame): 
@@ -139,6 +147,7 @@ def get_func_header(frame):
     # print("DBG", co )
     try:
         header = inspect.getsourcelines( co )[0][0]
+        # print("DBG getsourcelines", inspect.getsourcelines( co ) )
         header = header.rstrip() 
     except TypeError:
         header = None
@@ -191,8 +200,6 @@ def trace_calls(frame, event, arg):
         # print(getline(filename, lineno))
         module =  "???"
 
-    # if func_name == 'trace_calls' and  event == 'call':
-        # return
 
     if event == 'line':
         log_line( frame )#, extra=f"  # line: {frame.f_lineno}, {frame.f_locals}   #module {module}" )
@@ -218,19 +225,21 @@ def trace_calls(frame, event, arg):
                 print("TRACEVAR:", target_var, eval(target_var, frame.f_globals, frame.f_locals ) )
          """   
 
-    if module in ["__main__", "test_mytracer"] or module and module.startswith("csv2df"):
+    elif module in ["__main__", "test_mytracer"] or module and module.startswith("csv2df"):
     # if True:
         
+        """
         #skip if already visited
         if lineID(frame) in visited_calls:  # TODO: allow duplicate visits -- as it may mean different lines inside call
             # if event == 'call':
                 # print( apply_indent( last_indent*' ' + '#@skip_inline (already visited)') )
-            return trace_calls    
+            pass
+            # FIXME: TODO deprecate -- as when calling it should include "caller line" -- better use call_map
+            # return trace_calls    
             
         else:
-            visited_calls.append( lineID(frame)  )
-            
-            call_map[ funcID(frame)].append(  lineID(frame)  )
+            visited_calls.append( lineID(frame)  )  # now this includes returns as well...
+        """    
         
         global depth
         
@@ -238,11 +247,6 @@ def trace_calls(frame, event, arg):
             # print("DBG call", filename, lineno)
 
             depth += 1
-            # if depth < MAX_DEPTH:
-                # depth += 1
-            # else:
-                # return  trace_calls # don't go inside..
-                
 
             if depth < MAX_DEPTH:
                 
@@ -253,28 +257,41 @@ def trace_calls(frame, event, arg):
                 # else:
                     # print("DBG HEADER", header)
 
-                qualname = get_qualname(frame)
                 stack_output_indents.append( last_indent )  
                 # print("DBG last_indent", last_indent, stack_output_indents)
                 orig_indent = len(header) - len(header.lstrip() )
                 # print("Header orig_indent", header, orig_indent)
                 header = apply_indent( header.lstrip() ) # should go here:  after  orig_indent and  before append            
+                qualname = get_qualname(frame)
+                fID = funcID( frame )
+                if not fID in codes:
+                    codes[ fID ] = inspect.getsourcelines( frame.f_code )
+                
+                
                 print( apply_indent( f"#@inline {depth}: {module}. {qualname} " ))
                 print( header )
                 stack_defs_original_indents.append( orig_indent ) 
 
                
+                def inspect_caller(frame):
+                    caller = frame.f_back
+                    if caller is None:
+                        print ("DBG, strange, caller is None", frame, lineID(frame) )
+                        return 
+                    else:
+                        caller_lineno = caller.f_lineno
+                        caller_filename = caller.f_code.co_filename
+                        # print( apply_indent( f"#@caller {caller_lineno} @{caller_filename} " ))
+                        
+                        called_from_line = call_map[ lineID(caller) ]
+                        if fID not in called_from_line: 
+                            called_from_line.append( fID )
+                    
+                        if func_name == 'get_dataframes': # TODO -- make option..
+                            global start_frame
+                            start_frame = caller
+                inspect_caller(frame) 
                 
-                caller = frame.f_back
-                if caller is None:
-                    return 
-                else:
-                    caller_lineno = caller.f_lineno
-                    caller_filename = caller.f_code.co_filename
-                    # print( apply_indent( f"#@caller {caller_lineno} @{caller_filename} " ))
-
-                    if func_name == 'get_dataframes': # TODO -- make option..
-                        start_frame = caller
             return trace_calls
             
         if event == 'return':
@@ -308,7 +325,14 @@ if True:
         print(
           "A"
           )
+        if a > 10:
+            print("a > 10")
+        else:
+            print("a <= 10")
+        
         c = C()
+        for x in range(3):
+            C()
         return a
     
 if True:
@@ -346,19 +370,22 @@ if __name__=="__main__":
     try:
         print()
         B()
-        test_mytracer.test()
         
+        # test_mytracer.test()
         # sys.settrace(None)
-
-
         
     finally:
         
         sys.settrace(None)
-        
         output = sys.stdout.getvalue()
         sys.stdout = stdout
         with open('out_inlined.py', 'w') as f:
             f.write( output )
             # print( output )
         
+        import mytracer_render 
+        # monkeypach inject some stuff
+        mytracer_render.SEP_4ID = SEP_4ID
+        mytracer_render.join_ids = join_ids
+        
+        mytracer_render.render_html(visited_lines, codes, call_map, traced_values)

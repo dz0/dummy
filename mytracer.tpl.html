@@ -8,12 +8,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-// var call_map = {{call_map}};
+// var call_map = {{..}};
 // var visited_lines = {{visited_lines}};
 </script>
 
 
 <script>
+
+/*
+function bind_toggler_to_inlined(call_id){
+    $toggler = $("#toggler_"+call_id) .off("click") .on("click",  smart_toggle );
+}
+
+    
+function init_togglers(){
+   $(".toggler").each( function(){ 
+    
+     var id = this.id;
+     var call_id = id.substr(  "toggler_".length );
+     bind_toggler_to_inlined( call_id );
+    });
+    
+}
+*/
+
 $(document).ready(function(){
 
     
@@ -29,52 +47,50 @@ $(document).ready(function(){
             this.title = this.id;
     });
    
-   $(".toggler").each( function(){ 
-    
-     var id = this.id;
-     call_id = id.substr(  "toggler_".length );
-     bind_toggler_to_inlined( call_id );
-    });
-
+   // init_togglers();
 
 });
 
-// should apply it iterating over call_map
-function inject_toggler( line_id, call_id ){
+// //should apply it iterating over call_map
+// function inject_toggler( line_id, call_id ){
    
     
-}
+// }
 
-inject_toggler("__main__:332", "__main__:A"); // TEST
+// inject_toggler("__main__:332", "__main__:A"); // TEST
 
-function bind_toggler_to_inlined(call_id){
-    $toggler = $("#toggler_"+call_id) .off("click") .on("click",
-        function(){
-        // get corresponding closest container?
-        var $target = $(this).siblings("#inlined_"+call_id).first();
-        if ($target.is(":visible")) $target.hide();
-        else show_inlined(call_id);
+function smart_toggle( toggler ){
+
+        toggler = (typeof toggler !== 'undefined') ?  toggler : this;   // defaults to "this" -- element calling the function
         
-    } );
+        $toggler = $(toggler);
+        
+        var id = toggler.id;
+        call_id = id.substr(  "toggler_".length );
 
-    // target = toggler.siblings("#inlined_"+call_id).first();
-
+        // get corresponding closest container?
+        var $target = $toggler.siblings("#inlined_"+call_id).first();
+        if ($target.is(":visible")) $target.hide();
+        else show_inlined($target);
+    
 }
 
 // function show_inlined(callee_line_id, call_id){
     // $line = $("#lineID_"+callee_line_id).first();
     // $line.children(...)
-function show_inlined(call_id){
-    $toggler = $("#toggler_"+call_id).first();
-    $inlined = $("#inlined_"+call_id).first();
-    $code = $("#code_"+call_id).first();
+function show_inlined($container){
     
-    if($inlined.text().trim()=="") // if empty
+    var id = $container.prop('id');
+    var call_id = id.substr(  "inlined_".length );
+ 
+    var $code = $("#code_"+call_id).first();  // take from #codes list
+    
+    if($container.text().trim()=="") // if empty
     {
-        $inlined.append(  $code.html() );
+        $container.append(  $code.html() );
     }
-    
-    $inlined.show();
+        
+    $container.show();
 }
 
 </script>
@@ -83,10 +99,20 @@ function show_inlined(call_id){
 
 <body>
 
+<h2>call_map:</h2>
+<pre>
+{{call_map}}
+</pre>
+
+<h2>visited_lines:</h2>
+<pre>
+{{visited_lines}}
+</pre>
+
 <h2>Trace:</h2>
 <div id="trace">
 
-{{trace}}
+
 
 <pre>
 

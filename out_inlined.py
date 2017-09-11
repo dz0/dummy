@@ -24,7 +24,24 @@ A
                     print("a <= 10")
 a <= 10
                 c = C()
+                #@inline 3: __main__. C 
+                def C():
 C
+                #@return: C => 2
+                for x in range(3):
+                    C()
+                    #@inline 3: __main__. C 
+                    def C():
+C
+                    #@return: C => 2
+                    #@inline 3: __main__. C 
+                    def C():
+C
+                    #@return: C => 2
+                    #@inline 3: __main__. C 
+                    def C():
+C
+                    #@return: C => 2
                 return a
            #@return: A => 5
            print("end B")

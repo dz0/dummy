@@ -8,22 +8,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script>
-// var call_map = {
-    "__main__-363": [
-        "__main__-B"
-    ],
-    "__main__-334": [
-        "__main__-C"
-    ],
-    "__main__-336": [
-        "__main__-A"
-    ]
-};
-// var visited_lines = {{visited_lines}};
+// var call_map = {{..}};
+// var visited_lines = ['__main__-340', '__main__-341', '__main__-342', '__main__-343', '__main__-353', '__main__-354', '__main__-344', '__main__-345', '__main__-324', '__main__-325', '__main__-326', '__main__-328', '__main__-331', '__main__-333', '__main__-353', '__main__-354', '__main__-334', '__main__-335', '__main__-353', '__main__-354', '__main__-334', '__main__-335', '__main__-353', '__main__-354', '__main__-334', '__main__-335', '__main__-353', '__main__-354', '__main__-334', '__main__-336', '__main__-350'];
 </script>
 
 
 <script>
+
+/*
+function bind_toggler_to_inlined(call_id){
+    $toggler = $("#toggler_"+call_id) .off("click") .on("click",  smart_toggle );
+}
+
+    
+function init_togglers(){
+   $(".toggler").each( function(){ 
+    
+     var id = this.id;
+     var call_id = id.substr(  "toggler_".length );
+     bind_toggler_to_inlined( call_id );
+    });
+    
+}
+*/
+
 $(document).ready(function(){
 
     
@@ -39,52 +47,50 @@ $(document).ready(function(){
             this.title = this.id;
     });
    
-   $(".toggler").each( function(){ 
-    
-     var id = this.id;
-     call_id = id.substr(  "toggler_".length );
-     bind_toggler_to_inlined( call_id );
-    });
-
+   // init_togglers();
 
 });
 
-// should apply it iterating over call_map
-function inject_toggler( line_id, call_id ){
+// //should apply it iterating over call_map
+// function inject_toggler( line_id, call_id ){
    
     
-}
+// }
 
-inject_toggler("__main__:332", "__main__:A"); // TEST
+// inject_toggler("__main__:332", "__main__:A"); // TEST
 
-function bind_toggler_to_inlined(call_id){
-    $toggler = $("#toggler_"+call_id) .off("click") .on("click",
-        function(){
-        // get corresponding closest container?
-        var $target = $(this).siblings("#inlined_"+call_id).first();
-        if ($target.is(":visible")) $target.hide();
-        else show_inlined(call_id);
+function smart_toggle( toggler ){
+
+        toggler = (typeof toggler !== 'undefined') ?  toggler : this;   // defaults to "this" -- element calling the function
         
-    } );
+        $toggler = $(toggler);
+        
+        var id = toggler.id;
+        call_id = id.substr(  "toggler_".length );
 
-    // target = toggler.siblings("#inlined_"+call_id).first();
-
+        // get corresponding closest container?
+        var $target = $toggler.siblings("#inlined_"+call_id).first();
+        if ($target.is(":visible")) $target.hide();
+        else show_inlined($target);
+    
 }
 
 // function show_inlined(callee_line_id, call_id){
     // $line = $("#lineID_"+callee_line_id).first();
     // $line.children(...)
-function show_inlined(call_id){
-    $toggler = $("#toggler_"+call_id).first();
-    $inlined = $("#inlined_"+call_id).first();
-    $code = $("#code_"+call_id).first();
+function show_inlined($container){
     
-    if($inlined.text().trim()=="") // if empty
+    var id = $container.prop('id');
+    var call_id = id.substr(  "inlined_".length );
+ 
+    var $code = $("#code_"+call_id).first();  // take from #codes list
+    
+    if($container.text().trim()=="") // if empty
     {
-        $inlined.append(  $code.html() );
+        $container.append(  $code.html() );
     }
-    
-    $inlined.show();
+        
+    $container.show();
 }
 
 </script>
@@ -93,10 +99,36 @@ function show_inlined(call_id){
 
 <body>
 
+<h2>call_map:</h2>
+<pre>
+{
+    "__main__-372": [
+        "__main__-B"
+    ],
+    "__main__-343": [
+        "__main__-C"
+    ],
+    "__main__-345": [
+        "__main__-A"
+    ],
+    "__main__-333": [
+        "__main__-C"
+    ],
+    "__main__-335": [
+        "__main__-C"
+    ]
+}
+</pre>
+
+<h2>visited_lines:</h2>
+<pre>
+['__main__-340', '__main__-341', '__main__-342', '__main__-343', '__main__-353', '__main__-354', '__main__-344', '__main__-345', '__main__-324', '__main__-325', '__main__-326', '__main__-328', '__main__-331', '__main__-333', '__main__-353', '__main__-354', '__main__-334', '__main__-335', '__main__-353', '__main__-354', '__main__-334', '__main__-335', '__main__-353', '__main__-354', '__main__-334', '__main__-335', '__main__-353', '__main__-354', '__main__-334', '__main__-336', '__main__-350']
+</pre>
+
 <h2>Trace:</h2>
 <div id="trace">
 
-['__main__-331', '__main__-332', '__main__-333', '__main__-334', '__main__-344', '__main__-345', '__main__-335', '__main__-336', '__main__-318', '__main__-319', '__main__-320', '__main__-322', '__main__-325', '__main__-326', '__main__-344', '__main__-345', '__main__-327', '__main__-341']
+
 
 <pre>
 
@@ -119,81 +151,62 @@ function show_inlined(call_id){
     <h2>Codes</h2>
 <div id="codes">
 
-<h4>__main__-B</h4>
-<div id='code___main__-B' class='code'>
-<div id='__main__-330' class='line '><pre>      def B(): 
-</pre>   
-</div><div id='__main__-331' class='line visited'><pre>                 print("start B")
-</pre>   
-</div><div id='__main__-332' class='line visited'><pre>                 x = 42  
-</pre>   
-</div><div id='__main__-333' class='line visited'><pre>                 u = (A(
-</pre>   
-</div><div id='__main__-334' class='line visited'><pre>                   x=C() ,
-</pre>   
-<span class='toggler' id='toggler___main__-C'>*</span>
+    <h4>__main__-B</h4>
+    <div id='code___main__-B' class='code'>
+    <div id='__main__-339' class='line '><pre>def B(): </pre>   
+</div><div id='__main__-340' class='line visited'><pre>           print("start B")</pre>   
+</div><div id='__main__-341' class='line visited'><pre>           x = 42  </pre>   
+</div><div id='__main__-342' class='line visited'><pre>           u = (A(</pre>   
+</div><div id='__main__-343' class='line visited'><pre>             x=C() ,</pre>   
+<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-C'>*</span>
 <br/>
-<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-335' class='line visited'><pre>                   y=3,
-</pre>   
-</div><div id='__main__-336' class='line visited'><pre>                    z=2
-</pre>   
-<span class='toggler' id='toggler___main__-A'>*</span>
+<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-344' class='line visited'><pre>             y=3,</pre>   
+</div><div id='__main__-345' class='line visited'><pre>              z=2</pre>   
+<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-A'>*</span>
 <br/>
-<span class='inlined' id='inlined___main__-A'> </span></div><div id='__main__-337' class='line '><pre>                      
-</pre>   
-</div><div id='__main__-338' class='line '><pre>                 )
-</pre>   
-</div><div id='__main__-339' class='line '><pre>                 )
-</pre>   
-</div><div id='__main__-340' class='line '><pre>                
-</pre>   
-</div><div id='__main__-341' class='line visited'><pre>                 print("end B")
-</pre>   
+<span class='inlined' id='inlined___main__-A'> </span></div><div id='__main__-346' class='line '><pre>                      </pre>   
+</div><div id='__main__-347' class='line '><pre>           )</pre>   
+</div><div id='__main__-348' class='line '><pre>           )</pre>   
+</div><div id='__main__-349' class='line '><pre>                </pre>   
+</div><div id='__main__-350' class='line visited'><pre>           print("end B")</pre>   
 </div>
-</div>
-            
+    </div>
+        
 
 
-<h4>__main__-C</h4>
-<div id='code___main__-C' class='code'>
-<div id='__main__-343' class='line '><pre>def C():
-</pre>   
-</div><div id='__main__-344' class='line visited'><pre>         print("C")
-</pre>   
-</div><div id='__main__-345' class='line visited'><pre>         return 2
-</pre>   
+    <h4>__main__-C</h4>
+    <div id='code___main__-C' class='code'>
+    <div id='__main__-352' class='line '><pre>def C():</pre>   
+</div><div id='__main__-353' class='line visited'><pre>         print("C")</pre>   
+</div><div id='__main__-354' class='line visited'><pre>         return 2</pre>   
 </div>
-</div>
-            
+    </div>
+        
 
 
-<h4>__main__-A</h4>
-<div id='code___main__-A' class='code'>
-<div id='__main__-317' class='line '><pre>   def A(*args, **kwargs): 
-</pre>   
-</div><div id='__main__-318' class='line visited'><pre>        a = 5
-</pre>   
-</div><div id='__main__-319' class='line visited'><pre>        print(
-</pre>   
-</div><div id='__main__-320' class='line visited'><pre>          "A"
-</pre>   
-</div><div id='__main__-321' class='line '><pre>          )
-</pre>   
-</div><div id='__main__-322' class='line visited'><pre>        if a > 10:
-</pre>   
-</div><div id='__main__-323' class='line '><pre>            print("a > 10")
-</pre>   
-</div><div id='__main__-324' class='line '><pre>        else:
-</pre>   
-</div><div id='__main__-325' class='line visited'><pre>            print("a <= 10")
-</pre>   
-</div><div id='__main__-326' class='line visited'><pre>        c = C()
-</pre>   
-</div><div id='__main__-327' class='line visited'><pre>        return a
-</pre>   
+    <h4>__main__-A</h4>
+    <div id='code___main__-A' class='code'>
+    <div id='__main__-323' class='line '><pre>def A(*args, **kwargs): </pre>   
+</div><div id='__main__-324' class='line visited'><pre>     a = 5</pre>   
+</div><div id='__main__-325' class='line visited'><pre>     print(</pre>   
+</div><div id='__main__-326' class='line visited'><pre>       "A"</pre>   
+</div><div id='__main__-327' class='line '><pre>       )</pre>   
+</div><div id='__main__-328' class='line visited'><pre>     if a > 10:</pre>   
+</div><div id='__main__-329' class='line '><pre>         print("a > 10")</pre>   
+</div><div id='__main__-330' class='line '><pre>     else:</pre>   
+</div><div id='__main__-331' class='line visited'><pre>         print("a <= 10")</pre>   
+</div><div id='__main__-332' class='line '><pre>        </pre>   
+</div><div id='__main__-333' class='line visited'><pre>     c = C()</pre>   
+<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-C'>*</span>
+<br/>
+<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-334' class='line visited'><pre>     for x in range(3):</pre>   
+</div><div id='__main__-335' class='line visited'><pre>         C()</pre>   
+<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-C'>*</span>
+<br/>
+<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-336' class='line visited'><pre>     return a</pre>   
 </div>
-</div>
-            
+    </div>
+        
 
 
 <pre id="code_X">asdf</pre>
