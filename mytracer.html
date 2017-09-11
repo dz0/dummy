@@ -1,8 +1,27 @@
 <head>
 
 <style>
-.toggler {cursor: hand}
-.line.visited {background: yellow}
+.toggler {cursor: pointer}
+.line.visited {background: rgba(255,255,125,0.5); }
+.code { font-family: monospace; border:1px silver solid; }
+.line-code { font-family: monospace;  white-space: pre;}
+
+.button{
+    display: inline-block;
+    /* background: #ff0;
+    padding: 8px 12px;
+     */
+    border: 1px solid silver;
+    border-radius: 4px;
+    
+    cursor: pointer;
+    
+}
+
+.button:hover{
+    background: white;
+}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,23 +34,6 @@
 
 <script>
 
-/*
-function bind_toggler_to_inlined(call_id){
-    $toggler = $("#toggler_"+call_id) .off("click") .on("click",  smart_toggle );
-}
-
-    
-function init_togglers(){
-   $(".toggler").each( function(){ 
-    
-     var id = this.id;
-     var call_id = id.substr(  "toggler_".length );
-     bind_toggler_to_inlined( call_id );
-    });
-    
-}
-*/
-
 $(document).ready(function(){
 
     
@@ -40,24 +42,15 @@ $(document).ready(function(){
    
    $first_code =  $("#codes .code").first();
     
-   $("#trace").prepend( $first_code.prop('outerHTML')    );
+   $("#trace").prepend( $first_code.html() );
    
    $(".line.visited").each(
         function(){  
             this.title = this.id;
     });
    
-   // init_togglers();
-
 });
 
-// //should apply it iterating over call_map
-// function inject_toggler( line_id, call_id ){
-   
-    
-// }
-
-// inject_toggler("__main__:332", "__main__:A"); // TEST
 
 function smart_toggle( toggler ){
 
@@ -75,9 +68,7 @@ function smart_toggle( toggler ){
     
 }
 
-// function show_inlined(callee_line_id, call_id){
-    // $line = $("#lineID_"+callee_line_id).first();
-    // $line.children(...)
+
 function show_inlined($container){
     
     var id = $container.prop('id');
@@ -87,7 +78,8 @@ function show_inlined($container){
     
     if($container.text().trim()=="") // if empty
     {
-        $container.append(  $code.html() );
+        // $container.append(  $code.html() ); // TODO: attr('innerHTML')?? should take initial stuff
+        $container.append(  $code.prop('outerHTML') ); // TODO: attr('innerHTML')?? should take initial stuff
     }
         
     $container.show();
@@ -153,22 +145,22 @@ function show_inlined($container){
 
     <h4>__main__-B</h4>
     <div id='code___main__-B' class='code'>
-    <div id='__main__-339' class='line '><pre>def B(): </pre>   
-</div><div id='__main__-340' class='line visited'><pre>           print("start B")</pre>   
-</div><div id='__main__-341' class='line visited'><pre>           x = 42  </pre>   
-</div><div id='__main__-342' class='line visited'><pre>           u = (A(</pre>   
-</div><div id='__main__-343' class='line visited'><pre>             x=C() ,</pre>   
-<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-C'>*</span>
-<br/>
-<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-344' class='line visited'><pre>             y=3,</pre>   
-</div><div id='__main__-345' class='line visited'><pre>              z=2</pre>   
-<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-A'>*</span>
-<br/>
-<span class='inlined' id='inlined___main__-A'> </span></div><div id='__main__-346' class='line '><pre>                      </pre>   
-</div><div id='__main__-347' class='line '><pre>           )</pre>   
-</div><div id='__main__-348' class='line '><pre>           )</pre>   
-</div><div id='__main__-349' class='line '><pre>                </pre>   
-</div><div id='__main__-350' class='line visited'><pre>           print("end B")</pre>   
+    <div id='__main__-339' class='line '><span class="line-code">def B(): </span>   
+</div><div id='__main__-340' class='line visited'><span class="line-code">           print("start B")</span>   
+</div><div id='__main__-341' class='line visited'><span class="line-code">           x = 42  </span>   
+</div><div id='__main__-342' class='line visited'><span class="line-code">           u = (A(</span>   
+</div><div id='__main__-343' class='line visited'><span class="line-code">             x=C() ,</span>   
+<span class='toggler button' onclick='smart_toggle(this)' id='toggler___main__-C'>&#8597;</span>
+
+<div class='inlined' id='inlined___main__-C' style="margin-left: 13ch;"></div></div><div id='__main__-344' class='line visited'><span class="line-code">             y=3,</span>   
+</div><div id='__main__-345' class='line visited'><span class="line-code">              z=2</span>   
+<span class='toggler button' onclick='smart_toggle(this)' id='toggler___main__-A'>&#8597;</span>
+
+<div class='inlined' id='inlined___main__-A' style="margin-left: 14ch;"></div></div><div id='__main__-346' class='line '><span class="line-code">                      </span>   
+</div><div id='__main__-347' class='line '><span class="line-code">           )</span>   
+</div><div id='__main__-348' class='line '><span class="line-code">           )</span>   
+</div><div id='__main__-349' class='line '><span class="line-code">                </span>   
+</div><div id='__main__-350' class='line visited'><span class="line-code">           print("end B")</span>   
 </div>
     </div>
         
@@ -176,9 +168,9 @@ function show_inlined($container){
 
     <h4>__main__-C</h4>
     <div id='code___main__-C' class='code'>
-    <div id='__main__-352' class='line '><pre>def C():</pre>   
-</div><div id='__main__-353' class='line visited'><pre>         print("C")</pre>   
-</div><div id='__main__-354' class='line visited'><pre>         return 2</pre>   
+    <div id='__main__-352' class='line '><span class="line-code">def C():</span>   
+</div><div id='__main__-353' class='line visited'><span class="line-code">         print("C")</span>   
+</div><div id='__main__-354' class='line visited'><span class="line-code">         return 2</span>   
 </div>
     </div>
         
@@ -186,24 +178,24 @@ function show_inlined($container){
 
     <h4>__main__-A</h4>
     <div id='code___main__-A' class='code'>
-    <div id='__main__-323' class='line '><pre>def A(*args, **kwargs): </pre>   
-</div><div id='__main__-324' class='line visited'><pre>     a = 5</pre>   
-</div><div id='__main__-325' class='line visited'><pre>     print(</pre>   
-</div><div id='__main__-326' class='line visited'><pre>       "A"</pre>   
-</div><div id='__main__-327' class='line '><pre>       )</pre>   
-</div><div id='__main__-328' class='line visited'><pre>     if a > 10:</pre>   
-</div><div id='__main__-329' class='line '><pre>         print("a > 10")</pre>   
-</div><div id='__main__-330' class='line '><pre>     else:</pre>   
-</div><div id='__main__-331' class='line visited'><pre>         print("a <= 10")</pre>   
-</div><div id='__main__-332' class='line '><pre>        </pre>   
-</div><div id='__main__-333' class='line visited'><pre>     c = C()</pre>   
-<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-C'>*</span>
-<br/>
-<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-334' class='line visited'><pre>     for x in range(3):</pre>   
-</div><div id='__main__-335' class='line visited'><pre>         C()</pre>   
-<span class='toggler' onclick='smart_toggle(this)' id='toggler___main__-C'>*</span>
-<br/>
-<span class='inlined' id='inlined___main__-C'> </span></div><div id='__main__-336' class='line visited'><pre>     return a</pre>   
+    <div id='__main__-323' class='line '><span class="line-code">def A(*args, **kwargs): </span>   
+</div><div id='__main__-324' class='line visited'><span class="line-code">     a = 5</span>   
+</div><div id='__main__-325' class='line visited'><span class="line-code">     print(</span>   
+</div><div id='__main__-326' class='line visited'><span class="line-code">       "A"</span>   
+</div><div id='__main__-327' class='line '><span class="line-code">       )</span>   
+</div><div id='__main__-328' class='line visited'><span class="line-code">     if a > 10:</span>   
+</div><div id='__main__-329' class='line '><span class="line-code">         print("a > 10")</span>   
+</div><div id='__main__-330' class='line '><span class="line-code">     else:</span>   
+</div><div id='__main__-331' class='line visited'><span class="line-code">         print("a <= 10")</span>   
+</div><div id='__main__-332' class='line '><span class="line-code">        </span>   
+</div><div id='__main__-333' class='line visited'><span class="line-code">     c = C()</span>   
+<span class='toggler button' onclick='smart_toggle(this)' id='toggler___main__-C'>&#8597;</span>
+
+<div class='inlined' id='inlined___main__-C' style="margin-left: 5ch;"></div></div><div id='__main__-334' class='line visited'><span class="line-code">     for x in range(3):</span>   
+</div><div id='__main__-335' class='line visited'><span class="line-code">         C()</span>   
+<span class='toggler button' onclick='smart_toggle(this)' id='toggler___main__-C'>&#8597;</span>
+
+<div class='inlined' id='inlined___main__-C' style="margin-left: 9ch;"></div></div><div id='__main__-336' class='line visited'><span class="line-code">     return a</span>   
 </div>
     </div>
         

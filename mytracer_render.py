@@ -1,7 +1,7 @@
 import py
 def render_html(visited_lines, codes, call_map, traced_values):
 
-    def inlines_tpl( line_id ):
+    def inlines_tpl( line_id , indent):
         if line_id not in call_map:
             return ""
             
@@ -9,15 +9,15 @@ def render_html(visited_lines, codes, call_map, traced_values):
         togglers = []
         inline_containers = []
         for code_id in calls:  
-            toggler_html = f"""<span class='toggler' onclick='smart_toggle(this)' id='toggler_{code_id}'>*</span>"""
-            inline_container_html = f"""<span class='inlined' id='inlined_{code_id}'> </span>"""
+            toggler_html = f"""<span class='toggler button' onclick='smart_toggle(this)' id='toggler_{code_id}'>&#8597;</span>"""
+            inline_container_html = f"""<div class='inlined' id='inlined_{code_id}' style="margin-left: {indent}ch;"></div>"""
             
             togglers.append( toggler_html )
             inline_containers.append( inline_container_html )
         
         return ('\n'.join(togglers) + 
-                '\n<br/>\n' +
-                '<br/>'.join(inline_containers) 
+                '\n\n' +
+                '\n'.join(inline_containers) 
                 )
         
     def line_tpl(line, module_id, lineno):
@@ -25,8 +25,9 @@ def render_html(visited_lines, codes, call_map, traced_values):
         id = join_ids( module_id, lineno) 
         visited = "visited" if id in visited_lines  else ""
         
-        inlines = inlines_tpl( id )
-        return f"""<div id='{id}' class='line {visited}'><pre>{line}</pre>   \n{inlines}</div>"""
+        indent = len(line)-len(line.lstrip())
+        inlines = inlines_tpl( id, indent )
+        return f"""<div id='{id}' class='line {visited}'><span class="line-code">{line}</span>   \n{inlines}</div>"""
         
     def code_tpl(id, code):
         """code is inspect.sourcelines"""
@@ -62,5 +63,6 @@ def render_html(visited_lines, codes, call_map, traced_values):
 
     import json
     html = html.replace("{{call_map}}", json.dumps(call_map, indent=4) )
+    
     with open('mytracer.html', 'w') as f:
         f.write( html )

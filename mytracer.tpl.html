@@ -1,8 +1,27 @@
 <head>
 
 <style>
-.toggler {cursor: hand}
-.line.visited {background: yellow}
+.toggler {cursor: pointer}
+.line.visited {background: rgba(255,255,125,0.5); }
+.code { font-family: monospace; border:1px silver solid; }
+.line-code { font-family: monospace;  white-space: pre;}
+
+.button{
+    display: inline-block;
+    /* background: #ff0;
+    padding: 8px 12px;
+     */
+    border: 1px solid silver;
+    border-radius: 4px;
+    
+    cursor: pointer;
+    
+}
+
+.button:hover{
+    background: white;
+}
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -15,23 +34,6 @@
 
 <script>
 
-/*
-function bind_toggler_to_inlined(call_id){
-    $toggler = $("#toggler_"+call_id) .off("click") .on("click",  smart_toggle );
-}
-
-    
-function init_togglers(){
-   $(".toggler").each( function(){ 
-    
-     var id = this.id;
-     var call_id = id.substr(  "toggler_".length );
-     bind_toggler_to_inlined( call_id );
-    });
-    
-}
-*/
-
 $(document).ready(function(){
 
     
@@ -40,24 +42,15 @@ $(document).ready(function(){
    
    $first_code =  $("#codes .code").first();
     
-   $("#trace").prepend( $first_code.prop('outerHTML')    );
+   $("#trace").prepend( $first_code.html() );
    
    $(".line.visited").each(
         function(){  
             this.title = this.id;
     });
    
-   // init_togglers();
-
 });
 
-// //should apply it iterating over call_map
-// function inject_toggler( line_id, call_id ){
-   
-    
-// }
-
-// inject_toggler("__main__:332", "__main__:A"); // TEST
 
 function smart_toggle( toggler ){
 
@@ -75,9 +68,7 @@ function smart_toggle( toggler ){
     
 }
 
-// function show_inlined(callee_line_id, call_id){
-    // $line = $("#lineID_"+callee_line_id).first();
-    // $line.children(...)
+
 function show_inlined($container){
     
     var id = $container.prop('id');
@@ -87,7 +78,8 @@ function show_inlined($container){
     
     if($container.text().trim()=="") // if empty
     {
-        $container.append(  $code.html() );
+        // $container.append(  $code.html() ); // TODO: attr('innerHTML')?? should take initial stuff
+        $container.append(  $code.prop('outerHTML') ); // TODO: attr('innerHTML')?? should take initial stuff
     }
         
     $container.show();
