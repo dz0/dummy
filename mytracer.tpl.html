@@ -1,36 +1,9 @@
 <head>
 
-<style>
-.toggler {cursor: pointer}
-.line.visited {background: rgba(255,255,0,0.1); }
-.inlined { border:1px silver solid; }
-.code { font-family: monospace;  }
-.line-code { font-family: monospace;  white-space: pre;}
-
-.button{
-    display: inline-block;
-    /* background: #ff0;
-    padding: 8px 12px;
-     */
-    border: 1px solid silver;
-    border-radius: 4px;
-    
-    cursor: pointer;
-    
-}
-
-.button:hover{
-    background: white;
-}
-
-</style>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="mytracer.js"></script>
+<link rel="stylesheet" type="text/css" href="mytracer.css">
 
-<script>
-// var call_map = {{..}};
-// var visited_lines = {{visited_lines}};
-</script>
 
 
 <script>
@@ -61,47 +34,6 @@ $(document).ready(function(){
 });
 
 
-
-
-function get_inlined_jq( toggler ){
-        var id = toggler.id;
-        call_id = id.substr(  "toggler_".length );
-
-        // get corresponding closest container?
-        return $(toggler).siblings("#inlined_"+call_id).first();
-}
-
-function style_inlined( toggler, prop, val ){
-    $target = get_inlined_jq(toggler);
-    $target.css( prop, val );
-}
-
-function smart_toggle( toggler ){
-
-        toggler = (typeof toggler !== 'undefined') ?  toggler : this;   // defaults to "this" -- element calling the function
-        
-        $target = get_inlined_jq(toggler);
-        if ($target.is(":visible")) $target.hide();
-        else show_inlined($target);
-    
-}
-
-
-function show_inlined($container){
-    
-    var id = $container.prop('id');
-    var call_id = id.substr(  "inlined_".length );
- 
-    var $code = $("#codes #code_"+call_id).first();  // take from #codes list
-    
-    if($container.text().trim()=="") // if empty
-    {
-        // $container.append(  $code.html() ); // TODO: attr('innerHTML')?? should take initial stuff
-        $container.append(  $code.prop('outerHTML') ); // TODO: attr('innerHTML')?? should take initial stuff
-    }
-        
-    $container.show();
-}
 
 </script>
 

@@ -17,36 +17,36 @@ def test():
                     filled = filter(lambda row: row and row[0], gen)
                     no_comments = filter(lambda row: not row[0].startswith("___"), filled)
                     return no_comments
-                #@return: filter_csv_rows => <filter object at 0x7f2ba607df...
+                #@return: filter_csv_rows => <filter object at 0x7f32dbb1af...
                 return map(Row, csv_rows)
-            #@return: to_rows => <map object at 0x7f2b984f4710>
+            #@return: to_rows => <map object at 0x7f32db8914a8>
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
                 for row in csv.reader(csvfile, **fmt):
                     yield row
             #@return: yield_csv_rows => []
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => []
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', 'Год / Year', 'Кварталы /...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', '', 'I', 'II', 'III', 'IV...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1. Сводные показатели / Aggr...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1. Сводные показатели / Aggreg...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -57,10 +57,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1.1. Валовой внутренний прод...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1.1. Валовой внутренний продук...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -69,10 +69,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['Объем ВВП, млрд.рублей /GDP,...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => Объем ВВП, млрд.рублей /GDP, b...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -81,10 +81,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['20152)', '83233', '18568', '...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 20152)
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -93,10 +93,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['20162)', '86044', '18816', '...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 20162)
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -105,10 +105,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '200913)', '', ''...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -117,16 +117,16 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => []
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => []
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['Год / Year', 'Кварталы / Qua...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => Год / Year
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -135,16 +135,16 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', '', 'I', 'II', 'III', 'IV...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1.2. Индекс промышленного пр...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1.2. Индекс промышленного прои...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -153,10 +153,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['Индекс промышленного произво...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => Индекс промышленного производс...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -165,10 +165,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['в % к соответствующему перио...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => в % к соответствующему периоду...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -177,10 +177,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2015', '99,2', '99,9', '98,3...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2015
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -189,10 +189,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2016', '101,3', '101,1', '10...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2016
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -201,10 +201,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '100,1', '', '', ...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -213,10 +213,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['в % к предыдущему периоду / ...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => в % к предыдущему периоду / pe...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -225,10 +225,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2015', '', '82,8', '102,6', ...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2015
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -237,10 +237,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2016', '', '84,4', '103,1', ...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2016
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -249,10 +249,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '83,1', '', '', '...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -261,10 +261,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['период с начала отчетного го...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => период с начала отчетного года...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -273,10 +273,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2015', '', '', '', '', '', '...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2015
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -285,10 +285,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2016', '', '', '', '', '', '...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2016
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -297,10 +297,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '', '', '', '', '...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -309,16 +309,16 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', 'Янв. Jan.', 'Фев. Feb.',...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1.2.1. Индексы производства ...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0d420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1.2.1. Индексы производства по...
-            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f32dbb0da50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 

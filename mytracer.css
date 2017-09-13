@@ -1,0 +1,21 @@
+.toggler {cursor: pointer}
+.line.visited {background: rgba(255,255,0,0.1); }
+.inlined { border:1px silver solid; }
+.code { font-family: monospace;  }
+.line-code { font-family: monospace;  white-space: pre;}
+
+.button{
+    display: inline-block;
+    /* background: #ff0;
+    padding: 8px 12px;
+     */
+    border: 1px solid silver;
+    border-radius: 4px;
+    
+    cursor: pointer;
+    
+}
+
+.button:hover{
+    background: white;
+}
