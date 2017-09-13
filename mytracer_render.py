@@ -9,7 +9,11 @@ def render_html(visited_lines, codes, call_map, traced_values):
         togglers = []
         inline_containers = []
         for code_id in calls:  
-            toggler_html = f"""<span class='toggler button' onclick='smart_toggle(this)' id='toggler_{code_id}'>&#8597;</span>"""
+            toggler_html = f"""
+                            <span class='toggler button' id='toggler_{code_id}'
+                                onclick='smart_toggle(this)' 
+                                onmouseover='style_inlined(this, "border-width", "3px")' 
+                                onmouseout='style_inlined(this, "border-width", "1px")'>&#8597;</span>"""
             inline_container_html = f"""<div class='inlined' id='inlined_{code_id}' style="margin-left: {indent}ch;"></div>"""
             
             togglers.append( toggler_html )
@@ -21,7 +25,6 @@ def render_html(visited_lines, codes, call_map, traced_values):
                 )
         
     def line_tpl(line, module_id, lineno):
-        # javascript should inject inlines via ID
         id = join_ids( module_id, lineno) 
         visited = "visited" if id in visited_lines  else ""
         

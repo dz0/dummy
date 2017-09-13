@@ -36,7 +36,9 @@ def moduleID(frame):  # more readable than fileID
     
 SEP_4ID = "-"  # separator (or joiner) for ID (module to function or so)
 def join_ids( *args ):
-    return SEP_4ID.join( map(str, args))
+    result = SEP_4ID.join( map(str, args))
+    result = result.replace('.', '_' ) # for jquery, not to confuse '.' with classname 
+    return result 
     
 def lineID(frame):
     lineno = frame.f_lineno
@@ -162,12 +164,16 @@ def get_qualname(frame):
             return f.f_locals['self'].__class__.__name__
         except KeyError:
             return None
-    classname = get_class_name( frame )
+    classname = get_class_name( frame ) 
+    funcname = frame.f_code.co_name
+    if funcname == "<lambda>":
+        funcname = "lambda_"+lineID(frame)
+        
     
     if classname:
-        return classname+'.'+frame.f_code.co_name
+        return classname+'.'+funcname
     else:
-        return frame.f_code.co_name
+        return funcname
     """    
     try:
         obj = frame.f_locals['self']
@@ -369,9 +375,10 @@ if __name__=="__main__":
     
     try:
         print()
-        B()
         
-        # test_mytracer.test()
+        # B()
+        
+        test_mytracer.test()
         # sys.settrace(None)
         
     finally:
