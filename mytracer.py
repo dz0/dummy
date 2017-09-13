@@ -166,8 +166,8 @@ def get_qualname(frame):
             return None
     classname = get_class_name( frame ) 
     funcname = frame.f_code.co_name
-    if funcname == "<lambda>":
-        funcname = "lambda_"+lineID(frame)
+    if funcname in ["<lambda>", "<listcomp>", "<genexpr>"]:  #https://github.com/gak/pycallgraph/issues/156
+        funcname = funcname[1:-1] + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
         
     
     if classname:
@@ -247,6 +247,11 @@ def trace_calls(frame, event, arg):
             visited_calls.append( lineID(frame)  )  # now this includes returns as well...
         """    
         
+        # ignore/skip calls that are apparent (TODO think twice if something important is not lost)
+        if frame.f_code.co_name in ["<listcomp>", "<genexpr>"]:
+            return trace_calls
+
+
         global depth
         
         if event == 'call':
@@ -256,6 +261,7 @@ def trace_calls(frame, event, arg):
 
             if depth < MAX_DEPTH:
                 
+
                 header = get_func_header( frame ) 
                 if header is None:
                     print("DBG no function header", filename, lineno)
@@ -266,17 +272,19 @@ def trace_calls(frame, event, arg):
                 stack_output_indents.append( last_indent )  
                 # print("DBG last_indent", last_indent, stack_output_indents)
                 orig_indent = len(header) - len(header.lstrip() )
+                stack_defs_original_indents.append( orig_indent ) 
+                
                 # print("Header orig_indent", header, orig_indent)
                 header = apply_indent( header.lstrip() ) # should go here:  after  orig_indent and  before append            
                 qualname = get_qualname(frame)
                 fID = funcID( frame )
+                    
                 if not fID in codes:
                     codes[ fID ] = inspect.getsourcelines( frame.f_code )
                 
                 
                 print( apply_indent( f"#@inline {depth}: {module}. {qualname} " ))
                 print( header )
-                stack_defs_original_indents.append( orig_indent ) 
 
                
                 def inspect_caller(frame):
@@ -357,6 +365,15 @@ if True:
 
 def C():
          print("C")
+         def generator_():
+             listcomp_ = [x for x in [5, 6, 7]]
+             for a in listcomp_:
+                yield a
+
+         genexpr_ = [x for x in generator_()]
+         lambda_ = lambda x: x*x
+         
+         mapped = map(lambda_, genexpr_)
          return 2
 
 
@@ -376,16 +393,15 @@ if __name__=="__main__":
     try:
         print()
         
-        # B()
-        
+        # B()           
         test_mytracer.test()
-        # sys.settrace(None)
         
     finally:
         
         sys.settrace(None)
         output = sys.stdout.getvalue()
         sys.stdout = stdout
+        
         with open('out_inlined.py', 'w') as f:
             f.write( output )
             # print( output )

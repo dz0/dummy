@@ -37,9 +37,28 @@ def render_html(visited_lines, codes, call_map, traced_values):
         lines, start_lineno = code
         module_id = id.split(SEP_4ID)[0]
         
+        def syntax_highlight(src):
+            from pygments import highlight
+            from pygments.lexers import Python3Lexer as PythonLexer 
+            from pygments.formatters import HtmlFormatter
+
+            formatter = HtmlFormatter(cssclass="code", nowrap=True)
+            result = highlight(src, PythonLexer(encoding="utf-8"), formatter)
+            
+            # remove: <div class="code"><pre> and corresponding endings
+            start = '<div class="code"><pre>'
+            start = '</div></pre>'
+            
+            return result
+
         def dedent(lines):
             orig_code = ''.join(lines) 
             dedented_code = str( py.code.Source( orig_code) )
+            # dedented_code = orig_code
+            
+            # print( "dedented_code\n", dedented_code)
+            dedented_code = syntax_highlight( dedented_code )
+            
             lines = dedented_code.split("\n") # will loose \n at the ends...
             # print( 'DBG dedent', orig_code, dedented_code, dedented_code, lines )
             return lines
@@ -69,3 +88,6 @@ def render_html(visited_lines, codes, call_map, traced_values):
     
     with open('mytracer.html', 'w') as f:
         f.write( html )
+        
+        from pygments.formatters import HtmlFormatter
+        f.write( "\n\n<style>\n%s\n.code  { background: #fff; }\n</style>" % HtmlFormatter().get_style_defs('.code') )

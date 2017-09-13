@@ -17,36 +17,36 @@ def test():
                     filled = filter(lambda row: row and row[0], gen)
                     no_comments = filter(lambda row: not row[0].startswith("___"), filled)
                     return no_comments
-                #@return: filter_csv_rows => <filter object at 0x7f250ead3f...
+                #@return: filter_csv_rows => <filter object at 0x7f2ba607df...
                 return map(Row, csv_rows)
-            #@return: to_rows => <map object at 0x7f24ff11b438>
+            #@return: to_rows => <map object at 0x7f2b984f4710>
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
                 for row in csv.reader(csvfile, **fmt):
                     yield row
             #@return: yield_csv_rows => []
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => []
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', 'Год / Year', 'Кварталы /...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', '', 'I', 'II', 'III', 'IV...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1. Сводные показатели / Aggr...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1. Сводные показатели / Aggreg...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -57,10 +57,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1.1. Валовой внутренний прод...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1.1. Валовой внутренний продук...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -69,10 +69,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['Объем ВВП, млрд.рублей /GDP,...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => Объем ВВП, млрд.рублей /GDP, b...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -81,10 +81,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['20152)', '83233', '18568', '...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 20152)
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -93,10 +93,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['20162)', '86044', '18816', '...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 20162)
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -105,10 +105,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '200913)', '', ''...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -117,16 +117,16 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => []
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => []
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['Год / Year', 'Кварталы / Qua...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => Год / Year
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -135,16 +135,16 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', '', 'I', 'II', 'III', 'IV...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1.2. Индекс промышленного пр...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1.2. Индекс промышленного прои...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -153,10 +153,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['Индекс промышленного произво...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => Индекс промышленного производс...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -165,10 +165,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['в % к соответствующему перио...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => в % к соответствующему периоду...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -177,10 +177,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2015', '99,2', '99,9', '98,3...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2015
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -189,10 +189,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2016', '101,3', '101,1', '10...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2016
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -201,10 +201,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '100,1', '', '', ...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -213,10 +213,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['в % к предыдущему периоду / ...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => в % к предыдущему периоду / pe...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -225,10 +225,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2015', '', '82,8', '102,6', ...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2015
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -237,10 +237,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2016', '', '84,4', '103,1', ...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2016
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -249,10 +249,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '83,1', '', '', '...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -261,10 +261,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['период с начала отчетного го...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => период с начала отчетного года...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -273,10 +273,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2015', '', '', '', '', '', '...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2015
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -285,10 +285,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2016', '', '', '', '', '', '...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2016
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -297,10 +297,10 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['2017', '', '', '', '', '', '...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 2017
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -309,16 +309,16 @@ def test():
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['', 'Янв. Jan.', 'Фев. Feb.',...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 
             #@inline 4: csv2df.reader. yield_csv_rows 
             def yield_csv_rows(csvfile, fmt=CSV_FORMAT):
             #@return: yield_csv_rows => ['1.2.1. Индексы производства ...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-74 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876e420]_csv2df_reader-74 
             filled = filter(lambda row: row and row[0], gen)
             #@return: <lambda> => 1.2.1. Индексы производства по...
-            #@inline 4: csv2df.reader. lambda_csv2df_reader-75 
+            #@inline 4: csv2df.reader. lambda[0x7f2b9876ea50]_csv2df_reader-75 
             no_comments = filter(lambda row: not row[0].startswith("___"), filled)
             #@return: <lambda> => True
             #@inline 4: csv2df.reader. Row.__init__ 
@@ -338,51 +338,47 @@ def test():
             #@return: __init__ => None
             return rowstack.yield_segment_with_defintion(self.spec)
         #@return: items => <generator object RowStack.yie...
-        #@inline 3: test_mytracer. <listcomp> 
-        def get_dataframes(csvfile, spec=SPEC):
-        #@inline 4: csv2df.reader. RowStack.yield_segment_with_defintion 
+        #@inline 3: csv2df.reader. RowStack.yield_segment_with_defintion 
         def yield_segment_with_defintion(self, spec):
             for pdef in spec.get_segment_parsing_definitions():
-            #@inline 5: csv2df.specification. Specification.get_segment_parsing_definitions 
+            #@inline 4: csv2df.specification. Specification.get_segment_parsing_definitions 
             def get_segment_parsing_definitions(self):
                 return self.segment_definitions
             #@return: get_segment_parsing_definitions => []
             yield self.remaining_rows(), spec.get_main_parsing_definition()
-            #@inline 5: csv2df.reader. RowStack.remaining_rows 
+            #@inline 4: csv2df.reader. RowStack.remaining_rows 
             def remaining_rows(self):
                 remaining = self.rows
                 self.rows = []
                 return remaining
             #@return: remaining_rows => [Row(['1. Сводные показатели /...
-            #@inline 5: csv2df.specification. Specification.get_main_parsing_definition 
+            #@inline 4: csv2df.specification. Specification.get_main_parsing_definition 
             def get_main_parsing_definition(self):
                 return self.main
             #@return: get_main_parsing_definition => <csv2df.specification.Definiti...
         #@return: yield_segment_with_defintion => ([Row(['1. Сводные показатели ...
-                      for t in extract_tables(csv_segment, pdef)]
-        #@inline 4: csv2df.parser. extract_tables 
+                  for t in extract_tables(csv_segment, pdef)]
+        #@inline 3: csv2df.parser. extract_tables 
         def extract_tables(csv_segment, pdef):
             tables = split_to_tables(csv_segment)
             tables = parse_tables(tables, pdef)
-            #@inline 5: csv2df.parser. parse_tables 
+            #@inline 4: csv2df.parser. parse_tables 
             def parse_tables(tables, pdef):
                 tables = [t.set_label(pdef.varnames_dict, pdef.units_dict) for t in tables]
-                #@inline 6: csv2df.parser. <listcomp> 
-                def parse_tables(tables, pdef):
-                #@inline 7: csv2df.parser. split_to_tables 
+                #@inline 5: csv2df.parser. split_to_tables 
                 def split_to_tables(rows):
                     datarows = []
                     headers = []
                     state = State.INIT
                     for row in rows:
                         if row.is_datarow():
-                        #@inline 8: csv2df.reader. Row.is_datarow 
+                        #@inline 6: csv2df.reader. Row.is_datarow 
                         def is_datarow(self):
                             return is_year(self.name)
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
                                 return get_year(string) is not False
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                     match = re.match(rx, string)
                                     if match:
@@ -393,29 +389,29 @@ def test():
                             if state == State.DATA:  # table ended
                             headers.append(row)
                             state = State.UNKNOWN
-                            #@inline 8: csv2df.reader. Row.is_datarow 
+                            #@inline 6: csv2df.reader. Row.is_datarow 
                             def is_datarow(self):
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
-                            #@inline 10: csv2df.reader. get_year 
+                            #@inline 8: csv2df.reader. get_year 
                             def get_year(string: str, rx=YEAR_CATCHER):
                             #@return: get_year => False
                             #@return: is_year => False
                             #@return: is_datarow => False
-                            #@inline 8: csv2df.reader. Row.is_datarow 
+                            #@inline 6: csv2df.reader. Row.is_datarow 
                             def is_datarow(self):
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
-                            #@inline 10: csv2df.reader. get_year 
+                            #@inline 8: csv2df.reader. get_year 
                             def get_year(string: str, rx=YEAR_CATCHER):
                             #@return: get_year => False
                             #@return: is_year => False
                             #@return: is_datarow => False
-                            #@inline 8: csv2df.reader. Row.is_datarow 
+                            #@inline 6: csv2df.reader. Row.is_datarow 
                             def is_datarow(self):
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
-                            #@inline 10: csv2df.reader. get_year 
+                            #@inline 8: csv2df.reader. get_year 
                             def get_year(string: str, rx=YEAR_CATCHER):
                                     year = int(match.group(1))
                                     if year >= 1991 and year <= 2050:
@@ -425,103 +421,79 @@ def test():
                             #@return: is_datarow => True
                             datarows.append(row)
                             state = State.DATA
-                            #@inline 8: csv2df.reader. Row.is_datarow 
+                            #@inline 6: csv2df.reader. Row.is_datarow 
                             def is_datarow(self):
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
-                            #@inline 10: csv2df.reader. get_year 
+                            #@inline 8: csv2df.reader. get_year 
                             def get_year(string: str, rx=YEAR_CATCHER):
                             #@return: get_year => 2016
                             #@return: is_year => True
                             #@return: is_datarow => True
-                            #@inline 8: csv2df.reader. Row.is_datarow 
+                            #@inline 6: csv2df.reader. Row.is_datarow 
                             def is_datarow(self):
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
-                            #@inline 10: csv2df.reader. get_year 
+                            #@inline 8: csv2df.reader. get_year 
                             def get_year(string: str, rx=YEAR_CATCHER):
                             #@return: get_year => 2017
                             #@return: is_year => True
                             #@return: is_datarow => True
-                            #@inline 8: csv2df.reader. Row.is_datarow 
+                            #@inline 6: csv2df.reader. Row.is_datarow 
                             def is_datarow(self):
-                            #@inline 9: csv2df.reader. is_year 
+                            #@inline 7: csv2df.reader. is_year 
                             def is_year(string: str) -> bool:
-                            #@inline 10: csv2df.reader. get_year 
+                            #@inline 8: csv2df.reader. get_year 
                             def get_year(string: str, rx=YEAR_CATCHER):
                             #@return: get_year => False
                             #@return: is_year => False
                             #@return: is_datarow => False
                                 yield Table(headers, datarows)
-                                #@inline 8: csv2df.parser. Table.__init__ 
+                                #@inline 6: csv2df.parser. Table.__init__ 
                                 def __init__(self, headers, datarows):
                                     self.varname = None
                                     self.unit = None
                                     self.headers = headers
                                     self.lines = odict((row.name, self.UNKNOWN) for row in headers)
-                                    #@inline 9: csv2df.parser. Table.<genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@return: <genexpr> => ('1. Сводные показатели / Aggr...
-                                    #@inline 9: csv2df.parser. Table.<genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@return: <genexpr> => ('1.1. Валовой внутренний прод...
-                                    #@inline 9: csv2df.parser. Table.<genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@return: <genexpr> => ('Объем ВВП, млрд.рублей /GDP,...
-                                    #@inline 9: csv2df.parser. Table.<genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@return: <genexpr> => None
                                     self.datarows = datarows
                                     self.coln = max(len(row) for row in self.datarows)
-                                    #@inline 9: csv2df.parser. <genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@inline 10: csv2df.reader. Row.__len__ 
+                                    #@inline 7: csv2df.reader. Row.__len__ 
                                     def __len__(self):
                                         return len(self.data)
                                     #@return: __len__ => 5
-                                    #@return: <genexpr> => 5
-                                    #@inline 9: csv2df.parser. <genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@inline 10: csv2df.reader. Row.__len__ 
+                                    #@inline 7: csv2df.reader. Row.__len__ 
                                     def __len__(self):
                                     #@return: __len__ => 5
-                                    #@return: <genexpr> => 5
-                                    #@inline 9: csv2df.parser. <genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@inline 10: csv2df.reader. Row.__len__ 
+                                    #@inline 7: csv2df.reader. Row.__len__ 
                                     def __len__(self):
                                     #@return: __len__ => 5
-                                    #@return: <genexpr> => 5
-                                    #@inline 9: csv2df.parser. <genexpr> 
-                                    def __init__(self, headers, datarows):
-                                    #@return: <genexpr> => None
                                     self.splitter_func = None
                                 #@return: __init__ => None
                 #@return: split_to_tables => Table None (5 columns)
 - <1. С...
-                #@inline 7: csv2df.specification. Definition.varnames_dict 
+                #@inline 5: csv2df.specification. Definition.varnames_dict 
                 @property
                     return self.instr.varname_mapper
                 #@return: varnames_dict => OrderedDict([('Объем ВВП', 'GD...
-                #@inline 7: csv2df.specification. Definition.units_dict 
+                #@inline 5: csv2df.specification. Definition.units_dict 
                 @property
                     return self.units
                 #@return: units_dict => {'млрд.рублей': 'bln_rub', 'пе...
-                #@inline 7: csv2df.parser. Table.set_label 
+                #@inline 5: csv2df.parser. Table.set_label 
                 def set_label(self, varnames_dict, units_dict):
                     for row in self.headers:
                         varname = row.get_varname(varnames_dict)
-                        #@inline 8: csv2df.reader. Row.get_varname 
+                        #@inline 6: csv2df.reader. Row.get_varname 
                         def get_varname(self, varnames_mapper_dict):
                             varnames = []
                             for k in varnames_mapper_dict.keys():
                                 if self.matches(k):
-                                #@inline 9: csv2df.reader. Row.matches 
+                                #@inline 7: csv2df.reader. Row.matches 
                                 def matches(self, pat):
                                     rx = r"\b{}".format(pat)
                                     return bool(re.search(rx, self.name))
                                 #@return: matches => False
-                                #@inline 9: csv2df.reader. Row.matches 
+                                #@inline 7: csv2df.reader. Row.matches 
                                 def matches(self, pat):
                                 #@return: matches => False
                             if len(varnames) > 1:
@@ -530,39 +502,39 @@ def test():
                         #@return: get_varname => False
                         if varname:
                         unit = row.get_unit(units_dict)
-                        #@inline 8: csv2df.reader. Row.get_unit 
+                        #@inline 6: csv2df.reader. Row.get_unit 
                         def get_unit(self, units_mapper_dict):
                             for k in units_mapper_dict.keys():
                                 if k in self.name:
                             return False
                         #@return: get_unit => False
                         if unit:
-                        #@inline 8: csv2df.reader. Row.get_varname 
+                        #@inline 6: csv2df.reader. Row.get_varname 
                         def get_varname(self, varnames_mapper_dict):
-                        #@inline 9: csv2df.reader. Row.matches 
+                        #@inline 7: csv2df.reader. Row.matches 
                         def matches(self, pat):
                         #@return: matches => False
-                        #@inline 9: csv2df.reader. Row.matches 
+                        #@inline 7: csv2df.reader. Row.matches 
                         def matches(self, pat):
                         #@return: matches => False
                         #@return: get_varname => False
-                        #@inline 8: csv2df.reader. Row.get_unit 
+                        #@inline 6: csv2df.reader. Row.get_unit 
                         def get_unit(self, units_mapper_dict):
                         #@return: get_unit => False
-                        #@inline 8: csv2df.reader. Row.get_varname 
+                        #@inline 6: csv2df.reader. Row.get_varname 
                         def get_varname(self, varnames_mapper_dict):
-                        #@inline 9: csv2df.reader. Row.matches 
+                        #@inline 7: csv2df.reader. Row.matches 
                         def matches(self, pat):
                         #@return: matches => True
                                     varnames.append(varnames_mapper_dict[k])
-                                    #@inline 9: csv2df.reader. Row.matches 
+                                    #@inline 7: csv2df.reader. Row.matches 
                                     def matches(self, pat):
                                     #@return: matches => False
                                 return varnames[0]
                         #@return: get_varname => GDP
                             self.varname = varname
                             self.lines[row.name] = self.KNOWN
-                            #@inline 8: csv2df.reader. Row.get_unit 
+                            #@inline 6: csv2df.reader. Row.get_unit 
                             def get_unit(self, units_mapper_dict):
                                         return units_mapper_dict[k]
                             #@return: get_unit => bln_rub
@@ -571,372 +543,306 @@ def test():
                     return self
                 #@return: set_label => Table GDP_bln_rub (5 columns)
 ...
-                #@inline 7: csv2df.parser. split_to_tables 
+                #@inline 5: csv2df.parser. split_to_tables 
                 def split_to_tables(rows):
                                 headers = []
                                 datarows = []
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => False
                                 #@return: is_year => False
                                 #@return: is_datarow => False
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => False
                                 #@return: is_year => False
                                 #@return: is_datarow => False
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => False
                                 #@return: is_year => False
                                 #@return: is_datarow => False
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => 2015
                                 #@return: is_year => True
                                 #@return: is_datarow => True
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => 2016
                                 #@return: is_year => True
                                 #@return: is_datarow => True
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => 2017
                                 #@return: is_year => True
                                 #@return: is_datarow => True
-                                #@inline 8: csv2df.reader. Row.is_datarow 
+                                #@inline 6: csv2df.reader. Row.is_datarow 
                                 def is_datarow(self):
-                                #@inline 9: csv2df.reader. is_year 
+                                #@inline 7: csv2df.reader. is_year 
                                 def is_year(string: str) -> bool:
-                                #@inline 10: csv2df.reader. get_year 
+                                #@inline 8: csv2df.reader. get_year 
                                 def get_year(string: str, rx=YEAR_CATCHER):
                                 #@return: get_year => False
                                 #@return: is_year => False
                                 #@return: is_datarow => False
-                                #@inline 8: csv2df.parser. Table.__init__ 
+                                #@inline 6: csv2df.parser. Table.__init__ 
                                 def __init__(self, headers, datarows):
-                                #@inline 9: csv2df.parser. Table.<genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@return: <genexpr> => ('Год / Year', '-')
-                                #@inline 9: csv2df.parser. Table.<genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@return: <genexpr> => ('1.2. Индекс промышленного пр...
-                                #@inline 9: csv2df.parser. Table.<genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@return: <genexpr> => ('Индекс промышленного произво...
-                                #@inline 9: csv2df.parser. Table.<genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@return: <genexpr> => ('в % к соответствующему перио...
-                                #@inline 9: csv2df.parser. Table.<genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@return: <genexpr> => None
-                                #@inline 9: csv2df.parser. <genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@inline 10: csv2df.reader. Row.__len__ 
+                                #@inline 7: csv2df.reader. Row.__len__ 
                                 def __len__(self):
                                 #@return: __len__ => 17
-                                #@return: <genexpr> => 17
-                                #@inline 9: csv2df.parser. <genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@inline 10: csv2df.reader. Row.__len__ 
+                                #@inline 7: csv2df.reader. Row.__len__ 
                                 def __len__(self):
                                 #@return: __len__ => 17
-                                #@return: <genexpr> => 17
-                                #@inline 9: csv2df.parser. <genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@inline 10: csv2df.reader. Row.__len__ 
+                                #@inline 7: csv2df.reader. Row.__len__ 
                                 def __len__(self):
                                 #@return: __len__ => 17
-                                #@return: <genexpr> => 17
-                                #@inline 9: csv2df.parser. <genexpr> 
-                                def __init__(self, headers, datarows):
-                                #@return: <genexpr> => None
                                 #@return: __init__ => None
                 #@return: split_to_tables => Table None (17 columns)
 - <Год...
-                #@inline 7: csv2df.specification. Definition.varnames_dict 
+                #@inline 5: csv2df.specification. Definition.varnames_dict 
                 @property
                 #@return: varnames_dict => OrderedDict([('Объем ВВП', 'GD...
-                #@inline 7: csv2df.specification. Definition.units_dict 
+                #@inline 5: csv2df.specification. Definition.units_dict 
                 @property
                 #@return: units_dict => {'млрд.рублей': 'bln_rub', 'пе...
-                #@inline 7: csv2df.parser. Table.set_label 
+                #@inline 5: csv2df.parser. Table.set_label 
                 def set_label(self, varnames_dict, units_dict):
-                #@inline 8: csv2df.reader. Row.get_varname 
+                #@inline 6: csv2df.reader. Row.get_varname 
                 def get_varname(self, varnames_mapper_dict):
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
                 #@return: get_varname => False
-                #@inline 8: csv2df.reader. Row.get_unit 
+                #@inline 6: csv2df.reader. Row.get_unit 
                 def get_unit(self, units_mapper_dict):
                 #@return: get_unit => False
-                #@inline 8: csv2df.reader. Row.get_varname 
+                #@inline 6: csv2df.reader. Row.get_varname 
                 def get_varname(self, varnames_mapper_dict):
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => True
                 #@return: get_varname => INDPRO
-                #@inline 8: csv2df.reader. Row.get_unit 
+                #@inline 6: csv2df.reader. Row.get_unit 
                 def get_unit(self, units_mapper_dict):
                 #@return: get_unit => False
-                #@inline 8: csv2df.reader. Row.get_varname 
+                #@inline 6: csv2df.reader. Row.get_varname 
                 def get_varname(self, varnames_mapper_dict):
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => True
                 #@return: get_varname => INDPRO
-                #@inline 8: csv2df.reader. Row.get_unit 
+                #@inline 6: csv2df.reader. Row.get_unit 
                 def get_unit(self, units_mapper_dict):
                 #@return: get_unit => False
-                #@inline 8: csv2df.reader. Row.get_varname 
+                #@inline 6: csv2df.reader. Row.get_varname 
                 def get_varname(self, varnames_mapper_dict):
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
                 #@return: get_varname => False
-                #@inline 8: csv2df.reader. Row.get_unit 
+                #@inline 6: csv2df.reader. Row.get_unit 
                 def get_unit(self, units_mapper_dict):
                 #@return: get_unit => yoy
                 #@return: set_label => Table INDPRO_yoy (17 columns)
 ...
-                #@inline 7: csv2df.parser. split_to_tables 
+                #@inline 5: csv2df.parser. split_to_tables 
                 def split_to_tables(rows):
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => 2015
                 #@return: is_year => True
                 #@return: is_datarow => True
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => 2016
                 #@return: is_year => True
                 #@return: is_datarow => True
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => 2017
                 #@return: is_year => True
                 #@return: is_datarow => True
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => False
                 #@return: is_year => False
                 #@return: is_datarow => False
-                #@inline 8: csv2df.parser. Table.__init__ 
+                #@inline 6: csv2df.parser. Table.__init__ 
                 def __init__(self, headers, datarows):
-                #@inline 9: csv2df.parser. Table.<genexpr> 
-                def __init__(self, headers, datarows):
-                #@return: <genexpr> => ('в % к предыдущему периоду / ...
-                #@inline 9: csv2df.parser. Table.<genexpr> 
-                def __init__(self, headers, datarows):
-                #@return: <genexpr> => None
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@inline 10: csv2df.reader. Row.__len__ 
+                #@inline 7: csv2df.reader. Row.__len__ 
                 def __len__(self):
                 #@return: __len__ => 17
-                #@return: <genexpr> => 17
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@inline 10: csv2df.reader. Row.__len__ 
+                #@inline 7: csv2df.reader. Row.__len__ 
                 def __len__(self):
                 #@return: __len__ => 17
-                #@return: <genexpr> => 17
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@inline 10: csv2df.reader. Row.__len__ 
+                #@inline 7: csv2df.reader. Row.__len__ 
                 def __len__(self):
                 #@return: __len__ => 17
-                #@return: <genexpr> => 17
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@return: <genexpr> => None
                 #@return: __init__ => None
                 #@return: split_to_tables => Table None (17 columns)
 - <в %...
-                #@inline 7: csv2df.specification. Definition.varnames_dict 
+                #@inline 5: csv2df.specification. Definition.varnames_dict 
                 @property
                 #@return: varnames_dict => OrderedDict([('Объем ВВП', 'GD...
-                #@inline 7: csv2df.specification. Definition.units_dict 
+                #@inline 5: csv2df.specification. Definition.units_dict 
                 @property
                 #@return: units_dict => {'млрд.рублей': 'bln_rub', 'пе...
-                #@inline 7: csv2df.parser. Table.set_label 
+                #@inline 5: csv2df.parser. Table.set_label 
                 def set_label(self, varnames_dict, units_dict):
-                #@inline 8: csv2df.reader. Row.get_varname 
+                #@inline 6: csv2df.reader. Row.get_varname 
                 def get_varname(self, varnames_mapper_dict):
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
                 #@return: get_varname => False
-                #@inline 8: csv2df.reader. Row.get_unit 
+                #@inline 6: csv2df.reader. Row.get_unit 
                 def get_unit(self, units_mapper_dict):
                 #@return: get_unit => rog
                 #@return: set_label => Table None (17 columns)
 + <в %...
-                #@inline 7: csv2df.parser. split_to_tables 
+                #@inline 5: csv2df.parser. split_to_tables 
                 def split_to_tables(rows):
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => 2015
                 #@return: is_year => True
                 #@return: is_datarow => True
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => 2016
                 #@return: is_year => True
                 #@return: is_datarow => True
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => 2017
                 #@return: is_year => True
                 #@return: is_datarow => True
-                #@inline 8: csv2df.reader. Row.is_datarow 
+                #@inline 6: csv2df.reader. Row.is_datarow 
                 def is_datarow(self):
-                #@inline 9: csv2df.reader. is_year 
+                #@inline 7: csv2df.reader. is_year 
                 def is_year(string: str) -> bool:
-                #@inline 10: csv2df.reader. get_year 
+                #@inline 8: csv2df.reader. get_year 
                 def get_year(string: str, rx=YEAR_CATCHER):
                 #@return: get_year => False
                 #@return: is_year => False
                 #@return: is_datarow => False
-                #@inline 8: csv2df.parser. Table.__init__ 
+                #@inline 6: csv2df.parser. Table.__init__ 
                 def __init__(self, headers, datarows):
-                #@inline 9: csv2df.parser. Table.<genexpr> 
-                def __init__(self, headers, datarows):
-                #@return: <genexpr> => ('период с начала отчетного го...
-                #@inline 9: csv2df.parser. Table.<genexpr> 
-                def __init__(self, headers, datarows):
-                #@return: <genexpr> => None
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@inline 10: csv2df.reader. Row.__len__ 
+                #@inline 7: csv2df.reader. Row.__len__ 
                 def __len__(self):
                 #@return: __len__ => 17
-                #@return: <genexpr> => 17
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@inline 10: csv2df.reader. Row.__len__ 
+                #@inline 7: csv2df.reader. Row.__len__ 
                 def __len__(self):
                 #@return: __len__ => 17
-                #@return: <genexpr> => 17
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@inline 10: csv2df.reader. Row.__len__ 
+                #@inline 7: csv2df.reader. Row.__len__ 
                 def __len__(self):
                 #@return: __len__ => 17
-                #@return: <genexpr> => 17
-                #@inline 9: csv2df.parser. <genexpr> 
-                def __init__(self, headers, datarows):
-                #@return: <genexpr> => None
                 #@return: __init__ => None
                 #@return: split_to_tables => Table None (17 columns)
 - <пер...
-                #@inline 7: csv2df.specification. Definition.varnames_dict 
+                #@inline 5: csv2df.specification. Definition.varnames_dict 
                 @property
                 #@return: varnames_dict => OrderedDict([('Объем ВВП', 'GD...
-                #@inline 7: csv2df.specification. Definition.units_dict 
+                #@inline 5: csv2df.specification. Definition.units_dict 
                 @property
                 #@return: units_dict => {'млрд.рублей': 'bln_rub', 'пе...
-                #@inline 7: csv2df.parser. Table.set_label 
+                #@inline 5: csv2df.parser. Table.set_label 
                 def set_label(self, varnames_dict, units_dict):
-                #@inline 8: csv2df.reader. Row.get_varname 
+                #@inline 6: csv2df.reader. Row.get_varname 
                 def get_varname(self, varnames_mapper_dict):
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
-                #@inline 9: csv2df.reader. Row.matches 
+                #@inline 7: csv2df.reader. Row.matches 
                 def matches(self, pat):
                 #@return: matches => False
                 #@return: get_varname => False
-                #@inline 8: csv2df.reader. Row.get_unit 
+                #@inline 6: csv2df.reader. Row.get_unit 
                 def get_unit(self, units_mapper_dict):
                 #@return: get_unit => ytd
                 #@return: set_label => Table None (17 columns)
 + <пер...
-                #@inline 7: csv2df.parser. split_to_tables 
+                #@inline 5: csv2df.parser. split_to_tables 
                 def split_to_tables(rows):
                     if len(headers) > 0 and len(datarows) > 0:
                 #@return: split_to_tables => None
-                #@return: <listcomp> => [Table(headers=[Row(['1. Сводн...
                 tables = [t.set_splitter(pdef.funcname) for t in tables]
-                #@inline 6: csv2df.parser. <listcomp> 
-                def parse_tables(tables, pdef):
-                #@inline 7: csv2df.specification. Definition.funcname 
+                #@inline 5: csv2df.specification. Definition.funcname 
                 @property
                     return self.reader
                 #@return: funcname => False
-                #@inline 7: csv2df.parser. Table.set_splitter 
+                #@inline 5: csv2df.parser. Table.set_splitter 
                 def set_splitter(self, funcname):
                     self.splitter_func = splitter.get_splitter(funcname or self.coln)
-                    #@inline 8: csv2df.util_row_splitter. get_splitter 
+                    #@inline 6: csv2df.util_row_splitter. get_splitter 
                     def get_splitter(arg):
                         try:
                             return FUNC_MAPPER[arg]
@@ -944,145 +850,134 @@ def test():
                     return self
                 #@return: set_splitter => Table GDP_bln_rub (5 columns)
 ...
-                #@inline 7: csv2df.specification. Definition.funcname 
+                #@inline 5: csv2df.specification. Definition.funcname 
                 @property
                 #@return: funcname => False
-                #@inline 7: csv2df.parser. Table.set_splitter 
+                #@inline 5: csv2df.parser. Table.set_splitter 
                 def set_splitter(self, funcname):
-                #@inline 8: csv2df.util_row_splitter. get_splitter 
+                #@inline 6: csv2df.util_row_splitter. get_splitter 
                 def get_splitter(arg):
                 #@return: get_splitter => <function split_row_by_periods...
                 #@return: set_splitter => Table INDPRO_yoy (17 columns)
 ...
-                #@inline 7: csv2df.specification. Definition.funcname 
+                #@inline 5: csv2df.specification. Definition.funcname 
                 @property
                 #@return: funcname => False
-                #@inline 7: csv2df.parser. Table.set_splitter 
+                #@inline 5: csv2df.parser. Table.set_splitter 
                 def set_splitter(self, funcname):
-                #@inline 8: csv2df.util_row_splitter. get_splitter 
+                #@inline 6: csv2df.util_row_splitter. get_splitter 
                 def get_splitter(arg):
                 #@return: get_splitter => <function split_row_by_periods...
                 #@return: set_splitter => Table None (17 columns)
 + <в %...
-                #@inline 7: csv2df.specification. Definition.funcname 
+                #@inline 5: csv2df.specification. Definition.funcname 
                 @property
                 #@return: funcname => False
-                #@inline 7: csv2df.parser. Table.set_splitter 
+                #@inline 5: csv2df.parser. Table.set_splitter 
                 def set_splitter(self, funcname):
-                #@inline 8: csv2df.util_row_splitter. get_splitter 
+                #@inline 6: csv2df.util_row_splitter. get_splitter 
                 def get_splitter(arg):
                 #@return: get_splitter => <function split_row_by_periods...
                 #@return: set_splitter => Table None (17 columns)
 + <пер...
-                #@return: <listcomp> => [Table(headers=[Row(['1. Сводн...
                 def fix_multitable_units(tables):
                 fix_multitable_units(tables)
-                #@inline 6: csv2df.parser. fix_multitable_units 
+                #@inline 5: csv2df.parser. fix_multitable_units 
                 def fix_multitable_units(tables):
                     for prev_table, table in zip(tables, tables[1:]):
                         if table.varname is None and not table.has_unknown_lines():
-                        #@inline 7: csv2df.parser. Table.has_unknown_lines 
+                        #@inline 6: csv2df.parser. Table.has_unknown_lines 
                         def has_unknown_lines(self):
                             return self.UNKNOWN in self.lines.values()
                         #@return: has_unknown_lines => False
                             table.varname = prev_table.varname
-                            #@inline 7: csv2df.parser. Table.has_unknown_lines 
+                            #@inline 6: csv2df.parser. Table.has_unknown_lines 
                             def has_unknown_lines(self):
                             #@return: has_unknown_lines => False
                 #@return: fix_multitable_units => None
                 return tables
             #@return: parse_tables => [Table(headers=[Row(['1. Сводн...
             verify_tables(tables, pdef)
-            #@inline 5: csv2df.parser. verify_tables 
+            #@inline 4: csv2df.parser. verify_tables 
             def verify_tables(tables, pdef):
                 _labels_in_tables = [t.label for t in tables]
-                #@inline 6: csv2df.parser. <listcomp> 
-                def verify_tables(tables, pdef):
-                #@inline 7: csv2df.parser. Table.label 
+                #@inline 5: csv2df.parser. Table.label 
                 @property
                     vn = self.varname
                     u = self.unit
                     if vn and u:
                         return make_label(vn, u)
-                        #@inline 8: csv2df.util_label. make_label 
+                        #@inline 6: csv2df.util_label. make_label 
                         def make_label(vn, unit, sep=SEP):
                             return vn + sep + unit
                         #@return: make_label => GDP_bln_rub
                 #@return: label => GDP_bln_rub
-                #@inline 7: csv2df.parser. Table.label 
+                #@inline 5: csv2df.parser. Table.label 
                 @property
-                #@inline 8: csv2df.util_label. make_label 
+                #@inline 6: csv2df.util_label. make_label 
                 def make_label(vn, unit, sep=SEP):
                 #@return: make_label => INDPRO_yoy
                 #@return: label => INDPRO_yoy
-                #@inline 7: csv2df.parser. Table.label 
+                #@inline 5: csv2df.parser. Table.label 
                 @property
-                #@inline 8: csv2df.util_label. make_label 
+                #@inline 6: csv2df.util_label. make_label 
                 def make_label(vn, unit, sep=SEP):
                 #@return: make_label => INDPRO_rog
                 #@return: label => INDPRO_rog
-                #@inline 7: csv2df.parser. Table.label 
+                #@inline 5: csv2df.parser. Table.label 
                 @property
-                #@inline 8: csv2df.util_label. make_label 
+                #@inline 6: csv2df.util_label. make_label 
                 def make_label(vn, unit, sep=SEP):
                 #@return: make_label => INDPRO_ytd
                 #@return: label => INDPRO_ytd
-                #@return: <listcomp> => ['GDP_bln_rub', 'INDPRO_yoy', ...
                 _labels_missed = [x for x in pdef.required if x not in _labels_in_tables]
-                #@inline 6: csv2df.specification. Definition.required 
+                #@inline 5: csv2df.specification. Definition.required 
                 @property
                     return self.instr.required_labels
                 #@return: required => ['GDP_bln_rub', 'INDPRO_yoy', ...
-                #@inline 6: csv2df.parser. <listcomp> 
-                def verify_tables(tables, pdef):
-                #@return: <listcomp> => []
                 if _labels_missed:
             #@return: verify_tables => None
             return [t for t in tables if t.label in pdef.required]
-            #@inline 5: csv2df.parser. <listcomp> 
-            def extract_tables(csv_segment, pdef):
-            #@inline 6: csv2df.parser. Table.label 
+            #@inline 4: csv2df.parser. Table.label 
             @property
-            #@inline 7: csv2df.util_label. make_label 
+            #@inline 5: csv2df.util_label. make_label 
             def make_label(vn, unit, sep=SEP):
             #@return: make_label => GDP_bln_rub
             #@return: label => GDP_bln_rub
-            #@inline 6: csv2df.specification. Definition.required 
+            #@inline 4: csv2df.specification. Definition.required 
             @property
             #@return: required => ['GDP_bln_rub', 'INDPRO_yoy', ...
-            #@inline 6: csv2df.parser. Table.label 
+            #@inline 4: csv2df.parser. Table.label 
             @property
-            #@inline 7: csv2df.util_label. make_label 
+            #@inline 5: csv2df.util_label. make_label 
             def make_label(vn, unit, sep=SEP):
             #@return: make_label => INDPRO_yoy
             #@return: label => INDPRO_yoy
-            #@inline 6: csv2df.specification. Definition.required 
+            #@inline 4: csv2df.specification. Definition.required 
             @property
             #@return: required => ['GDP_bln_rub', 'INDPRO_yoy', ...
-            #@inline 6: csv2df.parser. Table.label 
+            #@inline 4: csv2df.parser. Table.label 
             @property
-            #@inline 7: csv2df.util_label. make_label 
+            #@inline 5: csv2df.util_label. make_label 
             def make_label(vn, unit, sep=SEP):
             #@return: make_label => INDPRO_rog
             #@return: label => INDPRO_rog
-            #@inline 6: csv2df.specification. Definition.required 
+            #@inline 4: csv2df.specification. Definition.required 
             @property
             #@return: required => ['GDP_bln_rub', 'INDPRO_yoy', ...
-            #@inline 6: csv2df.parser. Table.label 
+            #@inline 4: csv2df.parser. Table.label 
             @property
-            #@inline 7: csv2df.util_label. make_label 
+            #@inline 5: csv2df.util_label. make_label 
             def make_label(vn, unit, sep=SEP):
             #@return: make_label => INDPRO_ytd
             #@return: label => INDPRO_ytd
-            #@inline 6: csv2df.specification. Definition.required 
+            #@inline 4: csv2df.specification. Definition.required 
             @property
             #@return: required => ['GDP_bln_rub', 'INDPRO_yoy', ...
-            #@return: <listcomp> => [Table(headers=[Row(['1. Сводн...
         #@return: extract_tables => [Table(headers=[Row(['1. Сводн...
-        #@inline 4: csv2df.reader. RowStack.yield_segment_with_defintion 
+        #@inline 3: csv2df.reader. RowStack.yield_segment_with_defintion 
         def yield_segment_with_defintion(self, spec):
         #@return: yield_segment_with_defintion => None
-        #@return: <listcomp> => [Table(headers=[Row(['1. Сводн...
         emitter = Emitter(tables)
         #@inline 3: csv2df.emitter. Emitter.__init__ 
         def __init__(self, tables):
@@ -1178,19 +1073,17 @@ def test():
                         if q_values:
                             qs = [factory.make('q', val, t + 1)
                                   for t, val in enumerate(q_values) if val]
-                            #@inline 5: csv2df.emitter. <listcomp> 
-                            def _import(self, table):
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 18568.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                                 year = int(self.year)
                                 if self.freq == 'q':
@@ -1201,52 +1094,51 @@ def test():
                                     basedict.update(dict(qtr=self.period))
                             #@return: as_dict => {'year': 2015, 'label': 'GDP_b...
                             #@return: make => {'year': 2015, 'label': 'GDP_b...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 19858.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-06-30 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'GDP_b...
                             #@return: make => {'year': 2015, 'label': 'GDP_b...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 21967.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-09-30 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'GDP_b...
                             #@return: make => {'year': 2015, 'label': 'GDP_b...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 22840.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-12-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'GDP_b...
                             #@return: make => {'year': 2015, 'label': 'GDP_b...
-                            #@return: <listcomp> => [{'year': 2015, 'label': 'GDP_...
                             self.q.extend(qs)
                         if m_values:
                         #@inline 5: csv2df.reader. Row.get_year 
@@ -1282,69 +1174,66 @@ def test():
                         #@return: get_date => 2016-12-31 00:00:00
                         #@return: as_dict => {'year': 2016, 'label': 'GDP_b...
                         #@return: make => {'year': 2016, 'label': 'GDP_b...
-                        #@inline 5: csv2df.emitter. <listcomp> 
-                        def _import(self, table):
-                        #@inline 6: csv2df.emitter. DatapointMaker.make 
+                        #@inline 5: csv2df.emitter. DatapointMaker.make 
                         def make(self, freq: str, x: float, period=False):
-                        #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                        #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                         def set_value(self, x):
-                        #@inline 8: csv2df.emitter. to_float 
+                        #@inline 7: csv2df.emitter. to_float 
                         def to_float(text: str, i=0):
                         #@return: to_float => 18816.0
                         #@return: set_value => None
-                        #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                        #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                         def as_dict(self):
-                        #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                        #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                         def get_date(self):
                         #@return: get_date => 2016-03-31 00:00:00
                         #@return: as_dict => {'year': 2016, 'label': 'GDP_b...
                         #@return: make => {'year': 2016, 'label': 'GDP_b...
-                        #@inline 6: csv2df.emitter. DatapointMaker.make 
+                        #@inline 5: csv2df.emitter. DatapointMaker.make 
                         def make(self, freq: str, x: float, period=False):
-                        #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                        #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                         def set_value(self, x):
-                        #@inline 8: csv2df.emitter. to_float 
+                        #@inline 7: csv2df.emitter. to_float 
                         def to_float(text: str, i=0):
                         #@return: to_float => 20430.0
                         #@return: set_value => None
-                        #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                        #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                         def as_dict(self):
-                        #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                        #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                         def get_date(self):
                         #@return: get_date => 2016-06-30 00:00:00
                         #@return: as_dict => {'year': 2016, 'label': 'GDP_b...
                         #@return: make => {'year': 2016, 'label': 'GDP_b...
-                        #@inline 6: csv2df.emitter. DatapointMaker.make 
+                        #@inline 5: csv2df.emitter. DatapointMaker.make 
                         def make(self, freq: str, x: float, period=False):
-                        #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                        #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                         def set_value(self, x):
-                        #@inline 8: csv2df.emitter. to_float 
+                        #@inline 7: csv2df.emitter. to_float 
                         def to_float(text: str, i=0):
                         #@return: to_float => 22721.0
                         #@return: set_value => None
-                        #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                        #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                         def as_dict(self):
-                        #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                        #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                         def get_date(self):
                         #@return: get_date => 2016-09-30 00:00:00
                         #@return: as_dict => {'year': 2016, 'label': 'GDP_b...
                         #@return: make => {'year': 2016, 'label': 'GDP_b...
-                        #@inline 6: csv2df.emitter. DatapointMaker.make 
+                        #@inline 5: csv2df.emitter. DatapointMaker.make 
                         def make(self, freq: str, x: float, period=False):
-                        #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                        #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                         def set_value(self, x):
-                        #@inline 8: csv2df.emitter. to_float 
+                        #@inline 7: csv2df.emitter. to_float 
                         def to_float(text: str, i=0):
                         #@return: to_float => 24077.0
                         #@return: set_value => None
-                        #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                        #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                         def as_dict(self):
-                        #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                        #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                         def get_date(self):
                         #@return: get_date => 2016-12-31 00:00:00
                         #@return: as_dict => {'year': 2016, 'label': 'GDP_b...
                         #@return: make => {'year': 2016, 'label': 'GDP_b...
-                        #@return: <listcomp> => [{'year': 2016, 'label': 'GDP_...
                         #@inline 5: csv2df.reader. Row.get_year 
                         def get_year(self):
                         #@inline 6: csv2df.reader. get_year 
@@ -1363,13 +1252,11 @@ def test():
                         #@inline 5: csv2df.util_row_splitter. split_row_by_year_and_qtr 
                         def split_row_by_year_and_qtr(row):
                         #@return: split_row_by_year_and_qtr => ('', ['200913)', '', '', ''], ...
-                        #@inline 5: csv2df.emitter. <listcomp> 
-                        def _import(self, table):
-                        #@inline 6: csv2df.emitter. DatapointMaker.make 
+                        #@inline 5: csv2df.emitter. DatapointMaker.make 
                         def make(self, freq: str, x: float, period=False):
-                        #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                        #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                         def set_value(self, x):
-                        #@inline 8: csv2df.emitter. to_float 
+                        #@inline 7: csv2df.emitter. to_float 
                         def to_float(text: str, i=0):
                             except ValueError:
                                 if " " in text.strip():  # get first value '542,0 5881)'
@@ -1378,19 +1265,18 @@ def test():
                                     if match_result:
                                         text = match_result.group(0)
                                         return to_float(text, i)
-                                        #@inline 9: csv2df.emitter. to_float 
+                                        #@inline 8: csv2df.emitter. to_float 
                                         def to_float(text: str, i=0):
                                         #@return: to_float => 20091.0
                         #@return: to_float => 20091.0
                         #@return: set_value => None
-                        #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                        #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                         def as_dict(self):
-                        #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                        #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                         def get_date(self):
                         #@return: get_date => 2017-03-31 00:00:00
                         #@return: as_dict => {'year': 2017, 'label': 'GDP_b...
                         #@return: make => {'year': 2017, 'label': 'GDP_b...
-                        #@return: <listcomp> => [{'year': 2017, 'label': 'GDP_...
                 #@return: _import => None
                 #@inline 4: csv2df.emitter. _assert_defined 
                 @staticmethod
@@ -1440,84 +1326,79 @@ def test():
                 #@return: get_date => 2015-12-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 99.9
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-03-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 98.3
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-06-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 99.5
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-09-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 99.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-12-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2015, 'label': 'INDP...
                             ms = [factory.make('m', val, t + 1)
                                   for t, val in enumerate(m_values) if val]
-                            #@inline 5: csv2df.emitter. <listcomp> 
-                            def _import(self, table):
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                                 elif self.freq == 'm':
                                     month = int(self.period)
@@ -1527,172 +1408,171 @@ def test():
                                     basedict.update(dict(month=self.period))
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 98.2
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-02-28 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.2
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-03-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 98.2
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-04-30 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 97.6
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-05-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 99.1
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-06-30 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 98.5
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-07-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.2
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-08-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 99.7
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-09-30 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 98.4
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-10-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-11-30 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 98.1
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2015-12-31 00:00:00
                             #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                             #@return: make => {'year': 2015, 'label': 'INDPR...
-                            #@return: <listcomp> => [{'year': 2015, 'label': 'INDP...
                             self.m.extend(ms)
                             #@inline 5: csv2df.reader. Row.get_year 
                             def get_year(self):
@@ -1727,252 +1607,246 @@ def test():
                             #@return: get_date => 2016-12-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 5: csv2df.emitter. <listcomp> 
-                            def _import(self, table):
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.1
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-03-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.5
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-06-30 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-09-30 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.7
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-12-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@return: <listcomp> => [{'year': 2016, 'label': 'INDP...
-                            #@inline 5: csv2df.emitter. <listcomp> 
-                            def _import(self, table):
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 99.2
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-01-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 103.8
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-02-29 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.3
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-03-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-04-30 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.5
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-05-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 102.0
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-06-30 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.4
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-07-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.5
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-08-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.1
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-09-30 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 101.6
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-10-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 103.4
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-11-30 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.2
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2016-12-31 00:00:00
                             #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                             #@return: make => {'year': 2016, 'label': 'INDPR...
-                            #@return: <listcomp> => [{'year': 2016, 'label': 'INDP...
                             #@inline 5: csv2df.reader. Row.get_year 
                             def get_year(self):
                             #@inline 6: csv2df.reader. get_year 
@@ -1991,102 +1865,96 @@ def test():
                             #@inline 5: csv2df.util_row_splitter. split_row_by_periods 
                             def split_row_by_periods(row):
                             #@return: split_row_by_periods => ('', ['100,1', '', '', ''], ['...
-                            #@inline 5: csv2df.emitter. <listcomp> 
-                            def _import(self, table):
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.1
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2017-03-31 00:00:00
                             #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                             #@return: make => {'year': 2017, 'label': 'INDPR...
-                            #@return: <listcomp> => [{'year': 2017, 'label': 'INDP...
-                            #@inline 5: csv2df.emitter. <listcomp> 
-                            def _import(self, table):
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 102.3
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2017-01-31 00:00:00
                             #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                             #@return: make => {'year': 2017, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 97.3
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2017-02-28 00:00:00
                             #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                             #@return: make => {'year': 2017, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 100.8
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2017-03-31 00:00:00
                             #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                             #@return: make => {'year': 2017, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 102.3
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2017-04-30 00:00:00
                             #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                             #@return: make => {'year': 2017, 'label': 'INDPR...
-                            #@inline 6: csv2df.emitter. DatapointMaker.make 
+                            #@inline 5: csv2df.emitter. DatapointMaker.make 
                             def make(self, freq: str, x: float, period=False):
-                            #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                            #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                             def set_value(self, x):
-                            #@inline 8: csv2df.emitter. to_float 
+                            #@inline 7: csv2df.emitter. to_float 
                             def to_float(text: str, i=0):
                             #@return: to_float => 105.6
                             #@return: set_value => None
-                            #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                            #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                             def as_dict(self):
-                            #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                            #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                             def get_date(self):
                             #@return: get_date => 2017-05-31 00:00:00
                             #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                             #@return: make => {'year': 2017, 'label': 'INDPR...
-                            #@return: <listcomp> => [{'year': 2017, 'label': 'INDP...
                 #@return: _import => None
                 #@inline 4: csv2df.emitter. _assert_defined 
                 @staticmethod
@@ -2120,252 +1988,246 @@ def test():
                 #@inline 5: csv2df.util_row_splitter. split_row_by_periods 
                 def split_row_by_periods(row):
                 #@return: split_row_by_periods => ('', ['82,8', '102,6', '103,9'...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 82.8
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-03-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 102.6
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-06-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.9
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-09-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 112.3
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-12-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2015, 'label': 'INDP...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 73.9
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-01-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 99.8
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-02-28 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 112.5
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-03-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 95.6
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-04-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 97.6
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-05-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.2
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-06-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 100.5
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-07-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 101.4
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-08-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-09-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 105.0
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-10-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 101.9
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-11-30 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 109.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2015-12-31 00:00:00
                 #@return: as_dict => {'year': 2015, 'label': 'INDPR...
                 #@return: make => {'year': 2015, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2015, 'label': 'INDP...
                 #@inline 5: csv2df.reader. Row.get_year 
                 def get_year(self):
                 #@inline 6: csv2df.reader. get_year 
@@ -2384,252 +2246,246 @@ def test():
                 #@inline 5: csv2df.util_row_splitter. split_row_by_periods 
                 def split_row_by_periods(row):
                 #@return: split_row_by_periods => ('', ['84,4', '103,1', '103,3'...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 84.4
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-03-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-06-30 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.3
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-09-30 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 113.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-12-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2016, 'label': 'INDP...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 74.7
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-01-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 104.4
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-02-29 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 108.8
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-03-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 96.3
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-04-30 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 98.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-05-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.8
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-06-30 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 99.9
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-07-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 101.5
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-08-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 101.7
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-09-30 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 106.6
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-10-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 103.6
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-11-30 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 105.8
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2016-12-31 00:00:00
                 #@return: as_dict => {'year': 2016, 'label': 'INDPR...
                 #@return: make => {'year': 2016, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2016, 'label': 'INDP...
                 #@inline 5: csv2df.reader. Row.get_year 
                 def get_year(self):
                 #@inline 6: csv2df.reader. get_year 
@@ -2648,102 +2504,96 @@ def test():
                 #@inline 5: csv2df.util_row_splitter. split_row_by_periods 
                 def split_row_by_periods(row):
                 #@return: split_row_by_periods => ('', ['83,1', '', '', ''], ['7...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 83.1
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2017-03-31 00:00:00
                 #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                 #@return: make => {'year': 2017, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2017, 'label': 'INDP...
-                #@inline 5: csv2df.emitter. <listcomp> 
-                def _import(self, table):
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 76.2
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2017-01-31 00:00:00
                 #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                 #@return: make => {'year': 2017, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 99.4
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2017-02-28 00:00:00
                 #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                 #@return: make => {'year': 2017, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 112.7
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2017-03-31 00:00:00
                 #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                 #@return: make => {'year': 2017, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 97.7
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2017-04-30 00:00:00
                 #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                 #@return: make => {'year': 2017, 'label': 'INDPR...
-                #@inline 6: csv2df.emitter. DatapointMaker.make 
+                #@inline 5: csv2df.emitter. DatapointMaker.make 
                 def make(self, freq: str, x: float, period=False):
-                #@inline 7: csv2df.emitter. DatapointMaker.set_value 
+                #@inline 6: csv2df.emitter. DatapointMaker.set_value 
                 def set_value(self, x):
-                #@inline 8: csv2df.emitter. to_float 
+                #@inline 7: csv2df.emitter. to_float 
                 def to_float(text: str, i=0):
                 #@return: to_float => 101.2
                 #@return: set_value => None
-                #@inline 7: csv2df.emitter. DatapointMaker.as_dict 
+                #@inline 6: csv2df.emitter. DatapointMaker.as_dict 
                 def as_dict(self):
-                #@inline 8: csv2df.emitter. DatapointMaker.get_date 
+                #@inline 7: csv2df.emitter. DatapointMaker.get_date 
                 def get_date(self):
                 #@return: get_date => 2017-05-31 00:00:00
                 #@return: as_dict => {'year': 2017, 'label': 'INDPR...
                 #@return: make => {'year': 2017, 'label': 'INDPR...
-                #@return: <listcomp> => [{'year': 2017, 'label': 'INDP...
                 #@return: _import => None
         #@return: __init__ => None
         dfa = emitter.get_dataframe(freq='a')

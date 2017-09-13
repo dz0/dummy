@@ -92,7 +92,7 @@ function show_inlined($container){
     var id = $container.prop('id');
     var call_id = id.substr(  "inlined_".length );
  
-    var $code = $("#code_"+call_id).first();  // take from #codes list
+    var $code = $("#codes #code_"+call_id).first();  // take from #codes list
     
     if($container.text().trim()=="") // if empty
     {
