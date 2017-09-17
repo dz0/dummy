@@ -8,7 +8,7 @@ def jqueryfy(id):
     # print("DBG: jquerify", result)
     return result
 
-def render_html(visited_lines, codes, call_map, watched_values):
+def render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec):
 
     def inlines_tpl( line_id , indent):
         if line_id not in call_map:
@@ -36,33 +36,39 @@ def render_html(visited_lines, codes, call_map, watched_values):
        
     def watches_tpl( line_id, indent ):
         watches = watched_values.get( line_id )    
-        if watches:
-            def gen_html_table( mtx ):
-                from py.xml import html
-                
-                result  = html.table(
-                    html.thead( html.tr( [html.th( x ) for x in mtx[0] ] ) ),  # header
-                    html.tbody( 
-                            *[ html.tr( [html.td( x ) for x in row] )   # rows
-                                for row in mtx[1:] ] 
-                                ),
-                    class_="fixed_headers"
-                ) 
-                # make it fixed height scrollable # https://codepen.io/tjvantoll/pen/JEKIu
-                # result = str(result) + """
-                # """
+        watches_after = watched_values_after_exec.get( line_id )    
+        def gen_html_table( mtx ):
+            from py.xml import html
+            # print("DBG genhtmltable", mtx)
+            result  = html.table(
+                html.thead( html.tr( [html.th( x ) for x in mtx[0] ] ) ),  # header
+                html.tbody( 
+                        *[ html.tr( [html.td( x ) for x in row] )   # rows
+                            for row in mtx[1:] ] 
+                            ),
+                class_="fixed_headers"
+            ) 
+            # make it fixed height scrollable # https://codepen.io/tjvantoll/pen/JEKIu
+            # result = str(result) + """
+            # """
+            return str(result) 
 
-                return result 
-                
+        container_before, container_after, toggler = "", "", ""
+        if watches:
             # watches = json.dumps( watches )
-            watches = gen_html_table( watches )
-            container = f"""<div class='watches' id='watches_{line_id}' title='watches: {line_id}' style="margin-left: {indent}ch;">{watches}</div>"""
-            toggler =   f"""<span class='toggler button watch-toggler' id='toggler_watches_{line_id}' tiltle='toggle watch'
+            # watches = gen_html_table( watches ) + "\n\n"+ gen_html_table( watches_after ) 
+            watches_before = watches = gen_html_table( watches ) 
+            container_before = f"""<div class='watches before' id='watches_before_{line_id}' title='watches before: {line_id}' style="margin-left: {indent}ch;">{watches_before}</div>"""
+        if watches_after:
+            watches_after = gen_html_table( watches_after ) 
+            container_after = f"""<div class='watches after' id='watches_after_{line_id}' title='watches after: {line_id}' style="margin-left: {indent}ch;">{watches_after}</div>"""
+        
+        if watches or watches_after:
+            toggler =   f"""<span class='toggler button watch-toggler' id='toggler_watches_{line_id}' tiltle='toggle watched expressions (before/after line execution)'
                                 onclick='toggle_watch(this)' >&#128269;</span>"""
 
-            return container, toggler
-        else:
-            return "", ""
+        return container_before, container_after, toggler
+
         
     def line_tpl(line, module_id, lineno):
         line_id =  join_ids( module_id, lineno)  
@@ -71,12 +77,13 @@ def render_html(visited_lines, codes, call_map, watched_values):
         
         indent = len(line)-len(line.lstrip())
         inlines = inlines_tpl( line_id, indent )
-        watches, watches_toggler = watches_tpl( line_id, indent )
+        watches_before, watches_after, watches_toggler = watches_tpl( line_id, indent )
         return f"""<div id='{line_id_jq}' class='line {visited}'>
-                {watches}
+                {watches_before}
                 <span class="line-code" title='{line_id}'>{line}</span>  
                 {watches_toggler} 
                 {inlines} 
+                {watches_after}
                 </div>"""
         
     def code_tpl(id, code):

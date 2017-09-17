@@ -8,6 +8,7 @@ function make_wathces_scroll_fixed_header(){
                this.querySelector("thead").style.transform = translate;
             });
         }
+
 }
 
 function init(){
@@ -50,8 +51,7 @@ function style_inlined( toggler, prop, val ){
 function toggle_watch( toggler ){ 
     
     var call_id = toggler.id.substr(  "toggler_".length );
-    var $container = $(toggler).siblings("#"+call_id).first();
-    $container.toggle();
+    $(toggler).siblings(".watches").toggle();
         
 }
     
@@ -89,6 +89,7 @@ function show_inlined($container, recurse, depth){
     }
         
     $container.show();
+    make_wathces_scroll_fixed_header();
     
     if(recurse && (depth < MAX_RECURSION_DEPTH) ){
         $togglers = $container.find(".toggler");

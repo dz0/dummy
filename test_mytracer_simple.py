@@ -9,8 +9,7 @@ if True:
         else:
             print("a <= 10")
         
-        c = C() 
-        pass #WATCH: c
+        c = C()  #WATCH_AFTER: c
         for x in range(3):
             C()
         return a
@@ -18,8 +17,7 @@ if True:
 
 def B(): 
          print("start B")
-         x = 42  
-         x = x #WATCH: x; x-10
+         x = 42 #WATCH_AFTER: x; x-10  
          u = (A(
            x=C() ,
            y=3,

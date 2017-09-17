@@ -17,7 +17,9 @@ visited_lines = [] # not to visit the same again.. ID by filnename + lineno
 visited_calls = [] # not to visit the same again.. ID by filnename + lineno
 from collections import defaultdict, OrderedDict
 call_map = defaultdict(list) # caller_lineID: [funcID1, funcID2..]
-watched_values = defaultdict(list) #OrderedDict() # key:val   will be   lineID: list of dicts 
+watched_values = defaultdict(list) #OrderedDict() # key:val   will be   lineID: table of vars
+watched_values_after_exec = defaultdict(list) 
+stack_waiting_watched_values_after_exec = [None]; #defaultdict(list) #OrderedDict() # key:val   will be   lineID: list of dicts 
 codes = {}  # codes of functions
 
 start_frame = None    
@@ -208,40 +210,62 @@ def trace_calls(frame, event, arg):
         # print(getline(filename, lineno))
         module =  "???"
 
+    def eval_watches( target_expressions, watch_timeline ):
+        """ gets watch expressions values in current frame . Appends them to given watch_timeline table/list """
+        # print("#WATCH:", target_expressions, eval(target_expressions, None, frame.f_locals ))
+            
+        line_watches = OrderedDict()
+        for target_expr in map(str.strip, target_expressions):
+            # print("DBG locals:",  frame.f_locals )
+            try:
+                line_watches[target_expr] = eval(target_expr, frame.f_globals, frame.f_locals )
+            except NameError as e:
+                print( "DBG", e, target_expr )
+                line_watches[target_expr] = str(e)
+            print("#WATCH:", target_expr, line_watches[target_expr] )
+            # print("#WATCH:", target_var, frame.f_locals[target_var]) # wouldn't allow expressions
+        
+        if not watch_timeline: # it is table with headers in first row
+            watch_timeline.append( target_expressions )
+        watch_timeline. append( list( line_watches.values() ) )
+        
+        return line_watches
 
     if event == 'line':
         log_line( frame )#, extra=f"  # line: {frame.f_lineno}, {frame.f_locals}   #module {module}" )
         
+                
         def track_watches():
-            
+            """ uses #WATCH[_AFTER] pragmas to take expression snapshots 
+            Default WATCH takes the value before line execution (default settrace behaviour)
+            WATCH_AFTER takes the value AFTER line execution (this is more robust (possibly buggy), as execution can jump into another function call before finishing)
+            """
+            ### watch after exec init  finally previous
+            waiting_watches = stack_waiting_watched_values_after_exec[-1]
+            if waiting_watches:
+                line_id, target_expressions = waiting_watches
+                eval_watches( target_expressions, watch_timeline=watched_values_after_exec[line_id] )
+                stack_waiting_watched_values_after_exec[-1] = None
+                                        
             line = getline( filename, lineno) 
+            line_id = lineID( frame )
             # target:         df = df.pivot(columns='label', values='value', index='time_index') # in emitter.py:get_dataframe(..)
-            if '#WATCH:' in  line:
 
-                # print("inspect STACK\n")
-                # print(format_inspect_stack( inspect.stack()[1:], start_frame, end_frame=frame  )   )
-
-                target_expressions = line.split('#WATCH:')[-1].strip()
-                
-                # print("#WATCH:", target_expressions, eval(target_expressions, None, frame.f_locals ))
-                
-                target_expressions = target_expressions.split(';')  # todo use AST?
-                line_watches = OrderedDict()
-                for target_expr in map(str.strip, target_expressions):
-                    # print("DBG locals:",  frame.f_locals )
-                    try:
-                        line_watches[target_expr] = eval(target_expr, frame.f_globals, frame.f_locals )
-                    except NameError as e:
-                        print( "DBG", e, target_expr )
-                        line_watches[target_expr] = str(e)
-                    print("#WATCH:", target_expr, line_watches[target_expr] )
-                    # print("#WATCH:", target_var, frame.f_locals[target_var]) # wouldn't allow expressions
-                
-                watch_table = watched_values[lineID(frame)]
-                if not watch_table:
-                    watch_table.append( target_expressions )
-                watch_table. append( list( line_watches.values() ) )
-               
+            for pragma in ['#WATCH:', '#WATCH_AFTER:' ]:
+                if pragma  in  line:
+                    target_expressions = line.split( pragma )[-1].strip()
+                    target_expressions = target_expressions.split(';')  # todo use AST?
+                    
+                    if pragma == '#WATCH:':
+                        # print("inspect STACK\n")
+                        # print(format_inspect_stack( inspect.stack()[1:], start_frame, end_frame=frame  )   )
+                        eval_watches( target_expressions, watch_timeline=watched_values[ line_id ] )
+                    
+                    if pragma == '#WATCH_AFTER:':                            
+                        ### watch after exec init
+                        stack_waiting_watched_values_after_exec[-1] = ( (lineID(frame), target_expressions) )
+           
+        
         track_watches()
         return trace_calls 
 
@@ -287,6 +311,8 @@ def trace_calls(frame, event, arg):
                 # print("DBG last_indent", last_indent, stack_output_indents)
                 orig_indent = len(header) - len(header.lstrip() )
                 stack_defs_original_indents.append( orig_indent ) 
+                
+                stack_waiting_watched_values_after_exec.append( None )
                 
                 # print("Header orig_indent", header, orig_indent)
                 header = apply_indent( header.lstrip() ) # should go here:  after  orig_indent and  before append            
@@ -340,6 +366,12 @@ def trace_calls(frame, event, arg):
                 # if stack_output_indents: stack_output_indents.pop()
                 last_indent = stack_output_indents.pop()
                 
+                waiting_watches = stack_waiting_watched_values_after_exec.pop()
+                ### watch after exec init  finally previous
+                if waiting_watches:
+                    line_id, target_expressions = waiting_watches
+                    eval_watches( target_expressions, watch_timeline=watched_values_after_exec[line_id] )
+                
                 # last_indent = stack_output_indents[-1]
                 
             depth -= 1
@@ -390,4 +422,4 @@ if __name__=="__main__":
         mytracer_render.SEP_4ID = SEP_4ID
         mytracer_render.join_ids = join_ids
         
-        mytracer_render.render_html(visited_lines, codes, call_map, watched_values)
+        mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec)
