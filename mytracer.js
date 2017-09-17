@@ -1,4 +1,38 @@
+function make_wathces_scroll_fixed_header(){
 
+        //  https://stackoverflow.com/a/25902860/4217317
+        var tables = document.getElementsByClassName("watches")
+        for (var i = 0; i < tables.length; i++) {
+            tables[i].addEventListener("scroll",function(){
+               var translate = "translate(0,"+this.scrollTop+"px)";
+               this.querySelector("thead").style.transform = translate;
+            });
+        }
+}
+
+function init(){
+    
+   // jQuery methods go here...
+   $(".inlined").hide();
+   
+   $first_code =  $("#codes .code").first();
+    
+   $("#trace").prepend( $first_code.html() );
+   make_wathces_scroll_fixed_header();
+
+   // $(".line.visited .line-code").each(
+        // function(){  
+            // var title = $(this).parent().prop('id');
+            // this.title = title;
+    // });
+
+   // $(".toggler").each(
+        // function(){  
+            // call_id = this.id.substr(  "toggler_".length );
+            // this.title = call_id;
+    // });
+   
+}
 
 function get_inlined_jq( toggler ){
         var id = toggler.id;
@@ -13,12 +47,24 @@ function style_inlined( toggler, prop, val ){
     $target.css( prop, val );
 }
 
+function toggle_watch( toggler ){ 
+    
+    var call_id = toggler.id.substr(  "toggler_".length );
+    var $container = $(toggler).siblings("#"+call_id).first();
+    $container.toggle();
+        
+}
+    
 function smart_toggle( toggler ){
 
         toggler = (typeof toggler !== 'undefined') ?  toggler : this;   // defaults to "this" -- element calling the function
         
         $target = get_inlined_jq(toggler);
-        if ($target.is(":visible")) $target.hide();
+        if ($target.is(":visible")) {
+            $target.hide();
+            $(toggler).addClass("closed").removeClass("opened");
+            
+        }
         else show_inlined($target);
     
 }
@@ -32,6 +78,7 @@ function show_inlined($container, recurse, depth){
     
     var id = $container.prop('id');
     var call_id = id.substr(  "inlined_".length );
+    var $toggler = $container.siblings("#toggler_"+call_id).first().removeClass('closed').addClass('opened');
  
     var $code = $("#codes #code_"+call_id).first();  // take from #codes list
     

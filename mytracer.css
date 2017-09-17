@@ -1,8 +1,21 @@
 .toggler {cursor: pointer}
+.toggler.closed { background-color: transparent } 
+.toggler.opened { background-color: yellow } 
 .line.visited {background: rgba(255,255,0,0.1); }
 .inlined { border:1px silver solid; }
 .code { font-family: monospace;  }
 .line-code { font-family: monospace;  white-space: pre;}
+
+.watches {  background: white ; 
+            border: 1px dotted green;
+            overflow-y: auto;
+            position: relative;
+            max-height: 100px;
+/*
+            display: none;
+*/
+            }
+watch-toggler { background-color: lightgreen }
 
 .button{
     display: inline-block;
@@ -17,5 +30,11 @@
 }
 
 .button:hover{
+/*
     background: white;
+*/
 }
+
+
+/************* table for watches  ************/
+/* https://stackoverflow.com/a/25902860/4217317 */

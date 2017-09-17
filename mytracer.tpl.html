@@ -8,30 +8,7 @@
 
 <script>
 
-$(document).ready(function(){
-
-    
-   // jQuery methods go here...
-   $(".inlined").hide();
-   
-   $first_code =  $("#codes .code").first();
-    
-   $("#trace").prepend( $first_code.html() );
-   
-
-   $(".line.visited .line-code").each(
-        function(){  
-            var title = $(this).parent().prop('id');
-            this.title = title;
-    });
-
-   $(".toggler").each(
-        function(){  
-            call_id = this.id.substr(  "toggler_".length );
-            this.title = call_id;
-    });
-   
-});
+$(document).ready( init );
 
 
 

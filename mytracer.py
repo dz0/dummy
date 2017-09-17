@@ -17,7 +17,7 @@ visited_lines = [] # not to visit the same again.. ID by filnename + lineno
 visited_calls = [] # not to visit the same again.. ID by filnename + lineno
 from collections import defaultdict, OrderedDict
 call_map = defaultdict(list) # caller_lineID: [funcID1, funcID2..]
-traced_values = OrderedDict()
+watched_values = defaultdict(list) #OrderedDict() # key:val   will be   lineID: list of dicts 
 codes = {}  # codes of functions
 
 start_frame = None    
@@ -37,7 +37,7 @@ def moduleID(frame):  # more readable than fileID
 SEP_4ID = "-"  # separator (or joiner) for ID (module to function or so)
 def join_ids( *args ):
     result = SEP_4ID.join( map(str, args))
-    result = result.replace('.', '_' ) # for jquery, not to confuse '.' with classname 
+    # result = result.replace('.', '_' ) # for jquery, not to confuse '.' with classname -- refactored to use jquerify
     return result 
     
 def lineID(frame):
@@ -111,6 +111,8 @@ def get_file_pySource(path):
             pySource_cache[path] = py.code.Source( f.read() )
     return pySource_cache[path]
 
+def log(*args, **vars):
+    print(*args, **vars)
     
 def log_line(frame, extra=""):
     lineno = frame.f_lineno
@@ -139,7 +141,7 @@ def log_line(frame, extra=""):
             
 
         line = line.rstrip('\n') +extra
-        print( line )
+        log( line )
         
     visited_lines.append( id ) # TODO: maybe log only once? or make ordered dict?
 
@@ -166,8 +168,8 @@ def get_qualname(frame):
             return None
     classname = get_class_name( frame ) 
     funcname = frame.f_code.co_name
-    if funcname in ["<lambda>", "<listcomp>", "<genexpr>"]:  #https://github.com/gak/pycallgraph/issues/156
-        funcname = funcname[1:-1] + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
+    if funcname in ["<lambda>", "<genexpr>", "<listcomp>", "<dictcomp>", "<setcomp>" ]:  #https://github.com/gak/pycallgraph/issues/156
+        funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
         
     
     if classname:
@@ -195,7 +197,7 @@ def trace_calls(frame, event, arg):
     co = frame.f_code
     func_name = co.co_name
     func_line_no = lineno = frame.f_lineno
-    func_filename = filename = co.co_filename
+    filename = co.co_filename
     
     try:
         module = inspect.getmodule( frame.f_code )
@@ -210,28 +212,40 @@ def trace_calls(frame, event, arg):
     if event == 'line':
         log_line( frame )#, extra=f"  # line: {frame.f_lineno}, {frame.f_locals}   #module {module}" )
         
-        return trace_calls #FIXME
-        """
-        line = getline( filename, line_no) 
-        # target:         df = df.pivot(columns='label', values='value', index='time_index') # in emitter.py:get_dataframe(..)
-        if '# TRACE:' in  line:
-            print ("!!!", line)
+        def track_watches():
             
+            line = getline( filename, lineno) 
+            # target:         df = df.pivot(columns='label', values='value', index='time_index') # in emitter.py:get_dataframe(..)
+            if '#WATCH:' in  line:
 
-            print("inspect STACK\n")
-            print(format_inspect_stack( inspect.stack()[1:], start_frame, end_frame=frame  )   )
+                # print("inspect STACK\n")
+                # print(format_inspect_stack( inspect.stack()[1:], start_frame, end_frame=frame  )   )
 
-            target_vars = line.split('# TRACE:')[-1].strip()
-            
-            # print("TRACEVAR:", target_vars, eval(target_vars, None, frame.f_locals ))
-            
-            target_vars = target_vars.split(',') 
-            for target_var in map(str.strip, target_vars):
-                # print("TRACEVAR:", target_var, frame.f_locals[target_var])
-                print("TRACEVAR:", target_var, eval(target_var, frame.f_globals, frame.f_locals ) )
-         """   
+                target_expressions = line.split('#WATCH:')[-1].strip()
+                
+                # print("#WATCH:", target_expressions, eval(target_expressions, None, frame.f_locals ))
+                
+                target_expressions = target_expressions.split(';')  # todo use AST?
+                line_watches = OrderedDict()
+                for target_expr in map(str.strip, target_expressions):
+                    # print("DBG locals:",  frame.f_locals )
+                    try:
+                        line_watches[target_expr] = eval(target_expr, frame.f_globals, frame.f_locals )
+                    except NameError as e:
+                        print( "DBG", e, target_expr )
+                        line_watches[target_expr] = str(e)
+                    print("#WATCH:", target_expr, line_watches[target_expr] )
+                    # print("#WATCH:", target_var, frame.f_locals[target_var]) # wouldn't allow expressions
+                
+                watch_table = watched_values[lineID(frame)]
+                if not watch_table:
+                    watch_table.append( target_expressions )
+                watch_table. append( list( line_watches.values() ) )
+               
+        track_watches()
+        return trace_calls 
 
-    elif module in ["__main__", "test_mytracer"] or module and module.startswith("csv2df"):
+    elif module.startswith("test_mytracer_") or module and module.startswith("csv2df"):
     # if True:
         
         """
@@ -248,7 +262,7 @@ def trace_calls(frame, event, arg):
         """    
         
         # ignore/skip calls that are apparent (TODO think twice if something important is not lost)
-        if frame.f_code.co_name in ["<listcomp>", "<genexpr>"]:
+        if frame.f_code.co_name in ["<genexpr>", "<dictcomp>", "<setcomp>", "<listcomp>"]:
             return trace_calls
 
 
@@ -283,14 +297,14 @@ def trace_calls(frame, event, arg):
                     codes[ fID ] = inspect.getsourcelines( frame.f_code )
                 
                 
-                print( apply_indent( f"#@inline {depth}: {module}. {qualname} " ))
-                print( header )
+                log( apply_indent( f"#@inline {depth}: {module}. {qualname} " ))
+                log( header )
 
                
                 def inspect_caller(frame):
                     caller = frame.f_back
                     if caller is None:
-                        print ("DBG, strange, caller is None", frame, lineID(frame) )
+                        log ("DBG, strange, caller is None", frame, lineID(frame) )
                         return 
                     else:
                         caller_lineno = caller.f_lineno
@@ -308,7 +322,7 @@ def trace_calls(frame, event, arg):
                 
             return trace_calls
             
-        if event == 'return':
+        elif event == 'return':
             if depth < MAX_DEPTH:
                 # print (apply_indent( '#@inline_end'))
                 def head( val, cnt=30 ):
@@ -319,7 +333,7 @@ def trace_calls(frame, event, arg):
                     
                 
                 retval = arg
-                print (apply_indent( '#@return: %s => %s' % (func_name, head(retval) )))
+                log (apply_indent( '#@return: %s => %s' % (func_name, head(retval) )))
                 
                 # if stack_defs_original_indents: stack_defs_original_indents.pop()
                 stack_defs_original_indents.pop()
@@ -329,86 +343,51 @@ def trace_calls(frame, event, arg):
                 # last_indent = stack_output_indents[-1]
                 
             depth -= 1
-                             
+        
+        else:
+            print("DBG WEIRD EVENT", event, frame.f_code)
+    else:
+        print( "#DBG ignoring", event, frame)
         
      
 
-if True:
-   def A(*args, **kwargs): 
-        a = 5
-        print(
-          "A"
-          )
-        if a > 10:
-            print("a > 10")
-        else:
-            print("a <= 10")
-        
-        c = C()
-        for x in range(3):
-            C()
-        return a
-    
-if True:
-      def B(): 
-                 print("start B")
-                 x = 42  
-                 u = (A(
-                   x=C() ,
-                   y=3,
-                    z=2
-                      
-                 )
-                 )
-                
-                 print("end B")
-
-def C():
-         print("C")
-         def generator_():
-             listcomp_ = [x for x in [5, 6, 7]]
-             for a in listcomp_:
-                yield a
-
-         genexpr_ = [x for x in generator_()]
-         lambda_ = lambda x: x*x
-         
-         mapped = map(lambda_, genexpr_)
-         return 2
 
 
 if __name__=="__main__":
     # tests
     
-    import test_mytracer
+    import test_mytracer_simple
+    import test_mytracer_kep
 
     import sys
 
     # grab stdout https://stackoverflow.com/a/45567127/4217317  
     import  io
     stdout = sys.stdout
-    sys.stdout = io.StringIO()
+    # sys.stdout = io.StringIO()  # turn on buffering output to file
     sys.settrace(trace_calls)
     
     try:
         print()
         
-        # B()           
-        test_mytracer.test()
+        test_mytracer_simple.B()           
+        # test_mytracer_kep.test()
         
     finally:
-        
-        sys.settrace(None)
-        output = sys.stdout.getvalue()
-        sys.stdout = stdout
-        
-        with open('out_inlined.py', 'w') as f:
-            f.write( output )
-            # print( output )
-        
+        try:
+            sys.settrace(None)
+            output = sys.stdout.getvalue()
+            sys.stdout = stdout
+            
+            with open('out_inlined.py', 'w') as f:
+                f.write( output )
+                # print( output )
+        except AttributeError as e:
+            print( e )
+            
         import mytracer_render 
         # monkeypach inject some stuff
         mytracer_render.SEP_4ID = SEP_4ID
         mytracer_render.join_ids = join_ids
         
-        mytracer_render.render_html(visited_lines, codes, call_map, traced_values)
+        mytracer_render.render_html(visited_lines, codes, call_map, watched_values)
