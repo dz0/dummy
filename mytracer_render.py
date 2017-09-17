@@ -19,16 +19,21 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
         inline_containers = []
         for code_id in calls:  
             code_id_jq = jqueryfy(code_id)
-            toggler_html = f"""
+            toggler = f"""
                             <span class='toggler button' id='toggler_{code_id_jq}' tiltle='{code_id}'
                                 onclick='smart_toggle(this)' 
                                 onmouseover='style_inlined(this, "border-width", "3px")' 
                                 onmouseout='style_inlined(this, "border-width", "1px")'>&#8597;</span>"""
-            inline_container_html = f"""<div class='inlined' id='inlined_{code_id_jq}' style="margin-left: {indent}ch;"></div>"""
+            inline_container = f"""<div class='inlined' id='inlined_{code_id_jq}' style="margin-left: {indent}ch;"></div>"""
             
-            togglers.append( toggler_html )
-            inline_containers.append( inline_container_html )
+            togglers.append( toggler )
+            inline_containers.append( inline_container )
         
+        # if togglers:
+            # toggler_show_all = f"""<span class='toggler button' id='toggler_show_all_recursively_{code_id_jq}' tiltle='expand all calls (recursively)'
+                                # onclick='show_all_recursively(this)' """
+            # togglers.append( toggler_show_all )
+            
         return ('\n'.join(togglers) + 
                 '\n\n' +
                 '\n'.join(inline_containers) 

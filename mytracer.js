@@ -14,7 +14,7 @@ function make_wathces_scroll_fixed_header(){
 function init(){
     
    // jQuery methods go here...
-   $(".inlined").hide();
+   // $(".inlined").hide();
    
    $first_code =  $("#codes .code").first();
     
@@ -66,7 +66,14 @@ function smart_toggle( toggler ){
             
         }
         else show_inlined($target);
-    
+}
+
+function show_all_recursively( toggler ){
+
+    // get corresponding inlined containers
+    $(toggler).siblings(".inlined").each( function(){
+        show_inlined( $(this), true );
+    });
 }
 
 MAX_RECURSION_DEPTH = 3;
@@ -77,6 +84,13 @@ function show_inlined($container, recurse, depth){
     depth = (typeof depth !== 'undefined') ?  depth : 0; // default
     
     var id = $container.prop('id');
+    
+    // if (typeof id !== 'undefined'){ // if we don't find valid container
+        // console.log( "show all found container with no id", $container);
+        // return;
+    // }
+        
+        
     var call_id = id.substr(  "inlined_".length );
     var $toggler = $container.siblings("#toggler_"+call_id).first().removeClass('closed').addClass('opened');
  
