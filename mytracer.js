@@ -68,19 +68,19 @@ function smart_toggle( toggler ){
         else show_inlined($target);
 }
 
-function show_all_recursively( toggler ){
+function expand_all_recursively( expander ){
 
     // get corresponding inlined containers
-    $(toggler).siblings(".inlined").each( function(){
+    $(expander).siblings(".inlined").each( function(){
         show_inlined( $(this), true );
     });
 }
 
-MAX_RECURSION_DEPTH = 3;
+MAX_RECURSION_DEPTH = 7;
 
 function show_inlined($container, recurse, depth){
     
-    recurse = (typeof recurse !== 'undefined') ?  recurse : true; // default
+    recurse = (typeof recurse !== 'undefined') ?  recurse : false; // default
     depth = (typeof depth !== 'undefined') ?  depth : 0; // default
     
     var id = $container.prop('id');
@@ -106,10 +106,15 @@ function show_inlined($container, recurse, depth){
     make_wathces_scroll_fixed_header();
     
     if(recurse && (depth < MAX_RECURSION_DEPTH) ){
-        $togglers = $container.find(".toggler");
-        $togglers.each( function(){
-            $target = get_inlined_jq(this);
-            show_inlined($target, true, depth+1);
+        
+        $container.find(".inlined").each( function(){
+            show_inlined($(this), true, depth+1);
         });
+        
+        // $togglers = $container.find(".toggler");
+        // $togglers.each( function(){
+            // $target = get_inlined_jq(this);
+            // show_inlined($target, true, depth+1);
+        // });
     }
 }

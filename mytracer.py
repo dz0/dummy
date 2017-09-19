@@ -269,7 +269,7 @@ def trace_calls(frame, event, arg):
         track_watches()
         return trace_calls 
 
-    elif module.startswith("test_mytracer_") or module and module.startswith("csv2df"):
+    elif module and module.startswith("test_mytracer_") or module and module.startswith("csv2df"):
     # if True:
         
         """
@@ -402,8 +402,8 @@ if __name__=="__main__":
     try:
         print()
         
-        test_mytracer_simple.B()           
-        # test_mytracer_kep.test()
+        # test_mytracer_simple.B()           
+        test_mytracer_kep.test()
         
     finally:
         try:

@@ -29,10 +29,10 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             togglers.append( toggler )
             inline_containers.append( inline_container )
         
-        # if togglers:
-            # toggler_show_all = f"""<span class='toggler button' id='toggler_show_all_recursively_{code_id_jq}' tiltle='expand all calls (recursively)'
-                                # onclick='show_all_recursively(this)' """
-            # togglers.append( toggler_show_all )
+        if togglers:
+            expand_all = f"""<span class='expander button' id='expand_all_recursively_{code_id_jq}' tiltle='expand all calls (recursively)'
+                                onclick='expand_all_recursively(this)'>&#8609;</span> """
+            togglers.append( expand_all )
             
         return ('\n'.join(togglers) + 
                 '\n\n' +
@@ -69,7 +69,7 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             container_after = f"""<div class='watches after' id='watches_after_{line_id}' title='watches after: {line_id}' style="margin-left: {indent}ch;">{watches_after}</div>"""
         
         if watches or watches_after:
-            toggler =   f"""<span class='toggler button watch-toggler' id='toggler_watches_{line_id}' tiltle='toggle watched expressions (before/after line execution)'
+            toggler =   f"""<span class='button watch-toggler' id='toggler_watches_{line_id}' tiltle='toggle watched expressions (before/after line execution)'
                                 onclick='toggle_watch(this)' >&#128269;</span>"""
 
         return container_before, container_after, toggler

@@ -1,8 +1,9 @@
-.toggler {cursor: pointer}
-.toggler.closed { background-color: transparent } 
-.toggler.opened { background-color: yellow } 
+
+.expander { width:15px; text-align: center; }
 .line.visited {background: rgba(255,255,0,0.1); }
-.inlined { border:1px silver solid; }
+.inlined { display:none; 
+           border:1px silver solid; 
+           }
 .code { font-family: monospace;  }
 .line-code { font-family: monospace;  white-space: pre;}
 
@@ -10,10 +11,10 @@
             border: 1px dotted green;
             overflow-y: auto;
             position: relative;
-            max-height: 100px;
-            display: none;
+            height: 80px;
+            display: block;
+            resize: both;
             }
-watch-toggler { background-color: lightgreen }
 
 .button{
     display: inline-block;
@@ -32,6 +33,10 @@ watch-toggler { background-color: lightgreen }
     background: white;
 */
 }
+
+.watch-toggler { background-color: lightgreen }
+.toggler, .toggler.closed { background-color: yellow;  } 
+.toggler.opened { background-color: transparent;  } 
 
 
 /************* table for watches  ************/
