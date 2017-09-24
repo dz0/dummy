@@ -3,6 +3,8 @@ import sys
 import inspect
 import linecache
 import py
+# from mytracer_config import decide_to_trace_call, inject_watch_pragma
+import mytracer_config
 
 ### GLOBALS
 stack_defs_original_indents = []
@@ -32,8 +34,16 @@ def fileID(frame):
     return filename
     
 def moduleID(frame):  # more readable than fileID
-    module = inspect.getmodule( frame.f_code )
-    module = module and module.__name__ 
+    
+    try:
+        module = inspect.getmodule( frame.f_code )
+        module = module and module.__name__ 
+    except Exception as e:
+        print("ERROR, no module in frame", e, frame)
+        print("...", frame.f_code.co_filename, frame.f_lineno)
+        # print(getline(filename, lineno))
+        module =  None
+    
     return module
     
 SEP_4ID = "-"  # separator (or joiner) for ID (module to function or so)
@@ -42,14 +52,18 @@ def join_ids( *args ):
     # result = result.replace('.', '_' ) # for jquery, not to confuse '.' with classname -- refactored to use jquerify
     return result 
     
+def lineID_from_parts(module_id, code_name, lineno):
+    return join_ids(module_id, code_name, lineno)
+    
 def lineID(frame):
     lineno = frame.f_lineno
-    return join_ids(moduleID(frame), lineno)  # to be suitable for HTML DOM ID
+    # return join_ids(moduleID(frame), lineno)  # to be suitable for HTML DOM ID
+    return lineID_from_parts( moduleID(frame), frame.f_code.co_name, lineno )  # to be suitable for HTML DOM ID
     # return (moduleID(frame), lineno)
     # return (fileID(frame), lineno)
     
 def funcID(frame):
-    qualname = get_qualname(frame)
+    qualname = func_qualname(frame)
     module = moduleID(frame)
     return join_ids(module, qualname) #  to be suitable for HTML DOM ID
     # return (module, qualname)
@@ -160,7 +174,7 @@ def get_func_header(frame):
     return header
 
 
-def get_qualname(frame):
+def func_qualname(frame):
     
     # https://stackoverflow.com/a/2544639/4217317
     def get_class_name(f):
@@ -171,7 +185,9 @@ def get_qualname(frame):
     classname = get_class_name( frame ) 
     funcname = frame.f_code.co_name
     if funcname in ["<lambda>", "<genexpr>", "<listcomp>", "<dictcomp>", "<setcomp>" ]:  #https://github.com/gak/pycallgraph/issues/156
-        funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
+        funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ str(frame.f_lineno)
+        # funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
+        # funcname = lineID(frame)
         
     
     if classname:
@@ -201,14 +217,7 @@ def trace_calls(frame, event, arg):
     func_line_no = lineno = frame.f_lineno
     filename = co.co_filename
     
-    try:
-        module = inspect.getmodule( frame.f_code )
-        module = module and module.__name__ 
-    except Exception as e:
-        print("no module here", e, frame)
-        print(filename, lineno)
-        # print(getline(filename, lineno))
-        module =  "???"
+    module = moduleID(frame)
 
     def eval_watches( target_expressions, watch_timeline ):
         """ gets watch expressions values in current frame . Appends them to given watch_timeline table/list """
@@ -218,6 +227,7 @@ def trace_calls(frame, event, arg):
         for target_expr in map(str.strip, target_expressions):
             # print("DBG locals:",  frame.f_locals )
             try:
+                frame.f_globals.update( dict(html=py.xml.html) )
                 line_watches[target_expr] = eval(target_expr, frame.f_globals, frame.f_locals )
             except NameError as e:
                 print( "DBG", e, target_expr )
@@ -248,6 +258,8 @@ def trace_calls(frame, event, arg):
                 stack_waiting_watched_values_after_exec[-1] = None
                                         
             line = getline( filename, lineno) 
+            line = mytracer_config.inject_watch_pragma( line, frame  ) # do WATCH INJECTION - a way to ask to watch something without touching target code
+            
             line_id = lineID( frame )
             # target:         df = df.pivot(columns='label', values='value', index='time_index') # in emitter.py:get_dataframe(..)
 
@@ -269,7 +281,7 @@ def trace_calls(frame, event, arg):
         track_watches()
         return trace_calls 
 
-    elif module and module.startswith("test_mytracer_") or module and module.startswith("csv2df"):
+    elif mytracer_config.decide_to_trace_call(frame):
     # if True:
         
         """
@@ -316,7 +328,7 @@ def trace_calls(frame, event, arg):
                 
                 # print("Header orig_indent", header, orig_indent)
                 header = apply_indent( header.lstrip() ) # should go here:  after  orig_indent and  before append            
-                qualname = get_qualname(frame)
+                qualname = func_qualname(frame)
                 fID = funcID( frame )
                     
                 if not fID in codes:
@@ -379,7 +391,8 @@ def trace_calls(frame, event, arg):
         else:
             print("DBG WEIRD EVENT", event, frame.f_code)
     else:
-        print( "#DBG ignoring", event, frame)
+        mytracer_config.other_cases( frame, event, arg )
+        # print( "#DBG ignoring", event, lineID(frame) )
         
      
 
@@ -421,5 +434,6 @@ if __name__=="__main__":
         # monkeypach inject some stuff
         mytracer_render.SEP_4ID = SEP_4ID
         mytracer_render.join_ids = join_ids
+        mytracer_render.lineID_from_parts = lineID_from_parts
         
         mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec)

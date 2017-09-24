@@ -1,4 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
+<meta charset="utf-8" />
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="mytracer.js"></script>
@@ -8,9 +12,11 @@
 
 <script>
 
+// uniquines of doc for state saving (in localstorage)....
+doc_id = "{{doc_id}}";      
+timestamp = "{{timestamp}}";
+
 $(document).ready( init );
-
-
 
 </script>
 
@@ -19,29 +25,33 @@ $(document).ready( init );
 <body>
 
 
+<input type="button" value="Save state" onclick="save_expanded_tree_state()" />
+<input type="button" value="Load" onclick="load_expanded_tree_state()" />
 
 <h2>Trace:</h2>
-<div id="trace" class="code">
+<div id="trace">
+    <div id="entering-call" class="code">
 
 
 
-<!--tests-->
+    <!--tests-->
 
-<!--
-    <span class="line">bla bla
-    </span>
+    <!--
+        <span class="line">bla bla
+        </span>
 
-    <span class="line calee" id="lineID_mymodule_123">boo boo 
-    <span class="toggler" id="toggler_X">*</span> 
-    <span class="toggler" id="toggler_____main__-Z">*</span>
-    <span class="toggler" id="toggler_Y">*</span> 
+        <span class="line calee" id="lineID_mymodule_123">boo boo 
+        <span class="toggler" id="toggler_X">*</span> 
+        <span class="toggler" id="toggler_____main__-Z">*</span>
+        <span class="toggler" id="toggler_Y">*</span> 
 
-    <span class="inlined" id="inlined_____main__-Z"></span>
-    <span class="inlined" id="inlined_X"></span>
-    <span class="inlined" id="inlined_Y">.Y.</span>
-    </span>
--->
+        <span class="inlined" id="inlined_____main__-Z"></span>
+        <span class="inlined" id="inlined_X"></span>
+        <span class="inlined" id="inlined_Y">.Y.</span>
+        </span>
+    -->
 
+    </div>
 </div>
 
 
@@ -71,4 +81,10 @@ $(document).ready( init );
 </pre>
 -->
 
+<div class="tooltip"> 
+<!-- https://stackoverflow.com/a/39362586/4217317 -->
+   
+</div>
+
 </body>
+</html>

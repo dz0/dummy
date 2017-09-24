@@ -20,18 +20,16 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
         for code_id in calls:  
             code_id_jq = jqueryfy(code_id)
             toggler = f"""
-                            <span class='toggler button' id='toggler_{code_id_jq}' tiltle='{code_id}'
-                                onclick='smart_toggle(this)' 
-                                onmouseover='style_inlined(this, "border-width", "3px")' 
-                                onmouseout='style_inlined(this, "border-width", "1px")'>&#8597;</span>"""
+                            <span class='toggler button' id='toggler_{code_id_jq}' title='toggle inlined: {code_id}'
+                                onclick='smart_toggle(this)' >&#8597;</span>"""
             inline_container = f"""<div class='inlined' id='inlined_{code_id_jq}' style="margin-left: {indent}ch;"></div>"""
             
             togglers.append( toggler )
             inline_containers.append( inline_container )
         
         if togglers:
-            expand_all = f"""<span class='expander button' id='expand_all_recursively_{code_id_jq}' tiltle='expand all calls (recursively)'
-                                onclick='expand_all_recursively(this)'>&#8609;</span> """
+            expand_all = f"""<span class='toggler recursive button closed' id='toggle_all_recursively_{code_id_jq}' title='expand/toggle all calls (recursively)'
+                                onclick='toggle_all_recursively(this)'>&#8597;&#8597;&#8597;</span> """
             togglers.append( expand_all )
             
         return ('\n'.join(togglers) + 
@@ -69,21 +67,22 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             container_after = f"""<div class='watches after' id='watches_after_{line_id}' title='watches after: {line_id}' style="margin-left: {indent}ch;">{watches_after}</div>"""
         
         if watches or watches_after:
-            toggler =   f"""<span class='button watch-toggler' id='toggler_watches_{line_id}' tiltle='toggle watched expressions (before/after line execution)'
+            toggler =   f"""<span class='button watch-toggler' id='toggler_watches_{line_id}' title='toggle watched expressions (before/after line execution)'
                                 onclick='toggle_watch(this)' >&#128269;</span>"""
 
         return container_before, container_after, toggler
 
         
-    def line_tpl(line, module_id, lineno):
-        line_id =  join_ids( module_id, lineno)  
+    def line_tpl(line, line_id, is_func_header=False):
         line_id_jq = jqueryfy(line_id)
         visited = "visited" if line_id in visited_lines  else ""
+        caller = "caller" if line_id in call_map  else ""
+        func_header = "func-header" if is_func_header  else ""
         
         indent = len(line)-len(line.lstrip())
         inlines = inlines_tpl( line_id, indent )
         watches_before, watches_after, watches_toggler = watches_tpl( line_id, indent )
-        return f"""<div id='{line_id_jq}' class='line {visited}'>
+        return f"""<div id='{line_id_jq}' class='line {visited} {caller} {func_header}'>
                 {watches_before}
                 <span class="line-code" title='{line_id}'>{line}</span>  
                 {watches_toggler} 
@@ -94,7 +93,10 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
     def code_tpl(id, code):
         """code is inspect.sourcelines"""
         lines, start_lineno = code
-        module_id = id.split(SEP_4ID)[0]
+        # code_id = id
+        # print("DBG ID", id)
+        module_id, func_qualname = id.split(SEP_4ID)
+        func_name = func_qualname.split('.')[-1]
         id_jq = jqueryfy( id )
         
         def syntax_highlight(src):
@@ -106,8 +108,8 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             result = highlight(src, PythonLexer(encoding="utf-8"), formatter)
             
             # remove: <div class="code"><pre> and corresponding endings
-            start = '<div class="code"><pre>'
-            start = '</div></pre>'
+            # start = '<div class="code"><pre>'
+            # finish = '</div></pre>'
             
             return result
 
@@ -127,8 +129,27 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             lines[0] = lines[0].rstrip('\n') + "     # "+id +'\n' # inject comment about it's origin
         lines = dedent_and_highlight(lines) 
         
-        html_lines = [line_tpl(x, module_id, start_lineno+nr ) for nr, x in enumerate(lines) ]
-        html_code = ''.join( html_lines )
+        # https://en.wikipedia.org/wiki/Template:Unicode_chart_Arrows
+        mini_controlls_panel = """
+                        <div class="mini_controlls_panel">
+                            <span class="show-stack-path button" title="show call stack"> ⇶ </span> 
+                            <span class="toggle-code button" title="toggle code locally"> ↕ </span> 
+                            <span class="toggle-noncall-lines button" title="toggle non calling lines"> ⇢ </span> 
+                        </div>
+                        """
+        
+        def find_header_nr(lines):
+            for nr, line in enumerate(lines):
+                if ":" in line: 
+                    return nr 
+        
+        header_nr = find_header_nr(lines)
+        html_lines = [line_tpl(x, 
+                            line_id=lineID_from_parts(module_id, func_name, start_lineno+nr), 
+                            is_func_header=  nr<=header_nr ) 
+                            for nr, x in enumerate(lines) ]
+        
+        html_code = mini_controlls_panel + ''.join( html_lines )
         return f"""
     <h4>{id}</h4>
     <div id='code_{id_jq}' class='code'>
@@ -142,10 +163,14 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
 
             
     html = open('mytracer.tpl.html').read()
-    html = html.replace("{{visited_lines}}", str(visited_lines) )
     html = html.replace("{{codes}}", str(codes_html) )
-
-    html = html.replace("{{call_map}}", json.dumps(call_map, indent=4) )
+    
+    # html = html.replace("{{visited_lines}}", str(visited_lines) )  # FIXME: deprecated?
+    # html = html.replace("{{call_map}}", json.dumps(call_map, indent=4) )
+    
+    from datetime import datetime as dt
+    html = html.replace("{{timestamp}}", str(dt.now() ) )  # use timestamp 
+    html = html.replace("{{doc_id}}", str( list(codes.keys())[0] ))  # entering-call id
     
     with open('mytracer.html', 'w') as f:
         f.write( html )
