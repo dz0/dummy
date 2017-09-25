@@ -31,12 +31,13 @@ def B():
 def C():
          print("C")
          def generator_():
-             listcomp_ = [x for x in [5, 6, 7]]
-             for a in listcomp_:
+             genexpr_ = (x for x in [5, 6, 7])
+             for a in genexpr_:
                 yield a #WATCH: a; a*2
 
-         genexpr_ = [x for x in generator_()]
+         listcomp_ = [ x for x in generator_()  ]
          lambda_ = lambda x: x*x
          
-         mapped = map(lambda_, genexpr_)
+         mapped = map(lambda_, listcomp_) 
+         list(mapped)  # to activate lazy mapping
          return 2

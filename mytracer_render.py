@@ -135,6 +135,7 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
                             <span class="show-stack-path button" title="show call stack"> ⇶ </span> 
                             <span class="toggle-code button" title="toggle code locally"> ↕ </span> 
                             <span class="toggle-noncall-lines button" title="toggle non calling lines"> ⇢ </span> 
+                            <span class="toggle-watches button" title="toggle watches"> 🔍 </span> 
                         </div>
                         """
         

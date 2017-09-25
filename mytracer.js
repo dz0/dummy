@@ -37,9 +37,10 @@ function init_4_new_expanded_stuff(){
             // this.title = call_id;
     // });
     
-    $(".toggle-code").off("click").on("click", function(event) { $(this).parent().siblings(".line").toggle(); });
+    $(".toggle-code").off("click").on("click", function(event) { $(this).parent().siblings(".line").toggle(); });  // .not('.func-header') ?
     
     $(".toggle-noncall-lines").off("click").on("click", function(event) { $(this).parents('.code').first().find(".line ").not('.caller').not('.func-header').toggle(); });
+    $(".toggle-watches").off("click").on("click", function(event) { $(this).parents('.code').first().find(".watches ").toggle(); });
     
     $(".toggler").off("mouseover").on("mouseover", 
         function(event) { style_inlined(this, "border-width", "3px");  });

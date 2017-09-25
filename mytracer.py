@@ -3,8 +3,6 @@ import sys
 import inspect
 import linecache
 import py
-# from mytracer_config import decide_to_trace_call, inject_watch_pragma
-import mytracer_config
 
 ### GLOBALS
 stack_defs_original_indents = []
@@ -14,6 +12,7 @@ last_indent = 0
 
 depth = 0
 MAX_DEPTH = 30
+BUFFER_STDOUT = True
 
 visited_lines = [] # not to visit the same again.. ID by filnename + lineno
 visited_calls = [] # not to visit the same again.. ID by filnename + lineno
@@ -185,6 +184,7 @@ def func_qualname(frame):
     classname = get_class_name( frame ) 
     funcname = frame.f_code.co_name
     if funcname in ["<lambda>", "<genexpr>", "<listcomp>", "<dictcomp>", "<setcomp>" ]:  #https://github.com/gak/pycallgraph/issues/156
+        funcname = funcname.replace("<", "[").replace(">", "]") 
         funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ str(frame.f_lineno)
         # funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
         # funcname = lineID(frame)
@@ -229,7 +229,8 @@ def trace_calls(frame, event, arg):
             try:
                 frame.f_globals.update( dict(html=py.xml.html) )
                 line_watches[target_expr] = eval(target_expr, frame.f_globals, frame.f_locals )
-            except NameError as e:
+            # except NameError as e:
+            except Exception as e:
                 print( "DBG", e, target_expr )
                 line_watches[target_expr] = str(e)
             print("#WATCH:", target_expr, line_watches[target_expr] )
@@ -258,7 +259,7 @@ def trace_calls(frame, event, arg):
                 stack_waiting_watched_values_after_exec[-1] = None
                                         
             line = getline( filename, lineno) 
-            line = mytracer_config.inject_watch_pragma( line, frame  ) # do WATCH INJECTION - a way to ask to watch something without touching target code
+            line = inject_watch_pragma( line, frame  ) # do WATCH INJECTION - a way to ask to watch something without touching target code
             
             line_id = lineID( frame )
             # target:         df = df.pivot(columns='label', values='value', index='time_index') # in emitter.py:get_dataframe(..)
@@ -281,7 +282,7 @@ def trace_calls(frame, event, arg):
         track_watches()
         return trace_calls 
 
-    elif mytracer_config.decide_to_trace_call(frame):
+    elif decide_to_trace_call(frame):
     # if True:
         
         """
@@ -297,10 +298,7 @@ def trace_calls(frame, event, arg):
             visited_calls.append( lineID(frame)  )  # now this includes returns as well...
         """    
         
-        # ignore/skip calls that are apparent (TODO think twice if something important is not lost)
-        if frame.f_code.co_name in ["<genexpr>", "<dictcomp>", "<setcomp>", "<listcomp>"]:
-            return trace_calls
-
+    
 
         global depth
         
@@ -391,49 +389,114 @@ def trace_calls(frame, event, arg):
         else:
             print("DBG WEIRD EVENT", event, frame.f_code)
     else:
-        mytracer_config.other_cases( frame, event, arg )
+        other_cases( frame, event, arg )
         # print( "#DBG ignoring", event, lineID(frame) )
         
      
+############# HOOKS (for overriding) #############
+def decide_to_trace_call(frame):
+    """ decides if call is needed to be traced. could be based on module/function name or line analysis """
+    
+    # ignore/skip calls that are apparent (TODO think twice if something important is not lost)
+    if frame.f_code.co_name in ["<lambda>", "<genexpr>", "<dictcomp>", "<setcomp>", "<listcomp>"]:  # FIXME: seems, sometimes wrong def is taken for listcomp or genexp -- if it is used inside of them, example: listcomp_ = [ x for x in generator_()  ] 
+    # if frame.f_code.co_name in ["<genexpr>", "<dictcomp>", "<setcomp>", "<listcomp>"]:  # FIXME: seems, sometimes wrong def is taken for listcomp or genexp -- if it is used inside of them, example: listcomp_ = [ x for x in generator_()  ] 
+        return False
+        
+    if moduleID(frame) in [  "__main__", "mytracer" ]:
+        if frame.f_code.co_name == 'finish':
+            return False
+            
+    return True
 
 
+def inject_watch_pragma(line, frame):
+    """ a way to define what to watch  in which line -- based on  regexps 
+    uses function qualname and lineID to define line.
+    
+    and appends #WATCH[_AFTER] pragrma (before analysis/parsing of Watches takes place)"""
+        
+    return line
+    
+def other_cases( frame, event, arg ):
+    # print( "#DBG ignoring", event, lineID(frame) )
+    pass
+    
 
+# from mytracer_config import decide_to_trace_call, inject_watch_pragma
+# import mytracer_config
+# decide_to_trace_call = mytracer_config.decide_to_trace_call
+# inject_watch_pragma = mytracer_config.inject_watch_pragma
+# other_cases = mytracer_config.other_cases
+
+############# END Hooks ##################
+
+
+import sys
+
+
+from io import StringIO # grab stdout https://stackoverflow.com/a/45567127/4217317  
+
+def init():
+    """start tracing"""
+    
+    if BUFFER_STDOUT:
+        # swap stdout
+        global stdout
+        stdout = sys.stdout
+        sys.stdout = fake_stdout = StringIO()
+    
+    sys.settrace(trace_calls)
+
+def finish():
+        sys.settrace(None)
+        try:
+            output = sys.stdout.getvalue()
+                
+            if BUFFER_STDOUT:
+                sys.stdout = stdout  # return stdout
+            
+            with open('out_inlined.py', 'w') as f:
+                f.write( output )
+                print( output )
+
+        except AttributeError as e:
+            print( e )
+            
+        finally:
+            output_html()
+ 
+     
+def output_html():
+    """output after finish"""
+     
+    import mytracer_render 
+    # monkeypach inject some stuff
+    mytracer_render.SEP_4ID = SEP_4ID
+    mytracer_render.join_ids = join_ids
+    mytracer_render.lineID_from_parts = lineID_from_parts
+    
+    mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec)
+
+
+def do_trace( function ):
+
+    init()
+    
+    try:
+        print()
+        function()  # enter the CODE
+        
+    finally:
+        finish()
+   
 if __name__=="__main__":
     # tests
     
     import test_mytracer_simple
-    import test_mytracer_kep
 
-    import sys
-
-    # grab stdout https://stackoverflow.com/a/45567127/4217317  
-    import  io
-    stdout = sys.stdout
-    # sys.stdout = io.StringIO()  # turn on buffering output to file
-    sys.settrace(trace_calls)
+    def test_simple():    test_mytracer_simple.B()   
+    do_trace( test_simple  )         
     
-    try:
-        print()
-        
-        # test_mytracer_simple.B()           
-        test_mytracer_kep.test()
-        
-    finally:
-        try:
-            sys.settrace(None)
-            output = sys.stdout.getvalue()
-            sys.stdout = stdout
-            
-            with open('out_inlined.py', 'w') as f:
-                f.write( output )
-                # print( output )
-        except AttributeError as e:
-            print( e )
-            
-        import mytracer_render 
-        # monkeypach inject some stuff
-        mytracer_render.SEP_4ID = SEP_4ID
-        mytracer_render.join_ids = join_ids
-        mytracer_render.lineID_from_parts = lineID_from_parts
-        
-        mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec)
+    # import test_mytracer_kep
+    # do_trace( test_mytracer_kep.test  )         
+    
