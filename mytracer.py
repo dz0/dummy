@@ -1,4 +1,5 @@
 import sys
+import gc
 # import traceback
 import inspect
 import linecache
@@ -175,36 +176,50 @@ def get_func_header(frame):
 
 def func_qualname(frame):
     
-    # https://stackoverflow.com/a/2544639/4217317
-    def get_class_name(f):
-        try:
-            return f.f_locals['self'].__class__.__name__
-        except KeyError:
-            return None
-    classname = get_class_name( frame ) 
-    funcname = frame.f_code.co_name
-    if funcname in ["<lambda>", "<genexpr>", "<listcomp>", "<dictcomp>", "<setcomp>" ]:  #https://github.com/gak/pycallgraph/issues/156
-        funcname = funcname.replace("<", "[").replace(">", "]") 
-        funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ str(frame.f_lineno)
-        # funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
-        # funcname = lineID(frame)
+    def backward_compat_qualname(frame): 
+        # https://stackoverflow.com/a/2544639/4217317
+        def get_class_name(f):
+            try:
+                return f.f_locals['self'].__class__.__name__
+            except KeyError:
+                return None
+        classname = get_class_name( frame ) 
         
+        funcname = frame.f_code.co_name
+        if funcname in ["<lambda>", "<genexpr>", "<listcomp>", "<dictcomp>", "<setcomp>" ]:  #https://github.com/gak/pycallgraph/issues/156
+            funcname = funcname.replace("<", "[").replace(">", "]") 
+            funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ str(frame.f_lineno)
+            # funcname = funcname + '[' + hex(id(frame.f_code)) + ']' +"_"+ lineID(frame)
+            # funcname = lineID(frame)
+            
     
-    if classname:
-        return classname+'.'+funcname
-    else:
-        return funcname
-    """    
+        if classname:
+            return classname+'.'+funcname
+        else:
+            return funcname
+
     try:
-        obj = frame.f_locals['self']
+        # https://stackoverflow.com/a/45882068/4217317  
+        # similar   http://grokbase.com/t/python/python-list/1496vwcab7/qualname-in-python-3-3
+        # http://mg.pov.lt/objgraph/
+        # https://github.com/wbolster/qualname
+        fobj = next( filter(inspect.isfunction, gc.get_referrers(frame.f_code) ) ) # next instead of ..[0]
+        result = fobj.__qualname__
+        result = result.replace("<", "[").replace(">", "]")
+        return result
+        """
+        # ONLY for methods
+        obj = frame.f_locals['self']  
         func_obj = getattr(obj, frame.f_code.co_name)
         return func_obj.__qualname__
-    except (KeyError, AttributeError):
+        """
+    except (KeyError, AttributeError, IndexError):
+        
+        return backward_compat_qualname(frame)
         return None
         
     # func_obj = frame.f_globals.get(frame.f_code.co_name)
     # qualname = func_obj and func_obj.__qualname__   or ""
-    """        
 
 
 def trace_calls(frame, event, arg):

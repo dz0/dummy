@@ -14,7 +14,7 @@
 
 // uniquines of doc for state saving (in localstorage)....
 doc_id = "__main__-test_simple";      
-timestamp = "2017-09-25 19:30:52.692797";
+timestamp = "2017-09-25 22:39:44.915746";
 
 $(document).ready( init );
 
@@ -67,9 +67,9 @@ $(document).ready( init );
                             <span class="toggle-noncall-lines button" title="toggle non calling lines"> ⇢ </span> 
                             <span class="toggle-watches button" title="toggle watches"> 🔍 </span> 
                         </div>
-                        <div id='__main__-test_simple-497' class='line visited caller func-header'>
+                        <div id='__main__-test_simple-512' class='line visited caller func-header'>
                 
-                <span class="line-code" title='__main__-test_simple-497'><span class="k">def</span> <span class="nf">test_simple</span><span class="p">():</span>    <span class="n">test_mytracer_simple</span><span class="o">.</span><span class="n">B</span><span class="p">()</span>        <span class="c1"># __main__-test_simple</span></span>  
+                <span class="line-code" title='__main__-test_simple-512'><span class="k">def</span> <span class="nf">test_simple</span><span class="p">():</span>    <span class="n">test_mytracer_simple</span><span class="o">.</span><span class="n">B</span><span class="p">()</span>        <span class="c1"># __main__-test_simple</span></span>  
                  
                 
                             <span class='toggler button' id='toggler_test_mytracer_simple-B' title='toggle inlined: test_mytracer_simple-B'
@@ -79,9 +79,9 @@ $(document).ready( init );
 
 <div class='inlined' id='inlined_test_mytracer_simple-B' style="margin-left: 0ch;"></div> 
                 
-                </div><div id='__main__-test_simple-498' class='line   '>
+                </div><div id='__main__-test_simple-513' class='line   '>
                 
-                <span class="line-code" title='__main__-test_simple-498'></span>  
+                <span class="line-code" title='__main__-test_simple-513'></span>  
                  
                  
                 
@@ -107,26 +107,62 @@ $(document).ready( init );
                 
                 </div><div id='test_mytracer_simple-B-19' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-19'>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start B&quot;</span><span class="p">)</span></span>  
+                <span class="line-code" title='test_mytracer_simple-B-19'>         <span class="k">def</span> <span class="nf">bb</span><span class="p">():</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-B-20' class='line visited  '>
+                </div><div id='test_mytracer_simple-B-20' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-20'>         <span class="n">x</span> <span class="o">=</span> <span class="mi">42</span> <span class="c1">#WATCH_AFTER: x; x-10  </span></span>  
-                <span class='button watch-toggler' id='toggler_watches_test_mytracer_simple-B-20' title='toggle watched expressions (before/after line execution)'
+                <span class="line-code" title='test_mytracer_simple-B-20'>             <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#WATCH_AFTER: b</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-21' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-21'>             <span class="k">return</span> <span class="s2">&quot;test __qualname__&quot;</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-22' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-22'>             </span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-23' class='line visited caller '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-23'>         <span class="nb">print</span><span class="p">(</span> <span class="n">bb</span><span class="p">(),</span> <span class="n">bb</span><span class="o">.</span><span class="vm">__qualname__</span> <span class="p">)</span></span>  
+                 
+                
+                            <span class='toggler button' id='toggler_test_mytracer_simple-B__locals__bb' title='toggle inlined: test_mytracer_simple-B.[locals].bb'
+                                onclick='smart_toggle(this)' >&#8597;</span>
+<span class='toggler recursive button closed' id='toggle_all_recursively_test_mytracer_simple-B__locals__bb' title='expand/toggle all calls (recursively)'
+                                onclick='toggle_all_recursively(this)'>&#8597;&#8597;&#8597;</span> 
+
+<div class='inlined' id='inlined_test_mytracer_simple-B__locals__bb' style="margin-left: 9ch;"></div> 
+                
+                </div><div id='test_mytracer_simple-B-24' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-24'>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;start B&quot;</span><span class="p">)</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-25' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-25'>         <span class="n">x</span> <span class="o">=</span> <span class="mi">42</span> <span class="c1">#WATCH_AFTER: x; x-10  </span></span>  
+                <span class='button watch-toggler' id='toggler_watches_test_mytracer_simple-B-25' title='toggle watched expressions (before/after line execution)'
                                 onclick='toggle_watch(this)' >&#128269;</span> 
                  
-                <div class='watches after' id='watches_after_test_mytracer_simple-B-20' title='watches after: test_mytracer_simple-B-20' style="margin-left: 9ch;"><table class="fixed_headers"><thead><tr><th>x</th><th> x-10</th></tr></thead><tbody><tr><td>42</td><td>32</td></tr></tbody></table></div>
-                </div><div id='test_mytracer_simple-B-21' class='line visited  '>
+                <div class='watches after' id='watches_after_test_mytracer_simple-B-25' title='watches after: test_mytracer_simple-B-25' style="margin-left: 9ch;"><table class="fixed_headers"><thead><tr><th>x</th><th> x-10</th></tr></thead><tbody><tr><td>42</td><td>32</td></tr></tbody></table></div>
+                </div><div id='test_mytracer_simple-B-26' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-21'>         <span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span></span>  
+                <span class="line-code" title='test_mytracer_simple-B-26'>         <span class="n">u</span> <span class="o">=</span> <span class="p">(</span><span class="n">A</span><span class="p">(</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-B-22' class='line visited caller '>
+                </div><div id='test_mytracer_simple-B-27' class='line visited caller '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-22'>           <span class="n">x</span><span class="o">=</span><span class="n">C</span><span class="p">()</span> <span class="p">,</span></span>  
+                <span class="line-code" title='test_mytracer_simple-B-27'>           <span class="n">x</span><span class="o">=</span><span class="n">C</span><span class="p">()</span> <span class="p">,</span></span>  
                  
                 
                             <span class='toggler button' id='toggler_test_mytracer_simple-C' title='toggle inlined: test_mytracer_simple-C'
@@ -136,15 +172,15 @@ $(document).ready( init );
 
 <div class='inlined' id='inlined_test_mytracer_simple-C' style="margin-left: 11ch;"></div> 
                 
-                </div><div id='test_mytracer_simple-B-23' class='line visited  '>
+                </div><div id='test_mytracer_simple-B-28' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-23'>           <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span></span>  
+                <span class="line-code" title='test_mytracer_simple-B-28'>           <span class="n">y</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-B-24' class='line visited caller '>
+                </div><div id='test_mytracer_simple-B-29' class='line visited caller '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-24'>            <span class="n">z</span><span class="o">=</span><span class="mi">2</span></span>  
+                <span class="line-code" title='test_mytracer_simple-B-29'>            <span class="n">z</span><span class="o">=</span><span class="mi">2</span></span>  
                  
                 
                             <span class='toggler button' id='toggler_test_mytracer_simple-A' title='toggle inlined: test_mytracer_simple-A'
@@ -154,39 +190,78 @@ $(document).ready( init );
 
 <div class='inlined' id='inlined_test_mytracer_simple-A' style="margin-left: 12ch;"></div> 
                 
-                </div><div id='test_mytracer_simple-B-25' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-B-25'>              </span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-B-26' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-B-26'>         <span class="p">)</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-B-27' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-B-27'>         <span class="p">)</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-B-28' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-B-28'>        </span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-B-29' class='line visited  '>
-                
-                <span class="line-code" title='test_mytracer_simple-B-29'>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;end B&quot;</span><span class="p">)</span></span>  
-                 
-                 
-                
                 </div><div id='test_mytracer_simple-B-30' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-B-30'></span>  
+                <span class="line-code" title='test_mytracer_simple-B-30'>              </span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-31' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-31'>         <span class="p">)</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-32' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-32'>         <span class="p">)</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-33' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-33'>        </span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-34' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-34'>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;end B&quot;</span><span class="p">)</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-B-35' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-B-35'></span>  
+                 
+                 
+                
+                </div>
+    </div>
+        
+
+
+    <h4>test_mytracer_simple-B.[locals].bb</h4>
+    <div id='code_test_mytracer_simple-B__locals__bb' class='code'>
+    
+                        <div class="mini_controlls_panel">
+                            <span class="show-stack-path button" title="show call stack"> ⇶ </span> 
+                            <span class="toggle-code button" title="toggle code locally"> ↕ </span> 
+                            <span class="toggle-noncall-lines button" title="toggle non calling lines"> ⇢ </span> 
+                            <span class="toggle-watches button" title="toggle watches"> 🔍 </span> 
+                        </div>
+                        <div id='test_mytracer_simple-bb-19' class='line   func-header'>
+                
+                <span class="line-code" title='test_mytracer_simple-bb-19'><span class="k">def</span> <span class="nf">bb</span><span class="p">():</span>     <span class="c1"># test_mytracer_simple-B.[locals].bb</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-bb-20' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-bb-20'>    <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span> <span class="c1">#WATCH_AFTER: b</span></span>  
+                <span class='button watch-toggler' id='toggler_watches_test_mytracer_simple-bb-20' title='toggle watched expressions (before/after line execution)'
+                                onclick='toggle_watch(this)' >&#128269;</span> 
+                 
+                <div class='watches after' id='watches_after_test_mytracer_simple-bb-20' title='watches after: test_mytracer_simple-bb-20' style="margin-left: 4ch;"><table class="fixed_headers"><thead><tr><th>b</th></tr></thead><tbody><tr><td>10</td></tr></tbody></table></div>
+                </div><div id='test_mytracer_simple-bb-21' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-bb-21'>    <span class="k">return</span> <span class="s2">&quot;test __qualname__&quot;</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-bb-22' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-bb-22'></span>  
                  
                  
                 
@@ -204,87 +279,87 @@ $(document).ready( init );
                             <span class="toggle-noncall-lines button" title="toggle non calling lines"> ⇢ </span> 
                             <span class="toggle-watches button" title="toggle watches"> 🔍 </span> 
                         </div>
-                        <div id='test_mytracer_simple-C-31' class='line   func-header'>
+                        <div id='test_mytracer_simple-C-36' class='line   func-header'>
                 
-                <span class="line-code" title='test_mytracer_simple-C-31'><span class="k">def</span> <span class="nf">C</span><span class="p">():</span>     <span class="c1"># test_mytracer_simple-C</span></span>  
+                <span class="line-code" title='test_mytracer_simple-C-36'><span class="k">def</span> <span class="nf">C</span><span class="p">():</span>     <span class="c1"># test_mytracer_simple-C</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-C-32' class='line visited  '>
+                </div><div id='test_mytracer_simple-C-37' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-32'>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-C-33' class='line visited  '>
-                
-                <span class="line-code" title='test_mytracer_simple-C-33'>         <span class="k">def</span> <span class="nf">generator_</span><span class="p">():</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-C-34' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-C-34'>             <span class="n">genexpr_</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-C-35' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-C-35'>             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">genexpr_</span><span class="p">:</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-C-36' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-C-36'>                <span class="k">yield</span> <span class="n">a</span> <span class="c1">#WATCH: a; a*2</span></span>  
-                 
-                 
-                
-                </div><div id='test_mytracer_simple-C-37' class='line   '>
-                
-                <span class="line-code" title='test_mytracer_simple-C-37'></span>  
+                <span class="line-code" title='test_mytracer_simple-C-37'>         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;C&quot;</span><span class="p">)</span></span>  
                  
                  
                 
                 </div><div id='test_mytracer_simple-C-38' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-38'>         <span class="n">listcomp_</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">generator_</span><span class="p">()</span>  <span class="p">]</span></span>  
+                <span class="line-code" title='test_mytracer_simple-C-38'>         <span class="k">def</span> <span class="nf">generator_</span><span class="p">():</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-C-39' class='line visited  '>
+                </div><div id='test_mytracer_simple-C-39' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-39'>         <span class="n">lambda_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span></span>  
+                <span class="line-code" title='test_mytracer_simple-C-39'>             <span class="n">genexpr_</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span></span>  
                  
                  
                 
                 </div><div id='test_mytracer_simple-C-40' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-40'>         </span>  
+                <span class="line-code" title='test_mytracer_simple-C-40'>             <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">genexpr_</span><span class="p">:</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-C-41' class='line visited  '>
+                </div><div id='test_mytracer_simple-C-41' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-41'>         <span class="n">mapped</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">lambda_</span><span class="p">,</span> <span class="n">listcomp_</span><span class="p">)</span> </span>  
+                <span class="line-code" title='test_mytracer_simple-C-41'>                <span class="k">yield</span> <span class="n">a</span> <span class="c1">#WATCH: a; a*2</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-C-42' class='line visited  '>
+                </div><div id='test_mytracer_simple-C-42' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-42'>         <span class="nb">list</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span>  <span class="c1"># to activate lazy mapping</span></span>  
+                <span class="line-code" title='test_mytracer_simple-C-42'></span>  
                  
                  
                 
                 </div><div id='test_mytracer_simple-C-43' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-43'>         <span class="k">return</span> <span class="mi">2</span></span>  
+                <span class="line-code" title='test_mytracer_simple-C-43'>         <span class="n">listcomp_</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">generator_</span><span class="p">()</span>  <span class="p">]</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-C-44' class='line   '>
+                </div><div id='test_mytracer_simple-C-44' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-C-44'></span>  
+                <span class="line-code" title='test_mytracer_simple-C-44'>         <span class="n">lambda_</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-C-45' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-C-45'>         </span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-C-46' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-C-46'>         <span class="n">mapped</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">lambda_</span><span class="p">,</span> <span class="n">listcomp_</span><span class="p">)</span> </span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-C-47' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-C-47'>         <span class="nb">list</span><span class="p">(</span><span class="n">mapped</span><span class="p">)</span>  <span class="c1"># to activate lazy mapping</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-C-48' class='line visited  '>
+                
+                <span class="line-code" title='test_mytracer_simple-C-48'>         <span class="k">return</span> <span class="mi">2</span></span>  
+                 
+                 
+                
+                </div><div id='test_mytracer_simple-C-49' class='line   '>
+                
+                <span class="line-code" title='test_mytracer_simple-C-49'></span>  
                  
                  
                 
@@ -293,8 +368,8 @@ $(document).ready( init );
         
 
 
-    <h4>test_mytracer_simple-generator_</h4>
-    <div id='code_test_mytracer_simple-generator_' class='code'>
+    <h4>test_mytracer_simple-C.[locals].generator_</h4>
+    <div id='code_test_mytracer_simple-C__locals__generator_' class='code'>
     
                         <div class="mini_controlls_panel">
                             <span class="show-stack-path button" title="show call stack"> ⇶ </span> 
@@ -302,34 +377,34 @@ $(document).ready( init );
                             <span class="toggle-noncall-lines button" title="toggle non calling lines"> ⇢ </span> 
                             <span class="toggle-watches button" title="toggle watches"> 🔍 </span> 
                         </div>
-                        <div id='test_mytracer_simple-generator_-33' class='line   func-header'>
+                        <div id='test_mytracer_simple-generator_-38' class='line   func-header'>
                 
-                <span class="line-code" title='test_mytracer_simple-generator_-33'><span class="k">def</span> <span class="nf">generator_</span><span class="p">():</span>     <span class="c1"># test_mytracer_simple-generator_</span></span>  
+                <span class="line-code" title='test_mytracer_simple-generator_-38'><span class="k">def</span> <span class="nf">generator_</span><span class="p">():</span>     <span class="c1"># test_mytracer_simple-C.[locals].generator_</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-generator_-34' class='line visited  '>
+                </div><div id='test_mytracer_simple-generator_-39' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-generator_-34'>    <span class="n">genexpr_</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span></span>  
+                <span class="line-code" title='test_mytracer_simple-generator_-39'>    <span class="n">genexpr_</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-generator_-35' class='line visited  '>
+                </div><div id='test_mytracer_simple-generator_-40' class='line visited  '>
                 
-                <span class="line-code" title='test_mytracer_simple-generator_-35'>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">genexpr_</span><span class="p">:</span></span>  
+                <span class="line-code" title='test_mytracer_simple-generator_-40'>    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">genexpr_</span><span class="p">:</span></span>  
                  
                  
                 
-                </div><div id='test_mytracer_simple-generator_-36' class='line visited  '>
-                <div class='watches before' id='watches_before_test_mytracer_simple-generator_-36' title='watches before: test_mytracer_simple-generator_-36' style="margin-left: 7ch;"><table class="fixed_headers"><thead><tr><th>a</th><th> a*2</th></tr></thead><tbody><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr></tbody></table></div>
-                <span class="line-code" title='test_mytracer_simple-generator_-36'>       <span class="k">yield</span> <span class="n">a</span> <span class="c1">#WATCH: a; a*2</span></span>  
-                <span class='button watch-toggler' id='toggler_watches_test_mytracer_simple-generator_-36' title='toggle watched expressions (before/after line execution)'
+                </div><div id='test_mytracer_simple-generator_-41' class='line visited  '>
+                <div class='watches before' id='watches_before_test_mytracer_simple-generator_-41' title='watches before: test_mytracer_simple-generator_-41' style="margin-left: 7ch;"><table class="fixed_headers"><thead><tr><th>a</th><th> a*2</th></tr></thead><tbody><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr><tr><td>5</td><td>10</td></tr><tr><td>6</td><td>12</td></tr><tr><td>7</td><td>14</td></tr></tbody></table></div>
+                <span class="line-code" title='test_mytracer_simple-generator_-41'>       <span class="k">yield</span> <span class="n">a</span> <span class="c1">#WATCH: a; a*2</span></span>  
+                <span class='button watch-toggler' id='toggler_watches_test_mytracer_simple-generator_-41' title='toggle watched expressions (before/after line execution)'
                                 onclick='toggle_watch(this)' >&#128269;</span> 
                  
                 
-                </div><div id='test_mytracer_simple-generator_-37' class='line   '>
+                </div><div id='test_mytracer_simple-generator_-42' class='line   '>
                 
-                <span class="line-code" title='test_mytracer_simple-generator_-37'></span>  
+                <span class="line-code" title='test_mytracer_simple-generator_-42'></span>  
                  
                  
                 

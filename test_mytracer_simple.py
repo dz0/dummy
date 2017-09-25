@@ -16,6 +16,11 @@ if True:
     
 
 def B(): 
+         def bb():
+             b = 10 #WATCH_AFTER: b
+             return "test __qualname__"
+             
+         print( bb(), bb.__qualname__ )
          print("start B")
          x = 42 #WATCH_AFTER: x; x-10  
          u = (A(
@@ -41,3 +46,6 @@ def C():
          mapped = map(lambda_, listcomp_) 
          list(mapped)  # to activate lazy mapping
          return 2
+
+if __name__ == "__main__":
+    B()
