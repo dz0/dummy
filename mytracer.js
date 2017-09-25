@@ -1,3 +1,4 @@
+inside_recursion = false;
 MAX_RECURSION_DEPTH = 7; // for opening recursively
 MAX_SAME_CALL_AUTOOPEN = 3; // some function might be used many times -- but there is no need to autoopen all occasions (as they become apparent) 
 autoopen_callcounts = {}; // let it be global
@@ -136,7 +137,9 @@ function toggle_all_recursively( toggler ){
     }
     
     $(toggler).siblings(".inlined").each( function(){
+        inside_recursion = true;
         toggle_inlined( $(this), display , true);
+        inside_recursion = false;
     });
     
     my_classes = $(toggler).prop("class"); // mowt interesting is opened/closed
@@ -167,11 +170,12 @@ function toggle_inlined($container, display, recurse, depth){
         
     var call_id = id.substr(  "inlined_".length );
     
-    if ( get_callcount(call_id ) >= MAX_SAME_CALL_AUTOOPEN ){
-        return;
+    if (  inside_recursion ){
+        if ( get_callcount(call_id ) >= MAX_SAME_CALL_AUTOOPEN ){
+            return;
+        }
+        autoopen_callcounts[call_id]++; 
     }
-    autoopen_callcounts[call_id]++; 
-    
     
     var $code = $("#codes #code_"+call_id).first();  // take from #codes list
     
