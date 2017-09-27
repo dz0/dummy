@@ -418,9 +418,10 @@ def decide_to_trace_call(frame):
         return False
         
     if moduleID(frame) in [  "__main__", "mytracer" ]:
-        if frame.f_code.co_name == 'finish':
+        if frame.f_code.co_name in ['finish', 'do_trace'] \
+        or func_qualname(frame) == "CallTracer.__exit__":
             return False
-            
+
     return True
 
 
@@ -493,6 +494,7 @@ def output_html():
     mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec)
 
 
+
 def do_trace( function ):
 
     init()
@@ -504,14 +506,67 @@ def do_trace( function ):
     finally:
         finish()
    
+
+# refactor to use contextmanager
+import contextlib
+
+class CallTracer(contextlib.AbstractContextManager):
+    # def __init__(self):
+        # pass
+        
+    def __enter__(self):
+        init()
+        return self
+        
+        
+    def __exit__(self,  exc_type, exc_value, traceback):
+        finish()
+        
+
 if __name__=="__main__":
     # tests
     
     import test_mytracer_simple
 
-    def test_simple():    test_mytracer_simple.B()   
-    do_trace( test_simple  )         
+    with CallTracer():
+        test_mytracer_simple.B()
+        # test_mytracer_kep.test()
+        
+    # def test_simple():    test_mytracer_simple.B()   
+    # do_trace( test_simple  )         
     
     # import test_mytracer_kep
     # do_trace( test_mytracer_kep.test  )         
     
+    def test_nesting_functions_replacing_with_ref():
+        
+        nesting_sep = ".[locals]."
+        def get_parent_child(id):
+            parent, child = None, None
+            if nesting_sep in id:
+                parent, child = id.rsplit( nesting_sep, 1 )
+            return parent, child
+                
+        
+        for id, code in codes.items():
+            if not nesting_sep in id:
+                continue
+            
+            ch_lines, ch_start_nr = code # child info
+            
+            parent_id, child_name = get_parent_child( id )
+            p_lines, p_start_nr = codes[parent_id]  # parent info
+            
+            replacement_start = ch_start_nr - p_start_nr
+            replacement_end =  replacement_start + len(ch_lines)
+            
+            for i in range( replacement_start, replacement_end ):
+                p_lines[i] = child_name + " replaced:  " + p_lines[i]
+            # p_lines[ replacement_start: replacement_end+1 ] = 
+            
+            
+
+        import json
+        print("DBG Codes:\n", json.dumps( codes, indent=2) )
+
+    test_nesting_functions_replacing_with_ref()
