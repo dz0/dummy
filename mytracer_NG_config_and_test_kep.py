@@ -43,4 +43,7 @@ mytracer.inject_watch_pragma = inject_watch_pragma
 # mytracer.BUFFER_STDOUT = False
 
 import test_mytracer_kep
-mytracer.do_trace( test_mytracer_kep.test  )  
+
+# mytracer.do_trace( test_mytracer_kep.test  )  
+with mytracer.CallTracer():
+     test_mytracer_kep.test()

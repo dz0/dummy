@@ -8,8 +8,10 @@ def jqueryfy(id):
     # print("DBG: jquerify", result)
     return result
 
-def render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec):
-
+def render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec, nested_functions):
+    
+    inline_container_tpl = """<div class='inlined' id='inlined_{code_id_jq}' style="margin-left: {indent}ch;"></div>"""
+    
     def inlines_tpl( line_id , indent):
         if line_id not in call_map:
             return ""
@@ -22,7 +24,7 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             toggler = f"""
                             <span class='toggler button' id='toggler_{code_id_jq}' title='toggle inlined: {code_id}'
                                 onclick='smart_toggle(this)' >&#8597;</span>"""
-            inline_container = f"""<div class='inlined' id='inlined_{code_id_jq}' style="margin-left: {indent}ch;"></div>"""
+            inline_container = inline_container_tpl.format( code_id_jq=code_id_jq, indent=indent) 
             
             togglers.append( toggler )
             inline_containers.append( inline_container )
@@ -93,6 +95,7 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
     def code_tpl(id, code):
         """code is inspect.sourcelines"""
         lines, start_lineno = code
+        lines = lines[:]
         # code_id = id
         # print("DBG ID", id)
         module_id, func_qualname = id.split(SEP_4ID)
@@ -113,6 +116,7 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             
             return result
 
+        
         def dedent_and_highlight(lines):
             orig_code = ''.join(lines) 
             dedented_code = str( py.code.Source( orig_code) )
@@ -124,10 +128,11 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
             lines = dedented_code.split("\n") # will loose \n at the ends...
             # print( 'DBG dedent', orig_code, dedented_code, dedented_code, lines )
             return lines
-            
+        
         if "<lambda>" not in lines[0]:
             lines[0] = lines[0].rstrip('\n') + "     # "+id +'\n' # inject comment about it's origin
         lines = dedent_and_highlight(lines) 
+        
         
         # https://en.wikipedia.org/wiki/Template:Unicode_chart_Arrows
         mini_controlls_panel = """
@@ -150,6 +155,30 @@ def render_html(visited_lines, codes, call_map, watched_values, watched_values_a
                             is_func_header=  nr<=header_nr ) 
                             for nr, x in enumerate(lines) ]
         
+        def nested_functions_replace_with_refs():
+            # TODO: could run twice -- to empty lines before syntax highlight, and then to replace with ref
+            parent_id = id
+            for child_id in nested_functions[id]:
+                                    
+                start, end = nested_function_relative_range(parent_id, child_id)
+                lines[start:end] = [""]* (end-start)
+                
+                lines[start] = "REF: "+child_id
+                
+                orig_lines = code[0]
+                line = orig_lines[start]
+                indent = len(line)-len(line.lstrip())
+                code_id_jq = jqueryfy(child_id)
+                
+                inlined = inline_container_tpl.format( code_id_jq=code_id_jq, indent=indent )
+                # nested_inlined = f"""<div class='nested_function'>{inlined}</div>""" 
+                nested_inlined = inlined.replace("class='", "class='nested_function ") # FIXME: bug-prone -- injection shoud be more visible
+                # lines[start] =  nested_inlined
+                html_lines[start] =  nested_inlined
+                            
+        nested_functions_replace_with_refs()  # TODO: get inlined out of code-line span -- make it sibling..
+
+
         html_code = mini_controlls_panel + ''.join( html_lines )
         return f"""
     <h4>{id}</h4>

@@ -4,6 +4,8 @@ import gc
 import inspect
 import linecache
 import py
+from collections import defaultdict, OrderedDict
+
 
 ### GLOBALS
 stack_defs_original_indents = []
@@ -19,14 +21,14 @@ traced_steps = 0
 
 visited_lines = [] # not to visit the same again.. ID by filnename + lineno
 visited_calls = [] # not to visit the same again.. ID by filnename + lineno
-from collections import defaultdict, OrderedDict
 call_map = defaultdict(list) # caller_lineID: [funcID1, funcID2..]
 watched_values = defaultdict(list) #OrderedDict() # key:val   will be   lineID: table of vars
 watched_values_after_exec = defaultdict(list) 
 stack_waiting_watched_values_after_exec = [None]; #defaultdict(list) #OrderedDict() # key:val   will be   lineID: list of dicts 
 codes = {}  # codes of functions
 
-start_frame = None    
+
+start_frame = None    # TODO: deprecate?
 
 ### end GLOBALS
 
@@ -455,6 +457,66 @@ def other_cases( frame, event, arg ):
 
 ############# END Hooks ##################
 
+############# SOME post processing  ##################
+
+NESTING_SEP = ".[locals]."
+def get_nested_functions():
+    """
+    Helps better see watches..
+    As by default in html the watches are shown only in separately listed functions (so nested functions doesn't show watches)
+    """
+    
+    global nested_functions # will list all (first level) nested functions inside each called function
+    nested_functions = defaultdict(list) # USE: by qualname (in codes id) detect the nesting (and in html replace txt with inlined)  
+
+    def split_parent_id_from_child(id):
+        parent, child = None, None
+        if NESTING_SEP in id:
+            parent, child = id.rsplit( NESTING_SEP, 1 )
+        return parent, child
+    
+    
+    for id in codes.keys():
+        if not NESTING_SEP in id:
+            continue
+        child_id = id
+        parent_id, child_name = split_parent_id_from_child( child_id )
+        nested_functions[parent_id].append( child_id )
+        
+        # nested_replace(parent_id, child_id)
+    return nested_functions
+    
+        
+def nested_function_relative_range(parent_id, child_id):
+    ch_lines, ch_start_nr = codes[child_id]  # child  info
+    p_lines, p_start_nr = codes[parent_id]  # parent info
+    
+    replacement_start = ch_start_nr - p_start_nr
+    replacement_end =  replacement_start + len(ch_lines)
+    return replacement_start, replacement_end
+    
+
+def test_nested_replace():
+    nested_functions = get_nested_functions()
+
+    for parent_id, nested in nested_functions.items():
+        for child_id in nested:
+            
+            child_name = child_id.rsplit( NESTING_SEP, 1 )[1]
+            p_lines, p_start_nr = codes[parent_id] 
+            
+            start, end = nested_function_relative_range(parent_id, child_id)
+            for i in range( start, end ):
+                p_lines[i] = '# '+ child_name + " replaced:  " + p_lines[i]
+        
+    import json
+    print("DBG Codes:\n", json.dumps( codes, indent=2) )
+
+
+
+############# CONTEXT manager API ##################
+
+
 
 import sys
 
@@ -490,17 +552,19 @@ def finish():
         finally:
             output_html()
  
-     
+
 def output_html():
     """output after finish"""
+
      
     import mytracer_render 
     # monkeypach inject some stuff
     mytracer_render.SEP_4ID = SEP_4ID
     mytracer_render.join_ids = join_ids
+    mytracer_render.nested_function_relative_range = nested_function_relative_range
     mytracer_render.lineID_from_parts = lineID_from_parts
     
-    mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec)
+    mytracer_render.render_html(visited_lines, codes, call_map, watched_values, watched_values_after_exec, get_nested_functions() )
 
 
 
@@ -546,36 +610,7 @@ if __name__=="__main__":
     
     # import test_mytracer_kep
     # do_trace( test_mytracer_kep.test  )         
-    
-    def test_nesting_functions_replacing_with_ref():
-        
-        nesting_sep = ".[locals]."
-        def get_parent_child(id):
-            parent, child = None, None
-            if nesting_sep in id:
-                parent, child = id.rsplit( nesting_sep, 1 )
-            return parent, child
-                
-        
-        for id, code in codes.items():
-            if not nesting_sep in id:
-                continue
-            
-            ch_lines, ch_start_nr = code # child info
-            
-            parent_id, child_name = get_parent_child( id )
-            p_lines, p_start_nr = codes[parent_id]  # parent info
-            
-            replacement_start = ch_start_nr - p_start_nr
-            replacement_end =  replacement_start + len(ch_lines)
-            
-            for i in range( replacement_start, replacement_end ):
-                p_lines[i] = child_name + " replaced:  " + p_lines[i]
-            # p_lines[ replacement_start: replacement_end+1 ] = 
-            
-            
 
-        import json
-        print("DBG Codes:\n", json.dumps( codes, indent=2) )
 
-    test_nesting_functions_replacing_with_ref()
+    test_nested_replace()
+

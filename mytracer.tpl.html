@@ -25,8 +25,13 @@ $(document).ready( init );
 <body>
 
 
-<input type="button" value="Save state" onclick="save_expanded_tree_state()" />
-<input type="button" value="Load" onclick="load_expanded_tree_state()" />
+<input type="button" id="save-tree" value="Save expanded state (tree structure)" onclick="save_expanded_tree_state()" />
+<input type="button" id="load-tree" value="Load tree" onclick="load_expanded_tree_state()" />
+<br/>
+
+<input type="button" id="save-html" value="Save expanded state (full html)" onclick="save_expanded_html()" />
+<input type="button" id="load-html"  value="Load html" onclick="load_expanded_html()" />
+(saves more exact view (but is bound to timestamp)) 
 
 <h2>Trace:</h2>
 <div id="trace">
@@ -55,8 +60,8 @@ $(document).ready( init );
 </div>
 
 
-    <h2>Codes</h2>
-<div id="codes">
+    <h2 onclick='$("#codes").toggle();' class="button">Codes</h2>
+<div id="codes" >
 {{codes}}
 
 

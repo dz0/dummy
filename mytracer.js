@@ -17,9 +17,18 @@ function init(){
     
    // $("#trace > #entering-call").prepend( $first_code.html() ); // TODO: deprecate "#entering-call"
    $("#trace").prepend( $first_code.prop('outerHTML') );
-
+   
+   // togle nested functions
+   $(".nested_function").each( function(){
+       console.log("bla");
+       toggle_inlined($(this), "block"); 
+    });
+       
    make_wathces_scroll_fixed_header();
    init_4_new_expanded_stuff();
+        
+    // if( ! (doc_id in localStorage) $("#load-tree").hide(); // but should show it on save
+
 
 }
 
@@ -55,6 +64,7 @@ function init_4_new_expanded_stuff(){
     
     $(".show-stack-path").each( function(){ bind_tooltip( $(this), stack_path ) } );
     // $(".show-stack-path").each( function(){ $(this).prop('title', stack_path( $(this) ) ); } );
+    
 } 
 
 
@@ -227,6 +237,17 @@ function make_wathces_scroll_fixed_header(){
         }
 }
 
+function save_expanded_html(){
+    html = $("#trace").html();    
+    localStorage[ doc_id +"__"+ timestamp ] =  html; 
+}
+function load_expanded_html(){
+    var saved_html = localStorage[ doc_id +"__"+ timestamp ];  
+    if (saved_html)
+        $("#trace").html( saved_html );  
+    else
+        alert(" saved view not found for "+doc_id+"__"+timestamp);
+}
 
 // for persistance of folded out structure 
 function save_expanded_tree_state(){ // TODO: rename to save_expanded_tree_state
@@ -236,18 +257,14 @@ function save_expanded_tree_state(){ // TODO: rename to save_expanded_tree_state
     console.log( "final_state_tree", state_tree );
     localStorage[ doc_id ] =  state_tree;
     
-    // html = $("#trace").html();    
-    // localStorage[ doc_id ] =  html;    
+   
 }
 
 function load_expanded_tree_state(){
     
     var state_tree = JSON.parse( localStorage[ doc_id ] );
     apply_opened_inlines_state_tree( $("#trace"), state_tree);
-
-    // var saved_html = localStorage[ doc_id ];  
-    // if (saved_html)
-        // $("#trace").html( saved_html );    
+ 
 }
 
 

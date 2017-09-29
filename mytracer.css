@@ -1,4 +1,5 @@
 
+#codes {display: none}
 .toggler.recursive { width:25px; text-align: center; }
 .line.visited {background: rgba(255,255,0,0.1); }
 .inlined { display:none; 
@@ -7,12 +8,13 @@
 .code { font-family: monospace;  }
 .line-code { font-family: monospace;  white-space: pre;}
 
+
 .watches {  background: white ; 
             border: 1px dotted green;
             overflow-y: auto;
             position: relative;
             height: 80px;
-            display: block;
+            display: none;
             resize: both;
             }
 

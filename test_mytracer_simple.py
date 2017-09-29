@@ -19,7 +19,7 @@ def B():
          def bb():
              b = 10 #WATCH_AFTER: b
              return "test __qualname__"
-             
+
          print( bb(), bb.__qualname__ )
          print("start B")
          x = 42 #WATCH_AFTER: x; x-10  
