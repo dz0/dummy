@@ -14,6 +14,8 @@ last_indent = 0
 depth = 0
 MAX_DEPTH = 30
 BUFFER_STDOUT = True
+MAX_TRACED_STEPS = None
+traced_steps = 0
 
 visited_lines = [] # not to visit the same again.. ID by filnename + lineno
 visited_calls = [] # not to visit the same again.. ID by filnename + lineno
@@ -225,7 +227,13 @@ def func_qualname(frame):
 def trace_calls(frame, event, arg):
     global start_frame
     global last_indent
+    global traced_steps
 
+    traced_steps += 1
+    if MAX_TRACED_STEPS and traced_steps > MAX_TRACED_STEPS:
+        traced_steps -= 1
+        return
+        
 
     co = frame.f_code
     func_name = co.co_name
@@ -258,6 +266,7 @@ def trace_calls(frame, event, arg):
         return line_watches
 
     if event == 'line':
+        
         log_line( frame )#, extra=f"  # line: {frame.f_lineno}, {frame.f_locals}   #module {module}" )
         
                 
